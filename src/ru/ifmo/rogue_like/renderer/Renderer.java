@@ -1,4 +1,4 @@
-package src.ru.ifmo.rogue_like.renderer;
+package ru.ifmo.rogue_like.renderer;
 
 import java.util.ArrayList;
 import java.util.List;
