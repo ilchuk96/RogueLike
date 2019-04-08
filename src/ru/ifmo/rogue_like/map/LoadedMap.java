@@ -11,7 +11,7 @@ public class LoadedMap implements IMap {
     }
 
     @Override
-    public void updateMap(int x, int y) {
+    public void updateMap(int x, int y, char direction) {
 
     }
 

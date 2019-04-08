@@ -1,5 +1,7 @@
 package ru.ifmo.rogue_like.map;
 
+import ru.ifmo.rogue_like.map.squares.Floor;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +13,7 @@ public class Tile {
         for (int i = 0; i < 4; i++) {
             List<ISquare> lst = new ArrayList<>();
             for (int j = 0; j < 4; j++) {
-                lst.add(null);
+                lst.add(new Floor());
             }
             tile.add(lst);
         }

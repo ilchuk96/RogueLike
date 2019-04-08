@@ -7,5 +7,5 @@ import java.util.List;
 public interface IMap extends IRenderable {
     List<List<ISquare>> getField();
 
-    void updateMap(int x, int y);
+    void updateMap(int x, int y, char direction);
 }
