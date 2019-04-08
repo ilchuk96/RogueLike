@@ -21,8 +21,8 @@ public class Player {
         return INSTANSE;
     }
 
-    public boolean move(int vx, int vy, ICamera map) {
-        char[][] charMap = map.getView();
+    public boolean move(int vx, int vy, IMap map) {
+        char[][] charMap = map.getView(0).getView();
         if (charMap[x+vx][y+vy] == WALL) {
             return false;
         }
