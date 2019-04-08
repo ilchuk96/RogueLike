@@ -2,6 +2,7 @@ package ru.ifmo.rogue_like.map;
 
 import ru.ifmo.rogue_like.map.squares.Floor;
 import ru.ifmo.rogue_like.map.squares.Wall;
+import ru.ifmo.rogue_like.rendering_system.IRenderable;
 import ru.ifmo.rogue_like.rendering_system.IView;
 
 import java.util.ArrayList;
@@ -15,7 +16,7 @@ public class RandomMap implements IMap {
     /***
      * maxX and maxY must be divisible by 8
      */
-    RandomMap() {
+    public RandomMap() {
         random = new Random();
         int maxX = 1024;
         int maxY = 1024;
@@ -102,7 +103,7 @@ public class RandomMap implements IMap {
                 for (int j = 0; j < 2; j++) {
                     rnd = random.nextInt(4);
                     if (rnd == 0) {
-                        tile.setSquare(i*3, j*3, new Wall());
+                        tile.setSquare(i * 3, j * 3, new Wall());
                     }
                 }
             }
@@ -128,8 +129,8 @@ public class RandomMap implements IMap {
             for (int i = 0; i < 4; i++) {
                 for (int j = 0; j < 2; j++) {
                     ISquare square = tile.getSquare(i, j);
-                    tile.setSquare(i, j, tile.getSquare(i, 3-j));
-                    tile.setSquare(i, 3-j, square);
+                    tile.setSquare(i, j, tile.getSquare(i, 3 - j));
+                    tile.setSquare(i, 3 - j, square);
                 }
             }
         }
@@ -149,39 +150,39 @@ public class RandomMap implements IMap {
 
     @Override
     public void updateMap(int x, int y, char direction) {
-        if (direction == 'w' && field.get(x-1).get(y) == null) {
+        if (direction == 'w' && field.get(x - 1).get(y) == null) {
             Tile tile = getNewTile(direction);
             int corner = (y / 4) * 4;
             for (int i = 0; i < 4; i++) {
                 for (int j = 0; j < 4; j++) {
-                    field.get(x-4+i).set(corner+j, tile.getSquare(i, j));
+                    field.get(x - 4 + i).set(corner + j, tile.getSquare(i, j));
                 }
             }
         }
-        if (direction == 'a' && field.get(x).get(y-1) == null) {
+        if (direction == 'a' && field.get(x).get(y - 1) == null) {
             Tile tile = getNewTile(direction);
             int corner = (x / 4) * 4;
             for (int i = 0; i < 4; i++) {
                 for (int j = 0; j < 4; j++) {
-                    field.get(corner+i).set(y-4+j, tile.getSquare(i, j));
+                    field.get(corner + i).set(y - 4 + j, tile.getSquare(i, j));
                 }
             }
         }
-        if (direction == 's' && field.get(x+1).get(y) == null) {
+        if (direction == 's' && field.get(x + 1).get(y) == null) {
             Tile tile = getNewTile(direction);
             int corner = (y / 4) * 4;
             for (int i = 0; i < 4; i++) {
                 for (int j = 0; j < 4; j++) {
-                    field.get(x+1+i).set(corner+j, tile.getSquare(i, j));
+                    field.get(x + 1 + i).set(corner + j, tile.getSquare(i, j));
                 }
             }
         }
-        if (direction == 'd' && field.get(x+1).get(y) == null) {
+        if (direction == 'd' && field.get(x + 1).get(y) == null) {
             Tile tile = getNewTile(direction);
             int corner = (x / 4) * 4;
             for (int i = 0; i < 4; i++) {
                 for (int j = 0; j < 4; j++) {
-                    field.get(corner+i).set(y+1+j, tile.getSquare(i, j));
+                    field.get(corner + i).set(y + 1 + j, tile.getSquare(i, j));
                 }
             }
         }
@@ -189,6 +190,38 @@ public class RandomMap implements IMap {
 
     @Override
     public IView getView(long time) {
-        throw new UnsupportedOperationException();
+        char[][] view = new char[field.get(0).size()][field.size()];
+        int i = 0, j = 0;
+        for (List<ISquare> t : field) {
+            for (ISquare square : t) {
+                if (square instanceof Floor) {
+                    view[i][j] = '.';
+                } else {
+                    view[i][j] = '#';
+                }
+                if (square == null) {
+                    view[i][j] = '*';
+                }
+                j++;
+            }
+            j = 0;
+            i++;
+        }
+        return new IView() {
+            @Override
+            public int getX() {
+                return 0;
+            }
+
+            @Override
+            public int getY() {
+                return 0;
+            }
+
+            @Override
+            public char[][] getView() {
+                return view;
+            }
+        };
     }
 }

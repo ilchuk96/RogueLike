@@ -1,9 +1,11 @@
 package ru.ifmo.rogue_like.player;
 
 import ru.ifmo.rogue_like.map.IMap;
+import ru.ifmo.rogue_like.rendering_system.IRenderable;
+import ru.ifmo.rogue_like.rendering_system.IView;
 import ru.ifmo.rogue_like.rendering_system.camera.ICamera;
 
-public class Player {
+public class Player implements IRenderable {
     private static Player INSTANSE;
 
     private static char WALL = 'w';
@@ -39,4 +41,25 @@ public class Player {
         return y;
     }
 
+    @Override
+    public IView getView(long time) {
+        return new IView() {
+            @Override
+            public int getX() {
+                return x;
+            }
+
+            @Override
+            public int getY() {
+                return y;
+            }
+
+            @Override
+            public char[][] getView() {
+                char[][] r = new char[1][1];
+                r[0][0] = '$';
+                return r;
+            }
+        };
+    }
 }

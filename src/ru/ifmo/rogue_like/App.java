@@ -1,5 +1,6 @@
 package ru.ifmo.rogue_like;
 
+import ru.ifmo.rogue_like.map.IMap;
 import ru.ifmo.rogue_like.map.RandomMap;
 import ru.ifmo.rogue_like.menu.Menu;
 import ru.ifmo.rogue_like.menu.MenuEntry;
@@ -20,9 +21,10 @@ import java.util.Scanner;
 public class App {
     public void newGame() {
         ICamera camera = new Camera(41, 41, 0, 0);
+        IMap map = new RandomMap();
         camera.addRenderableObject(new RandomMap());
         camera.addRenderableObject(Player.getInstanse());
-        PlayerListener listener = new PlayerListener(camera);
+        PlayerListener listener = new PlayerListener(map, camera);
         CameraRenderer renderer = new CameraRenderer(camera);
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         try {

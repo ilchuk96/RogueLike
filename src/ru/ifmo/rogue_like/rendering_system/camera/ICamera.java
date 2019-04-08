@@ -1,9 +1,9 @@
 package ru.ifmo.rogue_like.rendering_system.camera;
 
-import ru.ifmo.rogue_like.map.IMap;
+import ru.ifmo.rogue_like.rendering_system.IRenderable;
 
 public interface ICamera {
-    void addRenderableObject(IMap renderable);
+    void addRenderableObject(IRenderable renderable);
 
     char[][] getView();
 
@@ -12,5 +12,6 @@ public interface ICamera {
     void setCameraPosition(int x, int y);
 
     void setCameraPositionX(int x);
+
     void setCameraPositionY(int y);
 }
