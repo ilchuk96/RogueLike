@@ -1,9 +1,13 @@
-group 'ru.ifmo'
+group 'src.ru.ifmo'
 version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
+apply plugin: 'application'
 
-sourceCompatibility = 1.8
+mainClassName = 'ru.ifmo.rogue_like.Main'
+sourceSets.main.java.srcDirs = ['src']
+
+sourceCompatibility = 1.9
 
 repositories {
     mavenCentral()

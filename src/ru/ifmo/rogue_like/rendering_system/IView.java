@@ -1,4 +1,4 @@
-package src.ru.ifmo.rogue_like.renderer;
+package ru.ifmo.rogue_like.rendering_system;
 
 public interface IView {
     int getX();
