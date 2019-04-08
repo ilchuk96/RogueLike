@@ -22,8 +22,10 @@ public class App {
     public void newGame() {
         ICamera camera = new Camera(41, 41, 0, 0);
         IMap map = new RandomMap();
-        camera.addRenderableObject(new RandomMap());
+
+        camera.addRenderableObject(map);
         camera.addRenderableObject(Player.getInstanse());
+
         PlayerListener listener = new PlayerListener(map, camera);
         CameraRenderer renderer = new CameraRenderer(camera);
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -31,10 +33,14 @@ public class App {
             renderer.render();
             while (true) {
                 Thread.sleep(16);
-                char c = (char) reader.read();
-                listener.keyPressed(c);
-                camera.update(System.currentTimeMillis());
-                renderer.render();
+                String line = reader.readLine();
+                if (line != null) {
+                    for (char c : line.toCharArray()) {
+                        listener.keyPressed(c);
+                    }
+                    camera.update(System.currentTimeMillis());
+                    renderer.render();
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();

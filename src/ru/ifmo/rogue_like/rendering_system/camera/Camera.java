@@ -37,12 +37,12 @@ public class Camera implements ICamera {
         for (IMap renderable : renderableObjects) {
             IView view = renderable.getView(time);
             for (int y = 0; y < view.getView().length; y++) {
-                int positionY = y + cameraPositionY + view.getY();
+                int positionY = y - cameraPositionY + view.getY();
                 if (positionY < 0 || positionY >= sizeY) {
                     continue;
                 }
                 for (int x = 0; x < view.getView()[y].length; x++) {
-                    int positionX = x + cameraPositionX + view.getX();
+                    int positionX = x - cameraPositionX + view.getX();
                     if (positionX < 0 || positionX >= sizeX) {
                         continue;
                     }
@@ -54,18 +54,18 @@ public class Camera implements ICamera {
 
     @Override
     public void setCameraPosition(int x, int y) {
-        this.cameraPositionX = x;
-        this.cameraPositionY = y;
+        this.cameraPositionX = x - this.sizeX / 2;
+        this.cameraPositionY = y - this.sizeY / 2;
     }
 
     @Override
     public void setCameraPositionX(int x) {
-        this.cameraPositionX = x;
+        this.cameraPositionX = x - this.sizeX / 2;
     }
 
     @Override
     public void setCameraPositionY(int y) {
-        this.cameraPositionY = y;
+        this.cameraPositionY = y - this.sizeY / 2;
     }
 
     @Override

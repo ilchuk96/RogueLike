@@ -190,7 +190,7 @@ public class RandomMap implements IMap {
 
     @Override
     public IView getView(long time) {
-        char[][] view = new char[field.get(0).size()][field.size()];
+        char[][] view = new char[field.size()][field.get(0).size()];
         int i = 0, j = 0;
         for (List<ISquare> t : field) {
             for (ISquare square : t) {
