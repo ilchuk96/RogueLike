@@ -1,6 +1,6 @@
 package ru.ifmo.rogue_like.map;
 
-import ru.ifmo.rogue_like.renderer.IRenderable;
+import ru.ifmo.rogue_like.rendering_system.IRenderable;
 
 import java.util.List;
 

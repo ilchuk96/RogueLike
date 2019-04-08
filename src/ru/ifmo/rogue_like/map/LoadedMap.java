@@ -2,7 +2,7 @@ package ru.ifmo.rogue_like.map;
 
 import ru.ifmo.rogue_like.map.squares.Floor;
 import ru.ifmo.rogue_like.map.squares.Wall;
-import ru.ifmo.rogue_like.renderer.IView;
+import ru.ifmo.rogue_like.rendering_system.IView;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -44,7 +44,7 @@ public class LoadedMap implements IMap {
     }
 
     @Override
-    public IView getView() {
+    public IView getView(long time) {
         throw new UnsupportedOperationException();
     }
 }
