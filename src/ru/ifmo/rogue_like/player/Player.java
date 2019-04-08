@@ -1,9 +1,6 @@
 package ru.ifmo.rogue_like.player;
 
-<<<<<<< HEAD
 import ru.ifmo.rogue_like.map.IMap;
-=======
->>>>>>> 202ebe9... add player to rendering
 import ru.ifmo.rogue_like.rendering_system.IRenderable;
 import ru.ifmo.rogue_like.rendering_system.IView;
 import ru.ifmo.rogue_like.rendering_system.camera.ICamera;
@@ -18,7 +15,10 @@ public class Player implements IRenderable {
     private Player() {
         x = 0;
         y = 0;
-    };
+    }
+
+    ;
+
     public static Player getInstanse() {
         if (INSTANSE == null) {
             INSTANSE = new Player();
@@ -28,7 +28,7 @@ public class Player implements IRenderable {
 
     public boolean move(int vx, int vy, IMap map) {
         char[][] charMap = map.getView(0).getView();
-        if (charMap[x+vx][y+vy] == WALL) {
+        if (charMap[x + vx][y + vy] == WALL) {
             return false;
         }
         x += vx;
@@ -59,15 +59,9 @@ public class Player implements IRenderable {
 
             @Override
             public char[][] getView() {
-<<<<<<< HEAD
-                char[][] r = new char[1][1];
-                r[0][0] = '$';
-                return r;
-=======
                 char[][] result = new char[1][1];
                 result[0][0] = '$';
                 return result;
->>>>>>> 202ebe9... add player to rendering
             }
         };
     }

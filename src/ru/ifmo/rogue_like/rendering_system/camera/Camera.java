@@ -1,6 +1,7 @@
 package ru.ifmo.rogue_like.rendering_system.camera;
 
 import ru.ifmo.rogue_like.map.IMap;
+import ru.ifmo.rogue_like.rendering_system.IRenderable;
 import ru.ifmo.rogue_like.rendering_system.IView;
 
 import java.util.ArrayList;
@@ -9,7 +10,7 @@ import java.util.List;
 public class Camera implements ICamera {
     private int cameraPositionX, cameraPositionY;
 
-    private List<IMap> renderableObjects = new ArrayList<>();
+    private List<IRenderable> renderableObjects = new ArrayList<>();
     private int sizeX, sizeY;
     private char[][] frame;
 
@@ -23,7 +24,7 @@ public class Camera implements ICamera {
     }
 
     @Override
-    public void addRenderableObject(IMap renderable) {
+    public void addRenderableObject(IRenderable renderable) {
         renderableObjects.add(renderable);
     }
 
@@ -34,7 +35,7 @@ public class Camera implements ICamera {
                 frame[i][g] = '.';
             }
         }
-        for (IMap renderable : renderableObjects) {
+        for (IRenderable renderable : renderableObjects) {
             IView view = renderable.getView(time);
             for (int y = 0; y < view.getView().length; y++) {
                 int positionY = y - cameraPositionY + view.getY();
