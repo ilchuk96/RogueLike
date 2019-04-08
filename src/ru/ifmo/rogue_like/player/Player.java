@@ -1,6 +1,9 @@
 package ru.ifmo.rogue_like.player;
 
+<<<<<<< HEAD
 import ru.ifmo.rogue_like.map.IMap;
+=======
+>>>>>>> 202ebe9... add player to rendering
 import ru.ifmo.rogue_like.rendering_system.IRenderable;
 import ru.ifmo.rogue_like.rendering_system.IView;
 import ru.ifmo.rogue_like.rendering_system.camera.ICamera;
@@ -56,9 +59,15 @@ public class Player implements IRenderable {
 
             @Override
             public char[][] getView() {
+<<<<<<< HEAD
                 char[][] r = new char[1][1];
                 r[0][0] = '$';
                 return r;
+=======
+                char[][] result = new char[1][1];
+                result[0][0] = '$';
+                return result;
+>>>>>>> 202ebe9... add player to rendering
             }
         };
     }
