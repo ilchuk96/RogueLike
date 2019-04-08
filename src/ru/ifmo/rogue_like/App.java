@@ -26,6 +26,19 @@ public class App {
         camera.addRenderableObject(Player.getInstanse());
         PlayerListener listener = new PlayerListener(map, camera);
         CameraRenderer renderer = new CameraRenderer(camera);
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        try {
+            renderer.render();
+            while (true) {
+                Thread.sleep(16);
+                char c = (char) reader.read();
+                listener.keyPressed(c);
+                camera.update(System.currentTimeMillis());
+                renderer.render();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void start() throws IOException {

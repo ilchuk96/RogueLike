@@ -24,6 +24,26 @@ public class PlayerListener implements KeyListener {
 
     }
 
+    public void keyPressed(char c) {
+        boolean success = false;
+        if (c == 'w') {
+            success = player.move(1, 0, camera);
+        }
+        if (c == 'a') {
+            success = player.move(0, -1, camera);
+        }
+        if (c == 'd') {
+            success = player.move(0, 1, camera);
+        }
+        if (c == 's') {
+            success = player.move(-1, 0, camera);
+        }
+        if (success) {
+            camera.setCameraPosition(player.getX(), player.getY());
+            camera.update(System.currentTimeMillis());
+        }
+    }
+
     @Override
     public void keyPressed(KeyEvent keyEvent) {
         boolean success = false;
