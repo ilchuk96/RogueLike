@@ -1,22 +1,50 @@
 package ru.ifmo.rogue_like.map;
 
+import ru.ifmo.rogue_like.map.squares.Floor;
+import ru.ifmo.rogue_like.map.squares.Wall;
 import ru.ifmo.rogue_like.renderer.IView;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class LoadedMap implements IMap {
+    private List<List<ISquare>> field;
+
+    LoadedMap(String filepath) {
+        field = new ArrayList<>();
+        try (BufferedReader br = new BufferedReader(new FileReader(filepath))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                List<ISquare> lst = new ArrayList<>();
+                for (char ch : line.toCharArray()) {
+                    if (ch == 'f') {
+                        lst.add(new Floor());
+                    }
+                    if (ch == 'w') {
+                        lst.add(new Wall());
+                    }
+                }
+                field.add(lst);
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     @Override
     public List<List<ISquare>> getField() {
-        return null;
+        return field;
     }
 
     @Override
     public void updateMap(int x, int y, char direction) {
-
     }
 
     @Override
     public IView getView() {
-        return null;
+        throw new UnsupportedOperationException();
     }
 }
