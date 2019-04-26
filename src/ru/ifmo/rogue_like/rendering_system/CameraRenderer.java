@@ -1,18 +1,25 @@
 package ru.ifmo.rogue_like.rendering_system;
 
+import java.awt.*;
+import java.io.IOException;
+import javax.swing.*;
+
 import ru.ifmo.rogue_like.rendering_system.camera.ICamera;
 
-import javax.swing.*;
-import java.io.IOException;
-
 public class CameraRenderer extends JFrame implements IRenderer {
-    ICamera camera;
-
+    private ICamera camera;
     private JLabel canvas;
+
+    private int marginLeft = 10;
+    private int marginTop = 10;
 
     public CameraRenderer(ICamera camera) {
         super("RougeLike");
         canvas = new JLabel();
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setPreferredSize(new Dimension(400, 300));
+        this.add(canvas);
+        this.setVisible(true);
         this.camera = camera;
     }
 
@@ -27,16 +34,18 @@ public class CameraRenderer extends JFrame implements IRenderer {
     @Override
     public void render() throws IOException {
         clear();
-        StringBuilder text = new StringBuilder();
         char[][] view = camera.getView();
+        int rowNumber = 0;
         for (char[] row : view) {
+            StringBuilder text = new StringBuilder();
             for (char elem : row) {
+                // System.out.print(elem);
                 text.append(elem);
-                //System.out.print(elem);
             }
             //System.out.println();
-            text.append("\n");
+//            text.append("\n");
+            canvas.getGraphics().drawString(text.toString(), marginLeft, rowNumber * 10 + marginTop);
+            rowNumber++;
         }
-        canvas.setText(text.toString());
     }
 }
