@@ -197,12 +197,12 @@ public class RandomMap implements IMap {
         for (List<ISquare> t : field) {
             for (ISquare square : t) {
                 if (square instanceof Floor) {
-                    view[i][j] = '.';
+                    view[i][j] = '+';
                 } else {
-                    view[i][j] = '#';
+                    view[i][j] = '=';
                 }
                 if (square == null) {
-                    view[i][j] = '*';
+                    view[i][j] = '_';
                 }
                 j++;
             }
