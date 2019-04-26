@@ -7,6 +7,7 @@ import ru.ifmo.rogue_like.rendering_system.camera.Camera;
 import ru.ifmo.rogue_like.rendering_system.camera.ICamera;
 
 import java.io.IOException;
+import java.util.Collections;
 import java.util.List;
 
 public class App {
@@ -25,9 +26,9 @@ public class App {
     }
 
     public void start() throws IOException {
-        MenuEntry newGame = new MenuEntry("New Game", this::newGame);
-        Menu menu = new Menu(List.of(newGame));
-        menu.showMenu();
+//        MenuEntry newGame = new MenuEntry("New Game", this::newGame);
+//        Menu menu = new Menu(Collections.singletonList(newGame));
+//        menu.showMenu();
         newGame();
     }
 }
