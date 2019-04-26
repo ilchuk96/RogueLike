@@ -8,12 +8,12 @@ import ru.ifmo.rogue_like.rendering_system.camera.ICamera;
 public class Player implements IRenderable {
     private static Player INSTANSE;
 
-    private static char WALL = '#';
+    private static char WALL = '=';
     private int x;
     private int y;
 
     private Player(int xx, int yy) {
-        x = xx;
+        x = xx + 1; // for starting not in wall
         y = yy;
     }
 
