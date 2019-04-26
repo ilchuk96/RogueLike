@@ -12,16 +12,16 @@ public class Player implements IRenderable {
     private int x;
     private int y;
 
-    private Player() {
-        x = 0;
-        y = 0;
+    private Player(int xx, int yy) {
+        x = xx;
+        y = yy;
     }
 
     ;
 
-    public static Player getInstanse() {
+    public static Player getInstanse(int x, int y) {
         if (INSTANSE == null) {
-            INSTANSE = new Player();
+            INSTANSE = new Player(x, y);
         }
         return INSTANSE;
     }

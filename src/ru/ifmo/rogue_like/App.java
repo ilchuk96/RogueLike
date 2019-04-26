@@ -15,12 +15,12 @@ import ru.ifmo.rogue_like.rendering_system.camera.ICamera;
 public class App {
     public void newGame() {
         ICamera camera = new Camera(41, 41, 0, 0);
-        IMap map = new RandomMap();
+        IMap map = new RandomMap(1024, 1024);
 
         camera.addRenderableObject(map);
-        camera.addRenderableObject(Player.getInstanse());
+        camera.addRenderableObject(Player.getInstanse(512, 512));
 
-        PlayerListener listener = new PlayerListener(map, camera);
+        PlayerListener listener = new PlayerListener(map, camera, 512, 512);
         CameraRenderer renderer = new CameraRenderer(camera, listener);
         try {
             renderer.render();

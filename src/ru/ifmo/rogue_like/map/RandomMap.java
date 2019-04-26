@@ -12,14 +12,16 @@ import java.util.Random;
 public class RandomMap implements IMap {
     private List<List<ISquare>> field;
     private Random random;
+    private int maxX;
+    private int maxY;
 
     /***
      * maxX and maxY must be divisible by 8
      */
-    public RandomMap() {
+    public RandomMap(int x, int y) {
         random = new Random();
-        int maxX = 1024;
-        int maxY = 1024;
+        maxX = x;
+        maxY = y;
 
         field = new ArrayList<>();
         for (int i = 0; i < maxX; i++) {

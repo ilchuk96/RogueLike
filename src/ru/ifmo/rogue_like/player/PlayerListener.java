@@ -13,8 +13,8 @@ public class PlayerListener implements KeyListener {
     private IMap map;
     private ICamera camera;
 
-    public PlayerListener(IMap map, ICamera camera) {
-        player = Player.getInstanse();
+    public PlayerListener(IMap map, ICamera camera, int x, int y) {
+        player = Player.getInstanse(x, y);
         this.map = map;
         this.camera = camera;
     }
