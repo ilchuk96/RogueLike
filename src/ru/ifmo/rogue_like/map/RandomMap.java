@@ -161,7 +161,7 @@ public class RandomMap implements IMap {
                 }
             }
         }
-        if (direction == 'a' && field.get(x).get(y - 1) == null) {
+        if (direction == 'a' && field.get(x-1).get(y) == null) {
             Tile tile = getNewTile(direction);
             int corner = (y / 4) * 4;
             for (int i = 0; i < 4; i++) {
@@ -179,7 +179,7 @@ public class RandomMap implements IMap {
                 }
             }
         }
-        if (direction == 'd' && field.get(x + 1).get(y) == null) {
+        if (direction == 'd' && field.get(x+1).get(y) == null) {
             Tile tile = getNewTile(direction);
             int corner = (y / 4) * 4;
             for (int i = 0; i < 4; i++) {
@@ -202,7 +202,7 @@ public class RandomMap implements IMap {
                     view[i][j] = '=';
                 }
                 if (square == null) {
-                    view[i][j] = '_';
+                    view[i][j] = '~';
                 }
                 j++;
             }
