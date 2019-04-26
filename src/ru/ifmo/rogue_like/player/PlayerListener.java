@@ -49,19 +49,19 @@ public class PlayerListener implements KeyListener {
         boolean success = false;
         if (keyEvent.getKeyCode() == KeyEvent.VK_W) {
             map.updateMap(player.getX(), player.getY(), 'w');
-            success = player.move(1, 0, map);
+            success = player.move(0, -1, map);
         }
         if (keyEvent.getKeyCode() == KeyEvent.VK_A) {
             map.updateMap(player.getX(), player.getY(), 'a');
-            success = player.move(0, -1, map);
+            success = player.move(-1, 0, map);
         }
         if (keyEvent.getKeyCode() == KeyEvent.VK_D) {
             map.updateMap(player.getX(), player.getY(), 'd');
-            success = player.move(0, 1, map);
+            success = player.move(1, 0, map);
         }
         if (keyEvent.getKeyCode() == KeyEvent.VK_S) {
             map.updateMap(player.getX(), player.getY(), 's');
-            success = player.move(-1, 0, map);
+            success = player.move(0, 1, map);
         }
         if (success) {
             camera.setCameraPosition(player.getX(), player.getY());

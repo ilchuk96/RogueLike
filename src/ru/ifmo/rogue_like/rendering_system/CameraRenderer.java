@@ -1,6 +1,7 @@
 package ru.ifmo.rogue_like.rendering_system;
 
 import java.awt.*;
+import java.awt.event.KeyListener;
 import java.io.IOException;
 import javax.swing.*;
 
@@ -13,11 +14,12 @@ public class CameraRenderer extends JFrame implements IRenderer {
     private int marginLeft = 10;
     private int marginTop = 10;
 
-    public CameraRenderer(ICamera camera) {
+    public CameraRenderer(ICamera camera, KeyListener keyListener) {
         super("RougeLike");
         canvas = new JLabel();
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setPreferredSize(new Dimension(400, 300));
+        this.addKeyListener(keyListener);
         this.add(canvas);
         this.setVisible(true);
         this.camera = camera;
@@ -27,7 +29,8 @@ public class CameraRenderer extends JFrame implements IRenderer {
 //        Runtime.getRuntime().exec("clear");
 //        System.out.print("\033[H\033[2J");
 //        System.out.flush();
-        canvas.setText("");
+        canvas.getGraphics().clearRect(0, 0, 500, 500);
+//        canvas.setText("");
     }
 
 

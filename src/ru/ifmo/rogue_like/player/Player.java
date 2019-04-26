@@ -8,7 +8,7 @@ import ru.ifmo.rogue_like.rendering_system.camera.ICamera;
 public class Player implements IRenderable {
     private static Player INSTANSE;
 
-    private static char WALL = 'w';
+    private static char WALL = '#';
     private int x;
     private int y;
 
@@ -28,6 +28,7 @@ public class Player implements IRenderable {
 
     public boolean move(int vx, int vy, IMap map) {
         char[][] charMap = map.getView(0).getView();
+        //TODO: check array index bounds
         if (charMap[x + vx][y + vy] == WALL) {
             return false;
         }

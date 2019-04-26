@@ -1,5 +1,9 @@
 package ru.ifmo.rogue_like;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 import ru.ifmo.rogue_like.map.IMap;
 import ru.ifmo.rogue_like.map.RandomMap;
 import ru.ifmo.rogue_like.player.Player;
@@ -7,12 +11,6 @@ import ru.ifmo.rogue_like.player.PlayerListener;
 import ru.ifmo.rogue_like.rendering_system.CameraRenderer;
 import ru.ifmo.rogue_like.rendering_system.camera.Camera;
 import ru.ifmo.rogue_like.rendering_system.camera.ICamera;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.Collections;
-import java.util.List;
 
 public class App {
     public void newGame() {
@@ -23,20 +21,13 @@ public class App {
         camera.addRenderableObject(Player.getInstanse());
 
         PlayerListener listener = new PlayerListener(map, camera);
-        CameraRenderer renderer = new CameraRenderer(camera);
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        CameraRenderer renderer = new CameraRenderer(camera, listener);
         try {
             renderer.render();
             while (true) {
-                Thread.sleep(16);
-                String line = reader.readLine();
-                if (line != null) {
-                    for (char c : line.toCharArray()) {
-                        listener.keyPressed(c);
-                    }
-                    camera.update(System.currentTimeMillis());
-                    renderer.render();
-                }
+                Thread.sleep(50);
+                camera.update(System.currentTimeMillis());
+                renderer.render();
             }
         } catch (Exception e) {
             e.printStackTrace();
