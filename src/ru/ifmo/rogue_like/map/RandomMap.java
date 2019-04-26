@@ -48,6 +48,9 @@ public class RandomMap implements IMap {
     }
 
 
+    /*
+    Generated for going left case, so (3,1) and (3,2) are always Floor().
+     */
     private Tile genTile() {
         Tile tile = new Tile();
         int rnd = random.nextInt(3);
@@ -95,9 +98,9 @@ public class RandomMap implements IMap {
                     tile.setSquare(2, 0, new Wall());
                     tile.setSquare(3, 0, new Wall());
                 } else {
-                    tile.setSquare(3, 0, new Wall());
-                    tile.setSquare(3, 1, new Wall());
-                    tile.setSquare(3, 2, new Wall());
+                    tile.setSquare(0, 3, new Wall());
+                    tile.setSquare(1, 3, new Wall());
+                    tile.setSquare(2, 3, new Wall());
                     tile.setSquare(3, 3, new Wall());
                 }
             }
@@ -114,7 +117,7 @@ public class RandomMap implements IMap {
     }
 
     private void rotateTile(Tile tile, char direction) {
-        if (direction == 'a') {
+        if (direction == 'w') {
             for (int i = 0; i < 4; i++) {
                 for (int j = 0; j < i; j++) {
                     ISquare square = tile.getSquare(i, j);
@@ -123,16 +126,16 @@ public class RandomMap implements IMap {
                 }
             }
         }
-        if (direction == 'd') {
-            rotateTile(tile, 's');
-            rotateTile(tile, 'a');
-        }
         if (direction == 's') {
-            for (int i = 0; i < 4; i++) {
-                for (int j = 0; j < 2; j++) {
+            rotateTile(tile, 'd');
+            rotateTile(tile, 'w');
+        }
+        if (direction == 'd') {
+            for (int i = 0; i < 2; i++) {
+                for (int j = 0; j < 4; j++) {
                     ISquare square = tile.getSquare(i, j);
-                    tile.setSquare(i, j, tile.getSquare(i, 3 - j));
-                    tile.setSquare(i, 3 - j, square);
+                    tile.setSquare(i, j, tile.getSquare(3-i, j));
+                    tile.setSquare(3-i, j, square);
                 }
             }
         }
