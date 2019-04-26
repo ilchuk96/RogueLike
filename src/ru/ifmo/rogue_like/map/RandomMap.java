@@ -152,16 +152,7 @@ public class RandomMap implements IMap {
 
     @Override
     public void updateMap(int x, int y, char direction) {
-        if (direction == 'w' && field.get(x - 1).get(y) == null) {
-            Tile tile = getNewTile(direction);
-            int corner = (y / 4) * 4;
-            for (int i = 0; i < 4; i++) {
-                for (int j = 0; j < 4; j++) {
-                    field.get(x - 4 + i).set(corner + j, tile.getSquare(i, j));
-                }
-            }
-        }
-        if (direction == 'a' && field.get(x).get(y - 1) == null) {
+        if (direction == 'w' && field.get(x).get(y-1) == null) {
             Tile tile = getNewTile(direction);
             int corner = (x / 4) * 4;
             for (int i = 0; i < 4; i++) {
@@ -170,21 +161,30 @@ public class RandomMap implements IMap {
                 }
             }
         }
-        if (direction == 's' && field.get(x + 1).get(y) == null) {
+        if (direction == 'a' && field.get(x).get(y - 1) == null) {
             Tile tile = getNewTile(direction);
             int corner = (y / 4) * 4;
             for (int i = 0; i < 4; i++) {
                 for (int j = 0; j < 4; j++) {
-                    field.get(x + 1 + i).set(corner + j, tile.getSquare(i, j));
+                    field.get(x - 4 + i).set(corner + j, tile.getSquare(i, j));
                 }
             }
         }
-        if (direction == 'd' && field.get(x + 1).get(y) == null) {
+        if (direction == 's' && field.get(x).get(y+1) == null) {
             Tile tile = getNewTile(direction);
             int corner = (x / 4) * 4;
             for (int i = 0; i < 4; i++) {
                 for (int j = 0; j < 4; j++) {
                     field.get(corner + i).set(y + 1 + j, tile.getSquare(i, j));
+                }
+            }
+        }
+        if (direction == 'd' && field.get(x + 1).get(y) == null) {
+            Tile tile = getNewTile(direction);
+            int corner = (y / 4) * 4;
+            for (int i = 0; i < 4; i++) {
+                for (int j = 0; j < 4; j++) {
+                    field.get(x + 1 + i).set(corner + j, tile.getSquare(i, j));
                 }
             }
         }
