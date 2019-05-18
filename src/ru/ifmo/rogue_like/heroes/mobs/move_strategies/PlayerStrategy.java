@@ -14,7 +14,7 @@ public class PlayerStrategy implements IHeroStrategy {
 
     @Override
     public MoveDirection moveDirection(IMap map, int x, int y) {
-        return listener.getLastDirection();
+        return listener.popLastDirection();
     }
 
     @Override

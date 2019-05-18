@@ -1,13 +1,13 @@
 package ru.ifmo.rogue_like.map;
 
-import ru.ifmo.rogue_like.map.squares.Floor;
-import ru.ifmo.rogue_like.map.squares.Wall;
-import ru.ifmo.rogue_like.rendering_system.IRenderable;
-import ru.ifmo.rogue_like.rendering_system.IView;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
+import ru.ifmo.rogue_like.heroes.MoveDirection;
+import ru.ifmo.rogue_like.map.squares.Floor;
+import ru.ifmo.rogue_like.map.squares.Wall;
+import ru.ifmo.rogue_like.rendering_system.IView;
 
 public class RandomMap implements IMap {
     private List<List<ISquare>> field;
@@ -134,8 +134,8 @@ public class RandomMap implements IMap {
             for (int i = 0; i < 2; i++) {
                 for (int j = 0; j < 4; j++) {
                     ISquare square = tile.getSquare(i, j);
-                    tile.setSquare(i, j, tile.getSquare(3-i, j));
-                    tile.setSquare(3-i, j, square);
+                    tile.setSquare(i, j, tile.getSquare(3 - i, j));
+                    tile.setSquare(3 - i, j, square);
                 }
             }
         }
@@ -155,7 +155,7 @@ public class RandomMap implements IMap {
 
     @Override
     public void updateMap(int x, int y, char direction) {
-        if (direction == 'w' && field.get(x).get(y-1) == null) {
+        if (direction == 'w' && field.get(x).get(y - 1) == null) {
             Tile tile = getNewTile(direction);
             int corner = (x / 4) * 4;
             for (int i = 0; i < 4; i++) {
@@ -164,7 +164,7 @@ public class RandomMap implements IMap {
                 }
             }
         }
-        if (direction == 'a' && field.get(x-1).get(y) == null) {
+        if (direction == 'a' && field.get(x - 1).get(y) == null) {
             Tile tile = getNewTile(direction);
             int corner = (y / 4) * 4;
             for (int i = 0; i < 4; i++) {
@@ -173,7 +173,7 @@ public class RandomMap implements IMap {
                 }
             }
         }
-        if (direction == 's' && field.get(x).get(y+1) == null) {
+        if (direction == 's' && field.get(x).get(y + 1) == null) {
             Tile tile = getNewTile(direction);
             int corner = (x / 4) * 4;
             for (int i = 0; i < 4; i++) {
@@ -182,7 +182,7 @@ public class RandomMap implements IMap {
                 }
             }
         }
-        if (direction == 'd' && field.get(x+1).get(y) == null) {
+        if (direction == 'd' && field.get(x + 1).get(y) == null) {
             Tile tile = getNewTile(direction);
             int corner = (y / 4) * 4;
             for (int i = 0; i < 4; i++) {

@@ -37,6 +37,7 @@ public class App {
             renderer.render();
             while (true) {
                 if (listener.hasTyped()) {
+                    map.updateMap(player.getX(), player.getY(), listener.peekLastDirection());
                     for (Hero hero : heroes) {
                         hero.move(map);
                     }

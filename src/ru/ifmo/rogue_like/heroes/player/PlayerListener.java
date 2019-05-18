@@ -10,13 +10,17 @@ import ru.ifmo.rogue_like.heroes.MoveDirection;
 public class PlayerListener implements KeyListener {
     private Queue<MoveDirection> directions = new LinkedList<>();
 
-    public MoveDirection getLastDirection() {
+    public MoveDirection popLastDirection() {
         return directions.poll();
     }
 
     public boolean hasTyped() {
-        System.out.println(directions.size());
+        System.out.print(1);
         return !directions.isEmpty();
+    }
+
+    public MoveDirection peekLastDirection() {
+        return directions.peek();
     }
 
     @Override
