@@ -1,11 +1,12 @@
 package ru.ifmo.rogue_like.rendering_system.camera;
 
-import ru.ifmo.rogue_like.map.IMap;
-import ru.ifmo.rogue_like.rendering_system.IRenderable;
-import ru.ifmo.rogue_like.rendering_system.IView;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import ru.ifmo.rogue_like.heroes.mobs.Hero;
+import ru.ifmo.rogue_like.map.IPositionable;
+import ru.ifmo.rogue_like.rendering_system.IRenderable;
+import ru.ifmo.rogue_like.rendering_system.IView;
 
 public class Camera implements ICamera {
     private int cameraPositionX, cameraPositionY;
@@ -13,11 +14,10 @@ public class Camera implements ICamera {
     private List<IRenderable> renderableObjects = new ArrayList<>();
     private int sizeX, sizeY;
     private char[][] frame;
+    private IPositionable position;
 
-
-    public Camera(int sizeX, int sizeY, int cameraPositionX, int cameraPositionY) {
-        this.cameraPositionX = 0;
-        this.cameraPositionY = 0;
+    public Camera(int sizeX, int sizeY, IPositionable cameraPosition) {
+        this.position = cameraPosition;
         this.sizeX = sizeX;
         this.sizeY = sizeY;
         this.frame = new char[sizeX][sizeY];
@@ -51,6 +51,7 @@ public class Camera implements ICamera {
                 }
             }
         }
+        setCameraPosition(position.getX(), position.getY());
     }
 
     @Override

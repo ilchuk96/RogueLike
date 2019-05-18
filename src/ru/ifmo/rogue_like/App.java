@@ -1,32 +1,44 @@
 package ru.ifmo.rogue_like;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 
+import ru.ifmo.rogue_like.heroes.mobs.Hero;
+import ru.ifmo.rogue_like.heroes.mobs.move_strategies.PlayerStrategy;
+import ru.ifmo.rogue_like.heroes.player.PlayerListener;
 import ru.ifmo.rogue_like.map.IMap;
 import ru.ifmo.rogue_like.map.RandomMap;
-import ru.ifmo.rogue_like.player.Player;
-import ru.ifmo.rogue_like.player.PlayerListener;
 import ru.ifmo.rogue_like.rendering_system.CameraRenderer;
 import ru.ifmo.rogue_like.rendering_system.camera.Camera;
 import ru.ifmo.rogue_like.rendering_system.camera.ICamera;
 
 public class App {
     public void newGame() {
-        ICamera camera = new Camera(41, 41, 0, 0);
+
         IMap map = new RandomMap(1024, 1024);
 
-        camera.addRenderableObject(map);
-        camera.addRenderableObject(Player.getInstanse(512, 512));
 
-        PlayerListener listener = new PlayerListener(map, camera, 512, 512);
+        PlayerListener listener = new PlayerListener();
+
+        Hero player = new Hero(new PlayerStrategy(listener), 513, 512);
+        ICamera camera = new Camera(41, 41, player);
+        List<Hero> heroes = new ArrayList<>();
+        heroes.add(player);
+
+        camera.addRenderableObject(map);
+        for (Hero hero : heroes) {
+            camera.addRenderableObject(hero);
+        }
+
         CameraRenderer renderer = new CameraRenderer(camera, listener);
         try {
             renderer.render();
             while (true) {
-                Thread.sleep(50);
                 camera.update(System.currentTimeMillis());
+                for (Hero hero : heroes) {
+                    hero.move(map);
+                }
                 renderer.render();
             }
         } catch (Exception e) {
