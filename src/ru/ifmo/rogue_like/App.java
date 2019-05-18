@@ -30,16 +30,19 @@ public class App {
         for (Hero hero : heroes) {
             camera.addRenderableObject(hero);
         }
-
         CameraRenderer renderer = new CameraRenderer(camera, listener);
         try {
+            player.move(map);
+            camera.update(System.currentTimeMillis());
             renderer.render();
             while (true) {
-                camera.update(System.currentTimeMillis());
-                for (Hero hero : heroes) {
-                    hero.move(map);
+                if (listener.hasTyped()) {
+                    for (Hero hero : heroes) {
+                        hero.move(map);
+                    }
+                    camera.update(System.currentTimeMillis());
+                    renderer.render();
                 }
-                renderer.render();
             }
         } catch (Exception e) {
             e.printStackTrace();

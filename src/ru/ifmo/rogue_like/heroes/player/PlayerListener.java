@@ -14,6 +14,11 @@ public class PlayerListener implements KeyListener {
         return directions.poll();
     }
 
+    public boolean hasTyped() {
+        System.out.println(directions.size());
+        return !directions.isEmpty();
+    }
+
     @Override
     public void keyTyped(KeyEvent keyEvent) {
 

@@ -205,7 +205,7 @@ public class RandomMap implements IMap {
                     view[i][j] = '=';
                 }
                 if (square == null) {
-                    view[i][j] = '~';
+                    view[i][j] = '-';
                 }
                 j++;
             }
