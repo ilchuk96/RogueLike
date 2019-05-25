@@ -40,6 +40,7 @@ public class App {
                     Hero newHero = map.updateMap(player.getX(), player.getY(), listener.peekLastDirection());
                     if (newHero != null) {
                         heroes.add(newHero);
+                        camera.addRenderableObject(newHero);
                     }
                     for (Hero hero : heroes) {
                         hero.move(map);
