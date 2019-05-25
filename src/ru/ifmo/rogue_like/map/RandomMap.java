@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Random;
 
 import ru.ifmo.rogue_like.heroes.MoveDirection;
+import ru.ifmo.rogue_like.heroes.mobs.Hero;
+import ru.ifmo.rogue_like.heroes.mobs.move_strategies.Passive;
 import ru.ifmo.rogue_like.map.squares.Floor;
 import ru.ifmo.rogue_like.map.squares.Wall;
 import ru.ifmo.rogue_like.rendering_system.IView;
@@ -154,7 +156,10 @@ public class RandomMap implements IMap {
     }
 
     @Override
-    public void updateMap(int x, int y, char direction) {
+    public Hero updateMap(int x, int y, char direction) {
+        Integer mobX = null;
+        Integer mobY = null;
+
         if (direction == 'w' && field.get(x).get(y - 1) == null) {
             Tile tile = getNewTile(direction);
             int corner = (x / 4) * 4;
@@ -163,6 +168,8 @@ public class RandomMap implements IMap {
                     field.get(corner + i).set(y - 4 + j, tile.getSquare(i, j));
                 }
             }
+            mobX = corner + 2;
+            mobY = y - 2;
         }
         if (direction == 'a' && field.get(x - 1).get(y) == null) {
             Tile tile = getNewTile(direction);
@@ -172,6 +179,8 @@ public class RandomMap implements IMap {
                     field.get(x - 4 + i).set(corner + j, tile.getSquare(i, j));
                 }
             }
+            mobX = x - 2;
+            mobY = corner + 2;
         }
         if (direction == 's' && field.get(x).get(y + 1) == null) {
             Tile tile = getNewTile(direction);
@@ -181,6 +190,8 @@ public class RandomMap implements IMap {
                     field.get(corner + i).set(y + 1 + j, tile.getSquare(i, j));
                 }
             }
+            mobX = corner + 2;
+            mobY = y + 2;
         }
         if (direction == 'd' && field.get(x + 1).get(y) == null) {
             Tile tile = getNewTile(direction);
@@ -190,7 +201,14 @@ public class RandomMap implements IMap {
                     field.get(x + 1 + i).set(corner + j, tile.getSquare(i, j));
                 }
             }
+            mobX = x + 2;
+            mobY = corner + 2;
         }
+
+        if (mobX != null) {
+            return new Hero(new Passive(), mobX, mobY);
+        }
+        return null;
     }
 
     @Override

@@ -3,14 +3,15 @@ package ru.ifmo.rogue_like.map;
 import java.util.List;
 
 import ru.ifmo.rogue_like.heroes.MoveDirection;
+import ru.ifmo.rogue_like.heroes.mobs.Hero;
 import ru.ifmo.rogue_like.rendering_system.IRenderable;
 
 public interface IMap extends IRenderable {
     List<List<ISquare>> getField();
 
-    void updateMap(int x, int y, char direction);
+    Hero updateMap(int x, int y, char direction);
 
-    default void updateMap(int x, int y, MoveDirection direction) {
+    default Hero updateMap(int x, int y, MoveDirection direction) {
         int xDir = direction.getX();
         int yDir = direction.getY();
         char charDirection = 'w';
@@ -23,6 +24,6 @@ public interface IMap extends IRenderable {
         if (yDir == 1) {
             charDirection = 's';
         }
-        updateMap(x, y, charDirection);
+        return updateMap(x, y, charDirection);
     }
 }
