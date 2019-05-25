@@ -29,6 +29,11 @@ public class Camera implements ICamera {
     }
 
     @Override
+    public void removeRenderableObject(IRenderable renderable) {
+        renderableObjects.remove(renderable);
+    }
+
+    @Override
     public void update(long time) {
         for (int i = 0; i < frame.length; i++) {
             for (int g = 0; g < frame[i].length; g++) {

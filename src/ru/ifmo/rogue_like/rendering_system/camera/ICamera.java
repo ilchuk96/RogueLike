@@ -5,6 +5,8 @@ import ru.ifmo.rogue_like.rendering_system.IRenderable;
 public interface ICamera {
     void addRenderableObject(IRenderable renderable);
 
+    void removeRenderableObject(IRenderable renderable);
+
     char[][] getView();
 
     void update(long time);

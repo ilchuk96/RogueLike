@@ -42,8 +42,16 @@ public class App {
                         heroes.add(newHero);
                         camera.addRenderableObject(newHero);
                     }
+                    List<Hero> toRemove = new ArrayList<>();
                     for (Hero hero : heroes) {
                         hero.move(map);
+                        if (hero.isDead()) {
+                            toRemove.add(hero);
+                        }
+                    }
+                    heroes.removeAll(toRemove);
+                    for (Hero hero : toRemove) {
+                        camera.removeRenderableObject(hero);
                     }
                     camera.update(System.currentTimeMillis());
                     renderer.render();

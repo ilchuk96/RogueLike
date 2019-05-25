@@ -1,9 +1,11 @@
 package ru.ifmo.rogue_like.heroes.mobs;
 
 import java.util.List;
+import java.util.Random;
 
 import ru.ifmo.rogue_like.heroes.MoveDirection;
 import ru.ifmo.rogue_like.heroes.mobs.move_strategies.IHeroStrategy;
+import ru.ifmo.rogue_like.heroes.mobs.move_strategies.PlayerStrategy;
 import ru.ifmo.rogue_like.map.IMap;
 import ru.ifmo.rogue_like.map.IPositionable;
 import ru.ifmo.rogue_like.map.ISquare;
@@ -50,5 +52,17 @@ public class Hero implements IRenderable, IPositionable {
     @Override
     public int getY() {
         return y;
+    }
+
+    /*
+    EXAMPLE
+     */
+    public boolean isDead() {
+        if (!(strategy instanceof PlayerStrategy)) {
+            Random random = new Random();
+            int r = random.nextInt(20);
+            return r == 0;
+        }
+        return false;
     }
 }
