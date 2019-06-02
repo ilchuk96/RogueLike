@@ -2,6 +2,7 @@ package ru.ifmo.rogue_like;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import ru.ifmo.rogue_like.heroes.mobs.Hero;
@@ -9,15 +10,23 @@ import ru.ifmo.rogue_like.heroes.mobs.move_strategies.PlayerStrategy;
 import ru.ifmo.rogue_like.heroes.player.PlayerListener;
 import ru.ifmo.rogue_like.map.IMap;
 import ru.ifmo.rogue_like.map.RandomMap;
+import ru.ifmo.rogue_like.menu.Menu;
+import ru.ifmo.rogue_like.menu.MenuEntry;
 import ru.ifmo.rogue_like.rendering_system.CameraRenderer;
 import ru.ifmo.rogue_like.rendering_system.camera.Camera;
 import ru.ifmo.rogue_like.rendering_system.camera.ICamera;
 
 public class App {
+
+    private IMap map;
+
+    public App(IMap map) {
+        this.map = map;
+    }
+
     public void newGame() {
 
-        IMap map = new RandomMap(1024, 1024);
-
+        //IMap map = new RandomMap(1024, 1024);
 
         PlayerListener listener = new PlayerListener();
 
@@ -62,7 +71,7 @@ public class App {
         }
     }
 
-    public void start() throws IOException {
+    public void start() {
 //        MenuEntry newGame = new MenuEntry("New Game", this::newGame);
 //        Menu menu = new Menu(Collections.singletonList(newGame));
 //        menu.showMenu();

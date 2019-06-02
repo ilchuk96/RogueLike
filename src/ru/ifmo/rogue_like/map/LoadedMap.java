@@ -14,24 +14,21 @@ import java.util.List;
 public class LoadedMap implements IMap {
     private List<List<ISquare>> field;
 
-    LoadedMap(String filepath) {
+    public LoadedMap(String filepath) throws IOException {
         field = new ArrayList<>();
-        try (BufferedReader br = new BufferedReader(new FileReader(filepath))) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                List<ISquare> lst = new ArrayList<>();
-                for (char ch : line.toCharArray()) {
-                    if (ch == 'f') {
-                        lst.add(new Floor());
-                    }
-                    if (ch == 'w') {
-                        lst.add(new Wall());
-                    }
+        BufferedReader br = new BufferedReader(new FileReader(filepath));
+        String line;
+        while ((line = br.readLine()) != null) {
+            List<ISquare> lst = new ArrayList<>();
+            for (char ch : line.toCharArray()) {
+                if (ch == 'f') {
+                    lst.add(new Floor());
                 }
-                field.add(lst);
+                if (ch == 'w') {
+                    lst.add(new Wall());
+                }
             }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+            field.add(lst);
         }
     }
 

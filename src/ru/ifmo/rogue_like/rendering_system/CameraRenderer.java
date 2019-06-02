@@ -11,6 +11,10 @@ public class CameraRenderer extends JFrame implements IRenderer {
     private ICamera camera;
     private JLabel canvas;
 
+    final private static int X_SIZE = 510;
+    final private static int Y_SIZE = 450;
+    final private static int FONT_SIZE = 20;
+
     private int marginLeft = 10;
     private int marginTop = 10;
 
@@ -19,8 +23,10 @@ public class CameraRenderer extends JFrame implements IRenderer {
         canvas = new JLabel();
         this.setBackground(Color.black);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setPreferredSize(new Dimension(400, 300));
-        this.setSize(new Dimension(700, 500));
+
+        this.setPreferredSize(new Dimension(400, 300)); // What it does?
+
+        this.setSize(new Dimension(X_SIZE, Y_SIZE));
         this.setResizable(false);
         this.addKeyListener(keyListener);
         this.add(canvas);
@@ -29,7 +35,7 @@ public class CameraRenderer extends JFrame implements IRenderer {
     }
 
     private void clear() throws IOException {
-        canvas.getGraphics().clearRect(0, 0, 500, 500);
+        canvas.getGraphics().clearRect(0, 0, X_SIZE, Y_SIZE);
     }
 
 
@@ -39,7 +45,7 @@ public class CameraRenderer extends JFrame implements IRenderer {
         char[][] view = camera.getView();
         int rowNumber = 0;
         Graphics graphics = canvas.getGraphics();
-        graphics.setFont(new Font(Font.MONOSPACED, Font.BOLD, 13));
+        graphics.setFont(new Font(Font.MONOSPACED, Font.BOLD, FONT_SIZE));
         graphics.setColor(Color.white);
         for (char[] row : view) {
             StringBuilder text = new StringBuilder();

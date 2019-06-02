@@ -1,10 +1,17 @@
 package ru.ifmo.rogue_like;
 
+import ru.ifmo.rogue_like.map.RandomMap;
+
 import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) throws InterruptedException, IOException {
-        App app = new App();
+        LoadMenu lm = new LoadMenu();
+        while (lm.isVisible()) {
+            Thread.sleep(100);
+        }
+        System.out.println(lm.getMap());
+        App app = new App(lm.getMap());
         app.start();
     }
 }
