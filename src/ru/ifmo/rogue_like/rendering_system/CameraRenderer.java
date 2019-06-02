@@ -17,9 +17,11 @@ public class CameraRenderer extends JFrame implements IRenderer {
     public CameraRenderer(ICamera camera, KeyListener keyListener) {
         super("RougeLike");
         canvas = new JLabel();
+        this.setBackground(Color.black);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setPreferredSize(new Dimension(400, 300));
         this.setSize(new Dimension(700, 500));
+        this.setResizable(false);
         this.addKeyListener(keyListener);
         this.add(canvas);
         this.setVisible(true);
@@ -38,6 +40,7 @@ public class CameraRenderer extends JFrame implements IRenderer {
         int rowNumber = 0;
         Graphics graphics = canvas.getGraphics();
         graphics.setFont(new Font(Font.MONOSPACED, Font.BOLD, 13));
+        graphics.setColor(Color.white);
         for (char[] row : view) {
             StringBuilder text = new StringBuilder();
             for (char elem : row) {
