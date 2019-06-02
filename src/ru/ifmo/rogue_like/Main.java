@@ -1,7 +1,5 @@
 package ru.ifmo.rogue_like;
 
-import ru.ifmo.rogue_like.map.RandomMap;
-
 import java.io.IOException;
 
 public class Main {
