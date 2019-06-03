@@ -18,7 +18,7 @@ public class SaveMenu extends JFrame {
         super("Save map");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         save = new JButton("Save");
-        cancel = new JButton("Cancel");
+        cancel = new JButton("Exit");
         cancel.addActionListener(actionEvent -> this.dispose());
         save.addActionListener(actionEvent -> {
             try {

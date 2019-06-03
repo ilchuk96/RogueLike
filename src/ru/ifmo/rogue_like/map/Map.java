@@ -18,6 +18,9 @@ public class Map implements IMap {
     private Random random;
     private int maxX;
     private int maxY;
+    public List<Hero> heros;
+    private int heroX;
+    private int heroY;
 
     /***
      * maxX and maxY must be divisible by 8
@@ -38,7 +41,6 @@ public class Map implements IMap {
 
         int curX = maxX / 2;
         int curY = maxY / 2;
-
         field.get(curX).set(curY, new Floor());
 
         for (int i = 1; i <= 3; i++) {
@@ -49,6 +51,8 @@ public class Map implements IMap {
         for (int j = -4; j <= 3; j++) {
             (field.get(curX)).set(curY + j, new Wall());
         }
+        heroX = curX + 1;
+        heroY = curY;
     }
 
     public Map(int x, int y, String filepath) throws IOException {
@@ -68,12 +72,42 @@ public class Map implements IMap {
                     lst.add(new Floor());
                 } else if (ch == '=') {
                     lst.add(new Wall());
+                } else if (ch == '$') {
+                    heroX = i;
+                    heroY = j;
                 } else {
                     lst.add(null);
                 }
             }
             field.add(lst);
         }
+    }
+
+    @Override
+    public int getHeroX() {
+        return heroX;
+    }
+
+    @Override
+    public int getHeroY() {
+        return heroY;
+    }
+
+    @Override
+    public void addPlayer(Hero player) {
+        field.get(player.getX()).set(player.getY(), player);
+    }
+
+    @Override
+    public void deleteMob(int x, int y) {
+        field.get(x).set(y, new Floor());
+    }
+
+    @Override
+    public void move(int x, int y, int dx, int dy) {
+        ISquare t = field.get(x).get(y);
+        field.get(x).set(y, field.get(x + dx).get(y + dy));
+        field.get(x + dx).set(y + dy, t);
     }
 
     /*
@@ -232,7 +266,9 @@ public class Map implements IMap {
         }
 
         if (mobX != null) {
-            return new Hero(new Agressive(), mobX, mobY);
+            Hero mob = new Hero(new Passive(), mobX, mobY);
+            field.get(mobX).set(mobY, mob);
+            return mob;
         }
         return null;
     }
@@ -265,6 +301,8 @@ public class Map implements IMap {
             for (ISquare square : t) {
                 if (square instanceof Floor) {
                     view[i][j] = '+';
+                }  else if (square instanceof Hero) {
+                    view[i][j] = ((Hero) square).getView(0).getView()[0][0];
                 } else {
                     view[i][j] = '=';
                 }

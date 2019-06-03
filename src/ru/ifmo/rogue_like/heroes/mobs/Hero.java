@@ -13,16 +13,18 @@ import ru.ifmo.rogue_like.map.squares.Wall;
 import ru.ifmo.rogue_like.rendering_system.IRenderable;
 import ru.ifmo.rogue_like.rendering_system.IView;
 
-public class Hero implements IRenderable, IPositionable {
+public class Hero implements IRenderable, IPositionable, ISquare {
 
     private final IHeroStrategy strategy;
     private int x;
     private int y;
+    private int hp;
 
     public Hero(IHeroStrategy heroStrategy, int x, int y) {
         this.strategy = heroStrategy;
         this.x = x;
         this.y = y;
+        hp = 5;
     }
 
     public boolean move(IMap map) {
@@ -36,9 +38,21 @@ public class Hero implements IRenderable, IPositionable {
         if (field.get(x + moveDirection.getX()).get(y + moveDirection.getY()) instanceof Wall) {
             return false;
         }
+        if (field.get(x + moveDirection.getX()).get(y + moveDirection.getY()) instanceof Hero) {
+            ((Hero) field.get(x + moveDirection.getX()).get(y + moveDirection.getY())).getDamage(2);
+            System.out.println("hit");
+            return false;
+        }
+        map.move(x, y, moveDirection.getX(), moveDirection.getY());
         x += moveDirection.getX();
         y += moveDirection.getY();
+        System.out.println(x);
         return true;
+    }
+
+    public void getDamage(int damage) {
+        hp -= damage;
+        System.out.println(hp);
     }
 
     @Override
@@ -60,11 +74,6 @@ public class Hero implements IRenderable, IPositionable {
     EXAMPLE
      */
     public boolean isDead() {
-        if (!(strategy instanceof PlayerStrategy)) {
-            Random random = new Random();
-            int r = random.nextInt(20);
-            return r == 0;
-        }
-        return false;
+        return hp <= 0;
     }
 }

@@ -28,5 +28,15 @@ public interface IMap extends IRenderable {
         return updateMap(x, y, charDirection);
     }
 
+    public int getHeroX();
+
+    public int getHeroY();
+
+    public void addPlayer(Hero player);
+
+    public void deleteMob(int x, int y);
+
+    public void move(int x, int y, int dx, int dy);
+
     void saveMap(String filepath) throws IOException;
 }

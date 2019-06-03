@@ -26,15 +26,18 @@ public class App {
 
         PlayerListener listener = new PlayerListener();
 
-        Hero player = new Hero(new PlayerStrategy(listener), 513, 512);
+        Hero player = new Hero(new PlayerStrategy(listener), map.getHeroX(), map.getHeroY());
+        map.addPlayer(player);
         ICamera camera = new Camera(41, 41, player);
         List<Hero> heroes = new ArrayList<>();
         heroes.add(player);
 
         camera.addRenderableObject(map);
+        /*
         for (Hero hero : heroes) {
             camera.addRenderableObject(hero);
         }
+        */
         CameraRenderer renderer = new CameraRenderer(camera, listener);
         try {
             player.move(map);
@@ -45,18 +48,21 @@ public class App {
                     Hero newHero = map.updateMap(player.getX(), player.getY(), listener.peekLastDirection());
                     if (newHero != null) {
                         heroes.add(newHero);
-                        camera.addRenderableObject(newHero);
+                        //camera.addRenderableObject(newHero);
                     }
                     List<Hero> toRemove = new ArrayList<>();
                     for (Hero hero : heroes) {
                         hero.move(map);
+                        if (hero == player) {
+                            System.out.println("p");
+                        }
                         if (hero.isDead()) {
                             toRemove.add(hero);
                         }
                     }
                     heroes.removeAll(toRemove);
                     for (Hero hero : toRemove) {
-                        camera.removeRenderableObject(hero);
+                        map.deleteMob(hero.getX(), hero.getY());
                     }
                     camera.update(System.currentTimeMillis());
                     renderer.render();
@@ -65,7 +71,6 @@ public class App {
             }
             System.out.println("finish");
         } catch (Exception e) {
-            System.out.println("wtf");
             e.printStackTrace();
         }
         SaveMenu sm = new SaveMenu(map);
