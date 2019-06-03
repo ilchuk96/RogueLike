@@ -3,525 +3,463 @@
   <ID>JAVA</ID>
   <OriginalElement />
   <nodes>
-    <node x="1639.2060333009388" y="1591.0">ru.ifmo.rogue_like.LoadMenu</node>
-    <node x="406.3994856818906" y="1108.5">ru.ifmo.rogue_like.rendering_system.IRenderer</node>
-    <node x="1116.5044642857147" y="0.5">ru.ifmo.rogue_like.rendering_system.IView</node>
-    <node x="2216.9247833009385" y="1297.0">ru.ifmo.rogue_like.map.RandomMap</node>
-    <node x="586.635416666667" y="483.5">ru.ifmo.rogue_like.rendering_system.IRenderable</node>
-    <node x="2471.288419664575" y="1084.0">ru.ifmo.rogue_like.map.Tile</node>
-    <node x="1572.2271746595798" y="291.0">ru.ifmo.rogue_like.heroes.mobs.move_strategies.IHeroStrategy</node>
-    <node x="1920.5131802414082" y="1084.0">ru.ifmo.rogue_like.map.LoadedMap</node>
-    <node x="1237.4241071428576" y="459.0">ru.ifmo.rogue_like.heroes.mobs.move_strategies.PlayerStrategy</node>
-    <node x="2092.9185024101803" y="291.0">ru.ifmo.rogue_like.map.ISquare</node>
-    <node x="1436.4241071428576" y="0.0">ru.ifmo.rogue_like.heroes.MoveDirection</node>
-    <node x="1555.9247833009388" y="942.0">ru.ifmo.rogue_like.map.IMap</node>
-    <node x="2369.288419664575" y="954.0">ru.ifmo.rogue_like.map.squares.Floor</node>
-    <node x="2015.2271746595798" y="483.5">ru.ifmo.rogue_like.map.squares.Wall</node>
-    <node x="1538.6122833009388" y="1813.0">ru.ifmo.rogue_like.Main</node>
-    <node x="321.0000000000002" y="1261.0">ru.ifmo.rogue_like.rendering_system.camera.Camera</node>
-    <node x="2202.9955357142862" y="1108.5">ru.ifmo.rogue_like.heroes.mobs.move_strategies.Passive</node>
-    <node x="642.0000000000002" y="1261.5">ru.ifmo.rogue_like.rendering_system.CameraRenderer</node>
-    <node x="933.6390690152243" y="459.5">ru.ifmo.rogue_like.map.IPositionable</node>
-    <node x="777.8125000000005" y="1072.5">ru.ifmo.rogue_like.rendering_system.camera.ICamera</node>
-    <node x="957.4381761580815" y="1639.5">ru.ifmo.rogue_like.App</node>
-    <node x="1121.9247833009388" y="279.0">ru.ifmo.rogue_like.heroes.player.PlayerListener</node>
-    <node x="1741.2271746595798" y="664.0">ru.ifmo.rogue_like.heroes.mobs.Hero</node>
-    <node x="0.0" y="1297.5">ru.ifmo.rogue_like.renderer.Renderer</node>
-    <node x="1139.7997833009388" y="1072.0">ru.ifmo.rogue_like.heroes.player.Player</node>
+    <node x="552.4019081312376" y="1350.0">ru.ifmo.rogue_like.LoadMenu</node>
+    <node x="62.888888888888914" y="655.0">ru.ifmo.rogue_like.map.squares.Floor</node>
+    <node x="1313.0002313958998" y="858.0">ru.ifmo.rogue_like.rendering_system.IRenderer</node>
+    <node x="609.8410052054235" y="0.5">ru.ifmo.rogue_like.rendering_system.IView</node>
+    <node x="306.2044874963169" y="423.5">ru.ifmo.rogue_like.map.squares.Wall</node>
+    <node x="1235.5002313958998" y="423.5">ru.ifmo.rogue_like.rendering_system.IRenderable</node>
+    <node x="98.3886830852864" y="1074.0">ru.ifmo.rogue_like.map.Map</node>
+    <node x="1167.3114220916866" y="1572.0">ru.ifmo.rogue_like.Main</node>
+    <node x="189.73683853875696" y="833.5">ru.ifmo.rogue_like.map.Tile</node>
+    <node x="1859.2853177006707" y="1050.0">ru.ifmo.rogue_like.rendering_system.camera.Camera</node>
+    <node x="903.7192460317463" y="1086.5">ru.ifmo.rogue_like.SaveMenu</node>
+    <node x="644.2638888888889" y="261.0">ru.ifmo.rogue_like.heroes.mobs.move_strategies.IHeroStrategy</node>
+    <node x="1520.2853177006707" y="1050.5">ru.ifmo.rogue_like.rendering_system.CameraRenderer</node>
+    <node x="935.3406061622095" y="399.0">ru.ifmo.rogue_like.heroes.mobs.move_strategies.PlayerStrategy</node>
+    <node x="1930.7476629341772" y="399.5">ru.ifmo.rogue_like.map.IPositionable</node>
+    <node x="126.70171727332058" y="261.0">ru.ifmo.rogue_like.map.ISquare</node>
+    <node x="1589.1292378061562" y="0.0">ru.ifmo.rogue_like.heroes.MoveDirection</node>
+    <node x="814.3406061622095" y="846.0">ru.ifmo.rogue_like.map.IMap</node>
+    <node x="1722.3776352420534" y="822.0">ru.ifmo.rogue_like.rendering_system.camera.ICamera</node>
+    <node x="1440.6963808828953" y="1398.5">ru.ifmo.rogue_like.App</node>
+    <node x="2094.977602258852" y="249.0">ru.ifmo.rogue_like.heroes.player.PlayerListener</node>
+    <node x="540.3406061622095" y="594.0">ru.ifmo.rogue_like.heroes.mobs.Hero</node>
+    <node x="1122.9022817460318" y="1086.5">ru.ifmo.rogue_like.renderer.Renderer</node>
+    <node x="464.7156061622095" y="1110.5">ru.ifmo.rogue_like.heroes.player.Player</node>
   </nodes>
   <notes />
   <edges>
     <edge source="ru.ifmo.rogue_like.heroes.mobs.move_strategies.PlayerStrategy" target="ru.ifmo.rogue_like.heroes.player.PlayerListener">
-      <point x="21.5" y="-37.5" />
-      <point x="1387.9241071428576" y="439.0" />
-      <point x="1369.5497833009388" y="439.0" />
-      <point x="106.125" y="25.0" />
+      <point x="107.5" y="-37.5" />
+      <point x="1171.8406061622095" y="359.0" />
+      <point x="2201.102602258852" y="359.0" />
+      <point x="-35.375" y="25.0" />
     </edge>
     <edge source="ru.ifmo.rogue_like.heroes.player.Player" target="ru.ifmo.rogue_like.rendering_system.IRenderable">
-      <point x="-61.25" y="-49.5" />
-      <point x="1152.0497833009388" y="1052.0" />
-      <point x="1136.2821387738168" y="1052.0" />
-      <point x="1136.2821387738168" y="902.0" />
-      <point x="948.358127040532" y="902.0" />
-      <point x="948.358127040532" y="634.0" />
-      <point x="671.197916666667" y="634.0" />
-      <point x="23.0625" y="13.0" />
-    </edge>
-    <edge source="ru.ifmo.rogue_like.map.RandomMap" target="ru.ifmo.rogue_like.map.IMap">
-      <point x="-91.84615384615392" y="-74.0" />
-      <point x="2224.5786294547847" y="1241.0" />
-      <point x="1664.9872833009388" y="1241.0" />
-      <point x="1664.9872833009388" y="1052.0" />
-      <point x="1692.7372833009388" y="1052.0" />
-      <point x="37.3125" y="25.0" />
-    </edge>
-    <edge source="ru.ifmo.rogue_like.heroes.mobs.move_strategies.Passive" target="ru.ifmo.rogue_like.heroes.MoveDirection">
-      <point x="38.0" y="-13.0" />
-      <point x="2288.4955357142862" y="1042.0" />
-      <point x="2280.7467157842166" y="1042.0" />
-      <point x="2280.7467157842166" y="644.0" />
-      <point x="2329.788419664575" y="644.0" />
-      <point x="2329.788419664575" y="439.0" />
-      <point x="2491.9071387738168" y="439.0" />
-      <point x="2491.9071387738168" y="119.0" />
-      <point x="1630.4866071428576" y="119.0" />
-      <point x="90.5625" y="49.5" />
-    </edge>
-    <edge source="ru.ifmo.rogue_like.map.RandomMap" target="ru.ifmo.rogue_like.heroes.mobs.move_strategies.Passive">
-      <point x="-15.30769230769232" y="-74.0" />
-      <point x="2301.117090993246" y="1191.0" />
-      <point x="2250.4955357142862" y="1191.0" />
-      <point x="0.0" y="13.0" />
-    </edge>
-    <edge source="ru.ifmo.rogue_like.LoadMenu" target="ru.ifmo.rogue_like.map.RandomMap">
-      <point x="67.875" y="-86.0" />
-      <point x="1797.5810333009388" y="1571.0" />
-      <point x="2316.4247833009385" y="1571.0" />
-      <point x="0.0" y="74.0" />
-    </edge>
-    <edge source="ru.ifmo.rogue_like.map.RandomMap" target="ru.ifmo.rogue_like.map.squares.Floor">
-      <point x="45.923076923076906" y="-74.0" />
-      <point x="2362.3478602240157" y="1211.0" />
-      <point x="2415.288419664575" y="1211.0" />
-      <point x="2415.288419664575" y="1052.0" />
-      <point x="2419.913419664575" y="1052.0" />
-      <point x="10.125" y="13.0" />
+      <point x="36.75" y="-49.5" />
+      <point x="574.9656061622095" y="980.0" />
+      <point x="803.8406061622095" y="980.0" />
+      <point x="803.8406061622095" y="554.0" />
+      <point x="1258.5627313958998" y="554.0" />
+      <point x="-38.4375" y="13.0" />
     </edge>
     <edge source="ru.ifmo.rogue_like.heroes.mobs.move_strategies.IHeroStrategy" target="ru.ifmo.rogue_like.rendering_system.IView">
       <point x="-34.25" y="-13.0" />
-      <point x="1606.4771746595798" y="199.0" />
-      <point x="1186.933035714286" y="199.0" />
-      <point x="12.428571428571331" y="49.0" />
+      <point x="678.5138888888889" y="199.0" />
+      <point x="667.8410052054235" y="199.0" />
+      <point x="0.0" y="49.0" />
     </edge>
     <edge source="ru.ifmo.rogue_like.map.IMap" target="ru.ifmo.rogue_like.map.ISquare">
-      <point x="28.428571428571445" y="-25.0" />
-      <point x="1683.85335472951" y="862.0" />
-      <point x="1730.7271746595798" y="862.0" />
-      <point x="1730.7271746595798" y="399.0" />
-      <point x="2105.873047864726" y="399.0" />
-      <point x="-34.545454545454504" y="13.0" />
+      <point x="-28.42857142857156" y="-25.0" />
+      <point x="885.4120347336379" y="782.0" />
+      <point x="792.8406061622095" y="782.0" />
+      <point x="792.8406061622095" y="349.0" />
+      <point x="216.42393949554298" y="349.0" />
+      <point x="42.2222222222224" y="13.0" />
+    </edge>
+    <edge source="ru.ifmo.rogue_like.map.Map" target="ru.ifmo.rogue_like.heroes.mobs.Hero">
+      <point x="76.53846153846143" y="-86.0" />
+      <point x="274.42714462374784" y="980.0" />
+      <point x="428.23683853875696" y="980.0" />
+      <point x="428.23683853875696" y="802.0" />
+      <point x="600.8406061622095" y="802.0" />
+      <point x="-60.5" y="74.0" />
     </edge>
     <edge source="ru.ifmo.rogue_like.heroes.mobs.Hero" target="ru.ifmo.rogue_like.map.ISquare">
-      <point x="80.66666666666663" y="-74.0" />
-      <point x="1942.8938413262465" y="644.0" />
-      <point x="1930.650085003313" y="644.0" />
-      <point x="1930.650085003313" y="409.0" />
-      <point x="2114.5094115010893" y="409.0" />
-      <point x="-25.90909090909099" y="13.0" />
+      <point x="-80.66666666666674" y="-74.0" />
+      <point x="580.6739394955428" y="574.0" />
+      <point x="574.847949649868" y="574.0" />
+      <point x="574.847949649868" y="359.0" />
+      <point x="205.86838393998732" y="359.0" />
+      <point x="31.666666666666742" y="13.0" />
     </edge>
     <edge source="ru.ifmo.rogue_like.renderer.Renderer" target="ru.ifmo.rogue_like.rendering_system.IRenderer">
       <point x="112.875" y="-73.5" />
-      <point x="263.375" y="1241.0" />
-      <point x="433.6494856818906" y="1241.0" />
+      <point x="1386.2772817460318" y="1030.0" />
+      <point x="1340.2502313958998" y="1030.0" />
       <point x="-27.25" y="13.0" />
     </edge>
     <edge source="ru.ifmo.rogue_like.heroes.player.Player" target="ru.ifmo.rogue_like.map.IMap">
       <point x="61.25" y="-49.5" />
-      <point x="1274.5497833009388" y="1052.0" />
-      <point x="1568.3622833009388" y="1052.0" />
-      <point x="-87.0625" y="25.0" />
+      <point x="599.4656061622095" y="1000.0" />
+      <point x="856.9834633050666" y="1000.0" />
+      <point x="-56.85714285714289" y="25.0" />
+    </edge>
+    <edge source="ru.ifmo.rogue_like.map.Map" target="ru.ifmo.rogue_like.map.Tile">
+      <point x="15.307692307692378" y="-86.0" />
+      <point x="213.19637539297878" y="940.0" />
+      <point x="241.23683853875696" y="940.0" />
+      <point x="-51.5" y="37.5" />
+    </edge>
+    <edge source="ru.ifmo.rogue_like.map.Map" target="ru.ifmo.rogue_like.map.IMap">
+      <point x="91.84615384615381" y="-86.0" />
+      <point x="289.7348369314402" y="990.0" />
+      <point x="828.5548918764953" y="990.0" />
+      <point x="-85.28571428571422" y="25.0" />
     </edge>
     <edge source="ru.ifmo.rogue_like.heroes.mobs.move_strategies.PlayerStrategy" target="ru.ifmo.rogue_like.rendering_system.IView">
       <point x="-64.5" y="-37.5" />
-      <point x="1301.9241071428576" y="419.0" />
-      <point x="1111.4247833009388" y="419.0" />
-      <point x="1111.4247833009388" y="209.0" />
-      <point x="1170.3616071428576" y="209.0" />
-      <point x="-4.14285714285711" y="49.0" />
+      <point x="999.8406061622095" y="319.0" />
+      <point x="791.7638888888889" y="319.0" />
+      <point x="791.7638888888889" y="189.0" />
+      <point x="678.386459750878" y="189.0" />
+      <point x="10.545454545454504" y="49.0" />
     </edge>
     <edge source="ru.ifmo.rogue_like.heroes.mobs.Hero" target="ru.ifmo.rogue_like.rendering_system.IView">
-      <point x="-26.888888888888914" y="-74.0" />
-      <point x="1835.3382857706908" y="584.0" />
-      <point x="1561.7271746595798" y="584.0" />
-      <point x="1561.7271746595798" y="209.0" />
-      <point x="1178.6473214285718" y="209.0" />
-      <point x="4.14285714285711" y="49.0" />
+      <point x="-53.77777777777783" y="-74.0" />
+      <point x="607.5628283844317" y="574.0" />
+      <point x="585.847949649868" y="574.0" />
+      <point x="585.847949649868" y="199.0" />
+      <point x="657.295550659969" y="199.0" />
+      <point x="-10.545454545454504" y="49.0" />
     </edge>
     <edge source="ru.ifmo.rogue_like.rendering_system.camera.Camera" target="ru.ifmo.rogue_like.rendering_system.IView">
-      <point x="-125.41666666666674" y="-110.0" />
-      <point x="346.0833333333335" y="1231.0" />
-      <point x="229.12865234855735" y="1231.0" />
-      <point x="229.12865234855735" y="159.0" />
-      <point x="1128.933035714286" y="159.0" />
-      <point x="-45.57142857142867" y="49.0" />
+      <point x="125.41666666666674" y="-110.0" />
+      <point x="2135.2019843673374" y="1010.0" />
+      <point x="2078.2476629341772" y="1010.0" />
+      <point x="2078.2476629341772" y="149.0" />
+      <point x="720.5682779326962" y="149.0" />
+      <point x="52.72727272727275" y="49.0" />
     </edge>
     <edge source="ru.ifmo.rogue_like.heroes.mobs.move_strategies.PlayerStrategy" target="ru.ifmo.rogue_like.heroes.MoveDirection">
-      <point x="64.5" y="-37.5" />
-      <point x="1430.9241071428576" y="439.0" />
-      <point x="1448.0667516699796" y="439.0" />
-      <point x="1448.0667516699796" y="249.0" />
-      <point x="1526.9866071428576" y="249.0" />
-      <point x="-12.9375" y="49.5" />
-    </edge>
-    <edge source="ru.ifmo.rogue_like.map.LoadedMap" target="ru.ifmo.rogue_like.map.squares.Wall">
-      <point x="0.0" y="-37.5" />
-      <point x="2020.0131802414082" y="1022.0" />
-      <point x="2061.4771746595798" y="1022.0" />
-      <point x="9.25" y="13.0" />
+      <point x="21.5" y="-37.5" />
+      <point x="1085.8406061622095" y="339.0" />
+      <point x="1686.3992984814813" y="339.0" />
+      <point x="1686.3992984814813" y="229.0" />
+      <point x="1692.6292378061562" y="229.0" />
+      <point x="0.0" y="49.5" />
     </edge>
     <edge source="ru.ifmo.rogue_like.renderer.Renderer" target="ru.ifmo.rogue_like.rendering_system.IView">
       <point x="-112.875" y="-73.5" />
-      <point x="37.625" y="1241.0" />
-      <point x="104.125" y="1241.0" />
-      <point x="104.125" y="149.0" />
-      <point x="1120.6473214285718" y="149.0" />
-      <point x="-53.85714285714289" y="49.0" />
-    </edge>
-    <edge source="ru.ifmo.rogue_like.map.RandomMap" target="ru.ifmo.rogue_like.rendering_system.IView">
-      <point x="61.23076923076928" y="-74.0" />
-      <point x="2377.655552531708" y="1221.0" />
-      <point x="2460.788419664575" y="1221.0" />
-      <point x="2460.788419664575" y="129.0" />
-      <point x="1228.3616071428576" y="129.0" />
-      <point x="53.85714285714289" y="49.0" />
+      <point x="1160.5272817460318" y="1030.0" />
+      <point x="1225.0002313958998" y="1030.0" />
+      <point x="1225.0002313958998" y="169.0" />
+      <point x="699.4773688417872" y="169.0" />
+      <point x="31.63636363636374" y="49.0" />
     </edge>
     <edge source="ru.ifmo.rogue_like.heroes.mobs.Hero" target="ru.ifmo.rogue_like.heroes.MoveDirection">
-      <point x="53.77777777777783" y="-74.0" />
-      <point x="1916.0049524373576" y="554.0" />
-      <point x="1719.7271746595798" y="554.0" />
-      <point x="1719.7271746595798" y="179.0" />
-      <point x="1604.6116071428576" y="179.0" />
-      <point x="64.6875" y="49.5" />
+      <point x="-26.888888888888914" y="-74.0" />
+      <point x="634.4517172733206" y="564.0" />
+      <point x="596.847949649868" y="564.0" />
+      <point x="596.847949649868" y="209.0" />
+      <point x="1603.9149520918704" y="209.0" />
+      <point x="-88.71428571428578" y="49.5" />
     </edge>
     <edge source="ru.ifmo.rogue_like.heroes.mobs.Hero" target="ru.ifmo.rogue_like.map.IMap">
-      <point x="0.0" y="74.0" />
-      <point x="1862.2271746595798" y="902.0" />
-      <point x="1740.710497586653" y="902.0" />
-      <point x="85.28571428571422" y="-25.0" />
-    </edge>
-    <edge source="ru.ifmo.rogue_like.heroes.mobs.move_strategies.Passive" target="ru.ifmo.rogue_like.heroes.mobs.move_strategies.IHeroStrategy">
-      <point x="-19.0" y="-13.0" />
-      <point x="2231.4955357142862" y="1042.0" />
-      <point x="2237.673603231008" y="1042.0" />
-      <point x="2237.673603231008" y="614.0" />
-      <point x="2284.288419664575" y="614.0" />
-      <point x="2284.288419664575" y="379.0" />
-      <point x="1695.5271746595797" y="379.0" />
-      <point x="54.799999999999955" y="13.0" />
+      <point x="20.166666666666742" y="74.0" />
+      <point x="681.5072728288762" y="792.0" />
+      <point x="856.9834633050666" y="792.0" />
+      <point x="-56.85714285714289" y="-25.0" />
     </edge>
     <edge source="ru.ifmo.rogue_like.map.squares.Floor" target="ru.ifmo.rogue_like.map.ISquare">
       <point x="0.0" y="-13.0" />
-      <point x="2409.788419664575" y="369.0" />
-      <point x="2166.3275933192713" y="369.0" />
-      <point x="25.90909090909099" y="13.0" />
+      <point x="103.38888888888891" y="359.0" />
+      <point x="153.0906061622095" y="359.0" />
+      <point x="-21.111111111111086" y="13.0" />
     </edge>
-    <edge source="ru.ifmo.rogue_like.map.RandomMap" target="ru.ifmo.rogue_like.heroes.mobs.Hero">
-      <point x="-61.23076923076928" y="-74.0" />
-      <point x="2255.1940140701695" y="1221.0" />
-      <point x="2170.4955357142862" y="1221.0" />
-      <point x="2170.4955357142862" y="902.0" />
-      <point x="1965.9414603738655" y="902.0" />
-      <point x="103.71428571428578" y="74.0" />
+    <edge source="ru.ifmo.rogue_like.map.Map" target="ru.ifmo.rogue_like.map.squares.Floor">
+      <point x="-30.615384615384755" y="-86.0" />
+      <point x="167.27329846990165" y="990.0" />
+      <point x="80.73683853875696" y="990.0" />
+      <point x="80.73683853875696" y="802.0" />
+      <point x="76.38888888888891" y="802.0" />
+      <point x="-27.0" y="13.0" />
     </edge>
     <edge source="ru.ifmo.rogue_like.App" target="ru.ifmo.rogue_like.heroes.mobs.move_strategies.PlayerStrategy">
-      <point x="11.090909090909008" y="-37.5" />
-      <point x="1029.5290852489907" y="1531.0" />
-      <point x="1336.6747833009388" y="1531.0" />
-      <point x="1336.6747833009388" y="634.0" />
-      <point x="1280.4241071428576" y="634.0" />
-      <point x="-86.0" y="37.5" />
+      <point x="0.0" y="-37.5" />
+      <point x="1501.6963808828953" y="1330.0" />
+      <point x="1500.4007023160555" y="1330.0" />
+      <point x="1500.4007023160555" y="534.0" />
+      <point x="1150.3406061622095" y="534.0" />
+      <point x="86.0" y="37.5" />
     </edge>
-    <edge source="ru.ifmo.rogue_like.LoadMenu" target="ru.ifmo.rogue_like.map.LoadedMap">
-      <point x="22.625" y="-86.0" />
-      <point x="1752.3310333009388" y="1561.0" />
-      <point x="2020.0131802414082" y="1561.0" />
-      <point x="0.0" y="37.5" />
+    <edge source="ru.ifmo.rogue_like.LoadMenu" target="ru.ifmo.rogue_like.map.Map">
+      <point x="-60.33333333333326" y="-86.0" />
+      <point x="582.5685747979044" y="1330.0" />
+      <point x="197.8886830852864" y="1330.0" />
+      <point x="0.0" y="86.0" />
     </edge>
     <edge source="ru.ifmo.rogue_like.heroes.player.Player" target="ru.ifmo.rogue_like.map.ISquare">
-      <point x="12.25" y="-49.5" />
-      <point x="1225.5497833009388" y="1052.0" />
-      <point x="1233.6571387738168" y="1052.0" />
-      <point x="1233.6571387738168" y="872.0" />
-      <point x="1170.3167516699796" y="872.0" />
-      <point x="1170.3167516699796" y="644.0" />
-      <point x="1550.7271746595798" y="644.0" />
-      <point x="1550.7271746595798" y="389.0" />
-      <point x="2097.236684228362" y="389.0" />
-      <point x="-43.181818181818244" y="13.0" />
+      <point x="-36.75" y="-49.5" />
+      <point x="501.4656061622095" y="970.0" />
+      <point x="465.38888888888897" y="970.0" />
+      <point x="465.38888888888897" y="369.0" />
+      <point x="195.31282838443167" y="369.0" />
+      <point x="21.111111111111086" y="13.0" />
     </edge>
     <edge source="ru.ifmo.rogue_like.heroes.player.Player" target="ru.ifmo.rogue_like.map.squares.Wall">
-      <point x="36.75" y="-49.5" />
-      <point x="1250.0497833009388" y="1042.0" />
-      <point x="1279.9771746595798" y="1042.0" />
-      <point x="1279.9771746595798" y="922.0" />
-      <point x="1993.7271746595798" y="922.0" />
-      <point x="1993.7271746595798" y="644.0" />
-      <point x="2042.9771746595798" y="644.0" />
-      <point x="-9.25" y="13.0" />
+      <point x="-61.25" y="-49.5" />
+      <point x="476.9656061622095" y="980.0" />
+      <point x="439.2368385387569" y="980.0" />
+      <point x="439.2368385387569" y="564.0" />
+      <point x="352.4544874963169" y="564.0" />
+      <point x="9.25" y="13.0" />
     </edge>
     <edge source="ru.ifmo.rogue_like.heroes.mobs.Hero" target="ru.ifmo.rogue_like.heroes.mobs.move_strategies.IHeroStrategy">
       <point x="26.888888888888914" y="-74.0" />
-      <point x="1889.1160635484687" y="564.0" />
-      <point x="1680.2271746595798" y="564.0" />
-      <point x="1680.2271746595798" y="379.0" />
-      <point x="1668.1271746595799" y="379.0" />
-      <point x="27.399999999999977" y="13.0" />
+      <point x="688.2294950510984" y="574.0" />
+      <point x="668.4447728288761" y="574.0" />
+      <point x="668.4447728288761" y="379.0" />
+      <point x="695.6388888888889" y="379.0" />
+      <point x="-17.125" y="13.0" />
     </edge>
     <edge source="ru.ifmo.rogue_like.map.Tile" target="ru.ifmo.rogue_like.map.ISquare">
-      <point x="68.66666666666674" y="-37.5" />
-      <point x="2642.9550863312415" y="1052.0" />
-      <point x="2585.288419664575" y="1052.0" />
-      <point x="2585.288419664575" y="349.0" />
-      <point x="2183.6003205919988" y="349.0" />
-      <point x="43.181818181818244" y="13.0" />
+      <point x="68.66666666666652" y="-37.5" />
+      <point x="361.40350520542347" y="782.0" />
+      <point x="165.3888888888889" y="782.0" />
+      <point x="165.3888888888889" y="379.0" />
+      <point x="174.20171727332058" y="379.0" />
+      <point x="0.0" y="13.0" />
     </edge>
     <edge source="ru.ifmo.rogue_like.App" target="ru.ifmo.rogue_like.heroes.mobs.Hero">
-      <point x="33.27272727272725" y="-37.5" />
-      <point x="1051.7109034308087" y="1551.0" />
-      <point x="1545.4247833009388" y="1551.0" />
-      <point x="1545.4247833009388" y="882.0" />
-      <point x="1793.0843175167226" y="882.0" />
-      <point x="-69.14285714285711" y="74.0" />
+      <point x="-9.384615384615358" y="-37.5" />
+      <point x="1492.3117654982798" y="1330.0" />
+      <point x="1491.0160869314402" y="1330.0" />
+      <point x="1491.0160869314402" y="762.0" />
+      <point x="762.1739394955428" y="762.0" />
+      <point x="100.83333333333326" y="74.0" />
     </edge>
     <edge source="ru.ifmo.rogue_like.Main" target="ru.ifmo.rogue_like.LoadMenu">
-      <point x="27.75" y="-13.0" />
-      <point x="1603.3622833009388" y="1793.0" />
-      <point x="1774.9560333009388" y="1793.0" />
+      <point x="-9.25" y="-13.0" />
+      <point x="1195.0614220916866" y="1542.0" />
+      <point x="688.1519081312376" y="1542.0" />
       <point x="45.25" y="86.0" />
-    </edge>
-    <edge source="ru.ifmo.rogue_like.map.LoadedMap" target="ru.ifmo.rogue_like.map.IMap">
-      <point x="-85.28571428571422" y="-37.5" />
-      <point x="1934.727465955694" y="1052.0" />
-      <point x="1717.6122833009388" y="1052.0" />
-      <point x="62.1875" y="25.0" />
     </edge>
     <edge source="ru.ifmo.rogue_like.heroes.player.Player" target="ru.ifmo.rogue_like.rendering_system.IView">
       <point x="-12.25" y="-49.5" />
-      <point x="1201.0497833009388" y="1042.0" />
-      <point x="1222.6571387738168" y="1042.0" />
-      <point x="1222.6571387738168" y="882.0" />
-      <point x="1092.1390690152243" y="882.0" />
-      <point x="1092.1390690152243" y="189.0" />
-      <point x="1153.790178571429" y="189.0" />
-      <point x="-20.71428571428578" y="49.0" />
+      <point x="525.9656061622095" y="960.0" />
+      <point x="476.38888888888897" y="960.0" />
+      <point x="476.38888888888897" y="179.0" />
+      <point x="636.2046415690597" y="179.0" />
+      <point x="-31.63636363636374" y="49.0" />
     </edge>
     <edge source="ru.ifmo.rogue_like.heroes.mobs.Hero" target="ru.ifmo.rogue_like.map.IPositionable">
-      <point x="-80.66666666666663" y="-74.0" />
-      <point x="1781.5605079929132" y="604.0" />
-      <point x="1047.805735681891" y="604.0" />
-      <point x="45.66666666666674" y="37.0" />
-    </edge>
-    <edge source="ru.ifmo.rogue_like.map.RandomMap" target="ru.ifmo.rogue_like.map.ISquare">
-      <point x="-30.61538461538464" y="-74.0" />
-      <point x="2285.8093986855542" y="1201.0" />
-      <point x="2192.4955357142862" y="1201.0" />
-      <point x="2192.4955357142862" y="439.0" />
-      <point x="2149.054866046544" y="439.0" />
-      <point x="8.636363636363626" y="13.0" />
-    </edge>
-    <edge source="ru.ifmo.rogue_like.map.RandomMap" target="ru.ifmo.rogue_like.map.squares.Wall">
-      <point x="-45.923076923076906" y="-74.0" />
-      <point x="2270.501706377862" y="1211.0" />
-      <point x="2181.4955357142862" y="1211.0" />
-      <point x="2181.4955357142862" y="644.0" />
-      <point x="2079.9771746595798" y="644.0" />
-      <point x="27.75" y="13.0" />
-    </edge>
-    <edge source="ru.ifmo.rogue_like.heroes.mobs.move_strategies.Passive" target="ru.ifmo.rogue_like.map.IMap">
-      <point x="-38.0" y="-13.0" />
-      <point x="2212.4955357142862" y="1012.0" />
-      <point x="1742.4872833009388" y="1012.0" />
-      <point x="87.0625" y="25.0" />
-    </edge>
-    <edge source="ru.ifmo.rogue_like.heroes.mobs.Hero" target="ru.ifmo.rogue_like.heroes.mobs.move_strategies.PlayerStrategy">
-      <point x="-53.777777777777715" y="-74.0" />
-      <point x="1808.4493968818022" y="594.0" />
-      <point x="1452.4241071428576" y="594.0" />
-      <point x="86.0" y="37.5" />
+      <point x="107.55555555555566" y="-74.0" />
+      <point x="768.8961617177652" y="574.0" />
+      <point x="1953.5809962675107" y="574.0" />
+      <point x="-45.66666666666666" y="37.0" />
     </edge>
     <edge source="ru.ifmo.rogue_like.rendering_system.camera.Camera" target="ru.ifmo.rogue_like.rendering_system.camera.ICamera">
-      <point x="125.41666666666674" y="-110.0" />
-      <point x="596.916666666667" y="1231.0" />
-      <point x="798.9375000000005" y="1231.0" />
-      <point x="-63.375" y="49.0" />
+      <point x="-125.41666666666663" y="-110.0" />
+      <point x="1884.368651034004" y="1030.0" />
+      <point x="1870.2526352420534" y="1030.0" />
+      <point x="63.375" y="49.0" />
     </edge>
-    <edge source="ru.ifmo.rogue_like.map.LoadedMap" target="ru.ifmo.rogue_like.map.squares.Floor">
-      <point x="85.28571428571422" y="-37.5" />
-      <point x="2105.2988945271227" y="1052.0" />
-      <point x="2379.413419664575" y="1052.0" />
-      <point x="-30.375" y="13.0" />
+    <edge source="ru.ifmo.rogue_like.heroes.mobs.Hero" target="ru.ifmo.rogue_like.heroes.mobs.move_strategies.PlayerStrategy">
+      <point x="53.77777777777783" y="-74.0" />
+      <point x="715.1183839399873" y="534.0" />
+      <point x="978.3406061622095" y="534.0" />
+      <point x="-86.0" y="37.5" />
     </edge>
     <edge source="ru.ifmo.rogue_like.Main" target="ru.ifmo.rogue_like.App">
-      <point x="-27.75" y="-13.0" />
-      <point x="1547.8622833009388" y="1793.0" />
-      <point x="987.9381761580815" y="1793.0" />
+      <point x="9.25" y="-13.0" />
+      <point x="1213.5614220916866" y="1542.0" />
+      <point x="1471.1963808828953" y="1542.0" />
       <point x="-30.5" y="37.5" />
     </edge>
     <edge source="ru.ifmo.rogue_like.heroes.player.PlayerListener" target="ru.ifmo.rogue_like.heroes.MoveDirection">
-      <point x="-94.33333333333326" y="-25.0" />
-      <point x="1169.0914499676055" y="219.0" />
-      <point x="1449.3616071428576" y="219.0" />
-      <point x="-90.5625" y="49.5" />
+      <point x="0.0" y="-25.0" />
+      <point x="2236.477602258852" y="129.0" />
+      <point x="1751.7720949490133" y="129.0" />
+      <point x="59.14285714285711" y="49.5" />
+    </edge>
+    <edge source="ru.ifmo.rogue_like.App" target="ru.ifmo.rogue_like.SaveMenu">
+      <point x="-37.53846153846155" y="-37.5" />
+      <point x="1464.1579193444336" y="1310.0" />
+      <point x="1039.4692460317463" y="1310.0" />
+      <point x="45.25" y="73.5" />
     </edge>
     <edge source="ru.ifmo.rogue_like.App" target="ru.ifmo.rogue_like.rendering_system.camera.ICamera">
-      <point x="-22.181818181818244" y="-37.5" />
-      <point x="996.2563579762633" y="1501.0" />
-      <point x="1071.180948297626" y="1501.0" />
-      <point x="1071.180948297626" y="1241.0" />
-      <point x="925.6875000000005" y="1241.0" />
-      <point x="63.375" y="49.0" />
+      <point x="37.53846153846155" y="-37.5" />
+      <point x="1539.234842421357" y="1310.0" />
+      <point x="1848.7853177006707" y="1310.0" />
+      <point x="1848.7853177006707" y="1030.0" />
+      <point x="1828.0026352420534" y="1030.0" />
+      <point x="21.125" y="49.0" />
     </edge>
     <edge source="ru.ifmo.rogue_like.App" target="ru.ifmo.rogue_like.map.IMap">
-      <point x="55.454545454545496" y="-37.5" />
-      <point x="1073.8927216126272" y="1571.0" />
-      <point x="1629.1021746595798" y="1571.0" />
-      <point x="1629.1021746595798" y="1042.0" />
-      <point x="1618.1122833009388" y="1042.0" />
-      <point x="-37.3125" y="25.0" />
+      <point x="-28.15384615384619" y="-37.5" />
+      <point x="1473.542534729049" y="1300.0" />
+      <point x="1451.7724740537242" y="1300.0" />
+      <point x="1451.7724740537242" y="1020.0" />
+      <point x="999.1263204479237" y="1020.0" />
+      <point x="85.28571428571422" y="25.0" />
     </edge>
     <edge source="ru.ifmo.rogue_like.heroes.mobs.move_strategies.PlayerStrategy" target="ru.ifmo.rogue_like.map.IMap">
       <point x="0.0" y="37.5" />
-      <point x="1366.4241071428576" y="634.0" />
-      <point x="1351.7271746595798" y="634.0" />
-      <point x="1351.7271746595798" y="852.0" />
-      <point x="1598.5676404437959" y="852.0" />
-      <point x="-56.85714285714289" y="-25.0" />
+      <point x="1064.3406061622095" y="792.0" />
+      <point x="970.6977490193524" y="792.0" />
+      <point x="56.85714285714289" y="-25.0" />
     </edge>
     <edge source="ru.ifmo.rogue_like.rendering_system.camera.ICamera" target="ru.ifmo.rogue_like.rendering_system.IRenderable">
       <point x="0.0" y="-49.0" />
-      <point x="862.3125000000005" y="644.0" />
-      <point x="655.822916666667" y="644.0" />
-      <point x="7.6875" y="13.0" />
+      <point x="1806.8776352420534" y="524.0" />
+      <point x="1320.0627313958998" y="524.0" />
+      <point x="23.0625" y="13.0" />
     </edge>
     <edge source="ru.ifmo.rogue_like.App" target="ru.ifmo.rogue_like.rendering_system.CameraRenderer">
-      <point x="-44.36363636363649" y="-37.5" />
-      <point x="974.0745397944451" y="1561.0" />
-      <point x="721.5000000000002" y="1561.0" />
-      <point x="-79.5" y="109.5" />
+      <point x="28.15384615384619" y="-37.5" />
+      <point x="1529.8502270367414" y="1300.0" />
+      <point x="1758.7853177006707" y="1300.0" />
+      <point x="79.5" y="109.5" />
+    </edge>
+    <edge source="ru.ifmo.rogue_like.map.Map" target="ru.ifmo.rogue_like.rendering_system.IView">
+      <point x="-76.53846153846166" y="-86.0" />
+      <point x="121.35022154682474" y="1020.0" />
+      <point x="28.0" y="1020.0" />
+      <point x="28.0" y="169.0" />
+      <point x="625.6591870236052" y="169.0" />
+      <point x="-42.181818181818244" y="49.0" />
     </edge>
     <edge source="ru.ifmo.rogue_like.rendering_system.IRenderable" target="ru.ifmo.rogue_like.rendering_system.IView">
       <point x="0.0" y="-13.0" />
-      <point x="648.135416666667" y="169.0" />
-      <point x="1137.2187500000005" y="169.0" />
-      <point x="-37.28571428571422" y="49.0" />
+      <point x="1297.0002313958998" y="159.0" />
+      <point x="710.0228233872417" y="159.0" />
+      <point x="42.181818181818244" y="49.0" />
     </edge>
     <edge source="ru.ifmo.rogue_like.renderer.Renderer" target="ru.ifmo.rogue_like.rendering_system.IRenderable">
-      <point x="37.625" y="-73.5" />
-      <point x="188.125" y="1241.0" />
-      <point x="126.125" y="1241.0" />
-      <point x="126.125" y="624.0" />
-      <point x="609.697916666667" y="624.0" />
-      <point x="-38.4375" y="13.0" />
+      <point x="-37.625" y="-73.5" />
+      <point x="1235.7772817460318" y="1030.0" />
+      <point x="1291.5002313958998" y="1030.0" />
+      <point x="1291.5002313958998" y="564.0" />
+      <point x="1289.3127313958998" y="564.0" />
+      <point x="-7.6875" y="13.0" />
     </edge>
     <edge source="ru.ifmo.rogue_like.heroes.mobs.Hero" target="ru.ifmo.rogue_like.map.squares.Wall">
-      <point x="107.55555555555554" y="-74.0" />
-      <point x="1969.7827302151354" y="634.0" />
-      <point x="2024.4771746595798" y="634.0" />
-      <point x="-27.75" y="13.0" />
+      <point x="-107.55555555555543" y="-74.0" />
+      <point x="553.7850506066541" y="554.0" />
+      <point x="370.9544874963169" y="554.0" />
+      <point x="27.75" y="13.0" />
     </edge>
     <edge source="ru.ifmo.rogue_like.rendering_system.CameraRenderer" target="ru.ifmo.rogue_like.rendering_system.camera.ICamera">
-      <point x="106.00000000000023" y="-109.5" />
-      <point x="907.0000000000005" y="1241.0" />
-      <point x="883.4375000000005" y="1241.0" />
-      <point x="21.125" y="49.0" />
+      <point x="106.0" y="-109.5" />
+      <point x="-21.125" y="49.0" />
     </edge>
     <edge source="ru.ifmo.rogue_like.map.Tile" target="ru.ifmo.rogue_like.map.squares.Floor">
-      <point x="-68.66666666666669" y="-37.5" />
-      <point x="2505.6217529979085" y="1052.0" />
-      <point x="2440.163419664575" y="1052.0" />
-      <point x="30.375" y="13.0" />
+      <point x="-68.66666666666674" y="-37.5" />
+      <point x="224.0701718720902" y="802.0" />
+      <point x="130.3888888888889" y="802.0" />
+      <point x="27.0" y="13.0" />
     </edge>
     <edge source="ru.ifmo.rogue_like.map.IMap" target="ru.ifmo.rogue_like.heroes.mobs.Hero">
-      <point x="56.85714285714289" y="-25.0" />
-      <point x="1712.2819261580817" y="892.0" />
-      <point x="1827.6557460881513" y="892.0" />
-      <point x="-34.571428571428555" y="74.0" />
+      <point x="-85.28571428571422" y="-25.0" />
+      <point x="828.5548918764953" y="802.0" />
+      <point x="641.1739394955428" y="802.0" />
+      <point x="-20.166666666666742" y="74.0" />
     </edge>
     <edge source="ru.ifmo.rogue_like.heroes.mobs.Hero" target="ru.ifmo.rogue_like.rendering_system.IRenderable">
-      <point x="-107.55555555555554" y="-74.0" />
-      <point x="1754.6716191040243" y="614.0" />
-      <point x="701.947916666667" y="614.0" />
-      <point x="53.8125" y="13.0" />
+      <point x="80.66666666666674" y="-74.0" />
+      <point x="742.0072728288762" y="544.0" />
+      <point x="1243.1877313958998" y="544.0" />
+      <point x="-53.8125" y="13.0" />
+    </edge>
+    <edge source="ru.ifmo.rogue_like.map.Map" target="ru.ifmo.rogue_like.map.ISquare">
+      <point x="-61.23076923076928" y="-86.0" />
+      <point x="136.65791385451712" y="1010.0" />
+      <point x="41.388888888888914" y="1010.0" />
+      <point x="41.388888888888914" y="339.0" />
+      <point x="131.9794950510984" y="339.0" />
+      <point x="-42.22222222222217" y="13.0" />
     </edge>
     <edge source="ru.ifmo.rogue_like.rendering_system.camera.Camera" target="ru.ifmo.rogue_like.rendering_system.IRenderable">
       <point x="-75.25" y="-110.0" />
-      <point x="396.2500000000002" y="1221.0" />
-      <point x="259.09740234855735" y="1221.0" />
-      <point x="259.09740234855735" y="634.0" />
-      <point x="625.072916666667" y="634.0" />
-      <point x="-23.0625" y="13.0" />
+      <point x="1934.5353177006707" y="1030.0" />
+      <point x="1974.2109685753867" y="1030.0" />
+      <point x="1974.2109685753867" y="514.0" />
+      <point x="1335.4377313958998" y="514.0" />
+      <point x="38.4375" y="13.0" />
+    </edge>
+    <edge source="ru.ifmo.rogue_like.SaveMenu" target="ru.ifmo.rogue_like.map.IMap">
+      <point x="0.0" y="-73.5" />
+      <point x="994.2192460317463" y="1030.0" />
+      <point x="970.6977490193524" y="1030.0" />
+      <point x="56.85714285714289" y="25.0" />
     </edge>
     <edge source="ru.ifmo.rogue_like.heroes.mobs.move_strategies.IHeroStrategy" target="ru.ifmo.rogue_like.map.IMap">
-      <point x="-27.399999999999977" y="13.0" />
-      <point x="1613.32717465958" y="379.0" />
-      <point x="1539.7271746595798" y="379.0" />
-      <point x="1539.7271746595798" y="832.0" />
-      <point x="1655.4247833009388" y="832.0" />
+      <point x="17.125" y="13.0" />
+      <point x="729.8888888888889" y="339.0" />
+      <point x="913.8406061622095" y="339.0" />
       <point x="0.0" y="-25.0" />
     </edge>
     <edge source="ru.ifmo.rogue_like.heroes.mobs.move_strategies.IHeroStrategy" target="ru.ifmo.rogue_like.heroes.MoveDirection">
       <point x="34.25" y="-13.0" />
-      <point x="1674.9771746595798" y="189.0" />
-      <point x="1578.7366071428576" y="189.0" />
-      <point x="38.8125" y="49.5" />
-    </edge>
-    <edge source="ru.ifmo.rogue_like.map.LoadedMap" target="ru.ifmo.rogue_like.rendering_system.IView">
-      <point x="-28.428571428571445" y="-37.5" />
-      <point x="1991.584608812837" y="1052.0" />
-      <point x="2004.7271746595798" y="1052.0" />
-      <point x="2004.7271746595798" y="169.0" />
-      <point x="1195.2187500000005" y="169.0" />
-      <point x="20.71428571428578" y="49.0" />
+      <point x="747.0138888888889" y="219.0" />
+      <point x="1633.486380663299" y="219.0" />
+      <point x="-59.14285714285711" y="49.5" />
     </edge>
     <edge source="ru.ifmo.rogue_like.map.IMap" target="ru.ifmo.rogue_like.heroes.MoveDirection">
-      <point x="-28.428571428571445" y="-25.0" />
-      <point x="1626.9962118723674" y="842.0" />
-      <point x="1528.7271746595798" y="842.0" />
-      <point x="1528.7271746595798" y="259.0" />
-      <point x="1552.8616071428576" y="259.0" />
-      <point x="12.9375" y="49.5" />
+      <point x="28.42857142857133" y="-25.0" />
+      <point x="942.2691775907808" y="802.0" />
+      <point x="924.8406061622095" y="802.0" />
+      <point x="924.8406061622095" y="229.0" />
+      <point x="1663.0578092347278" y="229.0" />
+      <point x="-29.571428571428555" y="49.5" />
     </edge>
-    <edge source="ru.ifmo.rogue_like.heroes.mobs.move_strategies.Passive" target="ru.ifmo.rogue_like.rendering_system.IView">
-      <point x="19.0" y="-13.0" />
-      <point x="2269.7467157842166" y="634.0" />
-      <point x="2318.788419664575" y="634.0" />
-      <point x="2318.788419664575" y="149.0" />
-      <point x="1211.790178571429" y="149.0" />
-      <point x="37.28571428571422" y="49.0" />
+    <edge source="ru.ifmo.rogue_like.map.Map" target="ru.ifmo.rogue_like.map.squares.Wall">
+      <point x="45.92307692307713" y="-86.0" />
+      <point x="243.81176000836354" y="960.0" />
+      <point x="406.23683853875696" y="960.0" />
+      <point x="406.23683853875696" y="574.0" />
+      <point x="333.9544874963169" y="574.0" />
+      <point x="-9.25" y="13.0" />
     </edge>
     <edge source="ru.ifmo.rogue_like.heroes.mobs.move_strategies.PlayerStrategy" target="ru.ifmo.rogue_like.heroes.mobs.move_strategies.IHeroStrategy">
-      <point x="107.5" y="-37.5" />
-      <point x="1473.9241071428576" y="369.0" />
-      <point x="1585.9271746595798" y="369.0" />
-      <point x="-54.799999999999955" y="13.0" />
+      <point x="-107.5" y="-37.5" />
+      <point x="956.8406061622095" y="329.0" />
+      <point x="764.1388888888889" y="329.0" />
+      <point x="51.375" y="13.0" />
     </edge>
     <edge source="ru.ifmo.rogue_like.LoadMenu" target="ru.ifmo.rogue_like.map.IMap">
-      <point x="-22.625" y="-86.0" />
-      <point x="1707.0810333009388" y="1561.0" />
-      <point x="1651.1021746595798" y="1561.0" />
-      <point x="1651.1021746595798" y="1042.0" />
-      <point x="1667.8622833009388" y="1042.0" />
-      <point x="12.4375" y="25.0" />
-    </edge>
-    <edge source="ru.ifmo.rogue_like.map.RandomMap" target="ru.ifmo.rogue_like.map.Tile">
-      <point x="76.53846153846155" y="-74.0" />
-      <point x="2392.9632448394004" y="1231.0" />
-      <point x="2522.788419664575" y="1231.0" />
-      <point x="-51.5" y="37.5" />
+      <point x="0.0" y="-86.0" />
+      <point x="642.9019081312376" y="1320.0" />
+      <point x="748.0314813958998" y="1320.0" />
+      <point x="748.0314813958998" y="1010.0" />
+      <point x="885.4120347336382" y="1010.0" />
+      <point x="-28.42857142857133" y="25.0" />
     </edge>
     <edge source="ru.ifmo.rogue_like.App" target="ru.ifmo.rogue_like.heroes.player.PlayerListener">
-      <point x="0.0" y="-37.5" />
-      <point x="1018.4381761580815" y="1521.0" />
-      <point x="1119.4071387738168" y="1521.0" />
-      <point x="1119.4071387738168" y="922.0" />
-      <point x="1192.3167516699796" y="922.0" />
-      <point x="1192.3167516699796" y="439.0" />
-      <point x="1228.0497833009388" y="439.0" />
-      <point x="-35.375" y="25.0" />
+      <point x="56.307692307692264" y="-37.5" />
+      <point x="1558.0040731905874" y="1330.0" />
+      <point x="2251.806151034004" y="1330.0" />
+      <point x="2251.806151034004" y="379.0" />
+      <point x="2342.602602258852" y="379.0" />
+      <point x="106.125" y="25.0" />
     </edge>
     <edge source="ru.ifmo.rogue_like.map.squares.Wall" target="ru.ifmo.rogue_like.map.ISquare">
       <point x="0.0" y="-13.0" />
-      <point x="2052.2271746595798" y="419.0" />
-      <point x="2123.145775137453" y="419.0" />
-      <point x="-17.272727272727252" y="13.0" />
+      <point x="343.2044874963169" y="379.0" />
+      <point x="184.75727282887624" y="379.0" />
+      <point x="10.555555555555657" y="13.0" />
     </edge>
-    <edge source="ru.ifmo.rogue_like.map.LoadedMap" target="ru.ifmo.rogue_like.map.ISquare">
-      <point x="56.85714285714289" y="-37.5" />
-      <point x="2076.870323098551" y="1042.0" />
-      <point x="2131.5497833009385" y="1042.0" />
-      <point x="2131.5497833009385" y="439.0" />
-      <point x="2140.4185024101803" y="439.0" />
-      <point x="0.0" y="13.0" />
+    <edge source="ru.ifmo.rogue_like.rendering_system.CameraRenderer" target="ru.ifmo.rogue_like.rendering_system.IRenderer">
+      <point x="-106.0" y="-109.5" />
+      <point x="1573.2853177006707" y="1010.0" />
+      <point x="1394.7502313958998" y="1010.0" />
+      <point x="27.25" y="13.0" />
+    </edge>
+    <edge source="ru.ifmo.rogue_like.App" target="ru.ifmo.rogue_like.rendering_system.camera.Camera">
+      <point x="46.923076923076906" y="-37.5" />
+      <point x="1548.6194578059722" y="1320.0" />
+      <point x="2009.7853177006707" y="1320.0" />
+      <point x="0.0" y="110.0" />
+    </edge>
+    <edge source="ru.ifmo.rogue_like.rendering_system.camera.Camera" target="ru.ifmo.rogue_like.map.IPositionable">
+      <point x="75.25" y="-110.0" />
+      <point x="2085.035317700671" y="1020.0" />
+      <point x="2027.5809962675107" y="1020.0" />
+      <point x="2027.5809962675107" y="574.0" />
+      <point x="2044.914329600844" y="574.0" />
+      <point x="45.66666666666674" y="37.0" />
+    </edge>
+    <edge source="ru.ifmo.rogue_like.map.IMap" target="ru.ifmo.rogue_like.rendering_system.IRenderable">
+      <point x="85.28571428571422" y="-25.0" />
+      <point x="999.1263204479237" y="802.0" />
+      <point x="1075.3406061622095" y="802.0" />
+      <point x="1075.3406061622095" y="564.0" />
+      <point x="1273.9377313958998" y="564.0" />
+      <point x="-23.0625" y="13.0" />
+
     </edge>
     <edge source="ru.ifmo.rogue_like.map.LoadedMap" target="ru.ifmo.rogue_like.heroes.mobs.Hero">
       <point x="-56.85714285714289" y="-37.5" />
@@ -562,13 +500,13 @@
       <point x="38.4375" y="13.0" />
     </edge>
   </edges>
-  <settings layout="Hierarchic Group" zoom="0.3023130715438408" x="1339.0" y="919.4999999999999" />
+  <settings layout="Hierarchic Group" zoom="1.0" x="659.0" y="800.0" />
   <SelectedNodes />
   <Categories>
-    <Category>Constructors</Category>
     <Category>Fields</Category>
-    <Category>Inner Classes</Category>
+    <Category>Constructors</Category>
     <Category>Properties</Category>
+    <Category>Inner Classes</Category>
   </Categories>
   <SCOPE>All</SCOPE>
   <VISIBILITY>private</VISIBILITY>

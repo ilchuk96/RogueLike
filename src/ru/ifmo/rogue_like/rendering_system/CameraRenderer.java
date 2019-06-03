@@ -22,8 +22,7 @@ public class CameraRenderer extends JFrame implements IRenderer {
         super("RougeLike");
         canvas = new JLabel();
         this.setBackground(Color.black);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+        //this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setPreferredSize(new Dimension(400, 300)); // What it does?
 
         this.setSize(new Dimension(X_SIZE, Y_SIZE));

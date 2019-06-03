@@ -1,17 +1,19 @@
 package ru.ifmo.rogue_like.map;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 import ru.ifmo.rogue_like.heroes.MoveDirection;
 import ru.ifmo.rogue_like.heroes.mobs.Hero;
+import ru.ifmo.rogue_like.heroes.mobs.move_strategies.Agressive;
 import ru.ifmo.rogue_like.heroes.mobs.move_strategies.Passive;
 import ru.ifmo.rogue_like.map.squares.Floor;
 import ru.ifmo.rogue_like.map.squares.Wall;
 import ru.ifmo.rogue_like.rendering_system.IView;
 
-public class RandomMap implements IMap {
+public class Map implements IMap {
     private List<List<ISquare>> field;
     private Random random;
     private int maxX;
@@ -20,7 +22,7 @@ public class RandomMap implements IMap {
     /***
      * maxX and maxY must be divisible by 8
      */
-    public RandomMap(int x, int y) {
+    public Map(int x, int y) {
         random = new Random();
         maxX = x;
         maxY = y;
@@ -49,6 +51,30 @@ public class RandomMap implements IMap {
         }
     }
 
+    public Map(int x, int y, String filepath) throws IOException {
+        random = new Random();
+        maxX = x;
+        maxY = y;
+
+        field = new ArrayList<>();
+        BufferedReader br = new BufferedReader(new FileReader(filepath));
+        String line;
+        for (int i = 0; i < maxX; i++) {
+            line = br.readLine();
+            List<ISquare> lst = new ArrayList<>();
+            for (int j = 0; j < maxY; j++) {
+                char ch = line.charAt(j);
+                if (ch == '+') {
+                    lst.add(new Floor());
+                } else if (ch == '=') {
+                    lst.add(new Wall());
+                } else {
+                    lst.add(null);
+                }
+            }
+            field.add(lst);
+        }
+    }
 
     /*
     Generated for going left case, so (3,1) and (3,2) are always Floor().
@@ -160,7 +186,7 @@ public class RandomMap implements IMap {
         Integer mobX = null;
         Integer mobY = null;
 
-        if (direction == 'w' && field.get(x).get(y - 1) == null) {
+        if (direction == 'w' && y - 1 > 0 && field.get(x).get(y - 1) == null) {
             Tile tile = getNewTile(direction);
             int corner = (x / 4) * 4;
             for (int i = 0; i < 4; i++) {
@@ -171,7 +197,7 @@ public class RandomMap implements IMap {
             mobX = corner + 2;
             mobY = y - 2;
         }
-        if (direction == 'a' && field.get(x - 1).get(y) == null) {
+        if (direction == 'a' && x - 1 > 0 && field.get(x - 1).get(y) == null) {
             Tile tile = getNewTile(direction);
             int corner = (y / 4) * 4;
             for (int i = 0; i < 4; i++) {
@@ -182,7 +208,7 @@ public class RandomMap implements IMap {
             mobX = x - 2;
             mobY = corner + 2;
         }
-        if (direction == 's' && field.get(x).get(y + 1) == null) {
+        if (direction == 's' && y + 1 < maxY && field.get(x).get(y + 1) == null) {
             Tile tile = getNewTile(direction);
             int corner = (x / 4) * 4;
             for (int i = 0; i < 4; i++) {
@@ -193,7 +219,7 @@ public class RandomMap implements IMap {
             mobX = corner + 2;
             mobY = y + 2;
         }
-        if (direction == 'd' && field.get(x + 1).get(y) == null) {
+        if (direction == 'd' && x + 1 < maxX && field.get(x + 1).get(y) == null) {
             Tile tile = getNewTile(direction);
             int corner = (y / 4) * 4;
             for (int i = 0; i < 4; i++) {
@@ -206,9 +232,29 @@ public class RandomMap implements IMap {
         }
 
         if (mobX != null) {
-            return new Hero(new Passive(), mobX, mobY);
+            return new Hero(new Agressive(), mobX, mobY);
         }
         return null;
+    }
+
+    @Override
+    public void saveMap(String filepath) throws IOException {
+        FileWriter fileWriter = new FileWriter(new File(filepath));
+        for (List<ISquare> lst : field) {
+            StringBuilder sb = new StringBuilder();
+            for (ISquare square : lst) {
+                if (square instanceof Floor) {
+                    sb.append("+");
+                } else if (square instanceof Wall) {
+                    sb.append("=");
+                } else {
+                    sb.append(".");
+                }
+            }
+            fileWriter.write(sb.toString());
+            fileWriter.write("\n");
+        }
+        fileWriter.close();
     }
 
     @Override

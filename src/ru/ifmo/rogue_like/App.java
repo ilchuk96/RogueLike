@@ -2,16 +2,12 @@ package ru.ifmo.rogue_like;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import ru.ifmo.rogue_like.heroes.mobs.Hero;
 import ru.ifmo.rogue_like.heroes.mobs.move_strategies.PlayerStrategy;
 import ru.ifmo.rogue_like.heroes.player.PlayerListener;
 import ru.ifmo.rogue_like.map.IMap;
-import ru.ifmo.rogue_like.map.RandomMap;
-import ru.ifmo.rogue_like.menu.Menu;
-import ru.ifmo.rogue_like.menu.MenuEntry;
 import ru.ifmo.rogue_like.rendering_system.CameraRenderer;
 import ru.ifmo.rogue_like.rendering_system.camera.Camera;
 import ru.ifmo.rogue_like.rendering_system.camera.ICamera;
@@ -26,7 +22,7 @@ public class App {
 
     public void newGame() {
 
-        //IMap map = new RandomMap(1024, 1024);
+        //IMap map = new Map(1024, 1024);
 
         PlayerListener listener = new PlayerListener();
 
@@ -44,7 +40,7 @@ public class App {
             player.move(map);
             camera.update(System.currentTimeMillis());
             renderer.render();
-            while (true) {
+            while (renderer.isVisible()) {
                 if (listener.hasTyped()) {
                     Hero newHero = map.updateMap(player.getX(), player.getY(), listener.peekLastDirection());
                     if (newHero != null) {
@@ -65,10 +61,15 @@ public class App {
                     camera.update(System.currentTimeMillis());
                     renderer.render();
                 }
+                Thread.sleep(30);
             }
+            System.out.println("finish");
         } catch (Exception e) {
+            System.out.println("wtf");
             e.printStackTrace();
         }
+        SaveMenu sm = new SaveMenu(map);
+        renderer.dispose();
     }
 
     public void start() {
