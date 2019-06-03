@@ -15,7 +15,7 @@ public class PlayerListener implements KeyListener {
     }
 
     public boolean hasTyped() {
-        System.out.print(1);
+        //System.out.print(1);
         return !directions.isEmpty();
     }
 

@@ -1,5 +1,6 @@
 package ru.ifmo.rogue_like.map;
 
+import java.io.IOException;
 import java.util.List;
 
 import ru.ifmo.rogue_like.heroes.MoveDirection;
@@ -26,4 +27,6 @@ public interface IMap extends IRenderable {
         }
         return updateMap(x, y, charDirection);
     }
+
+    void saveMap(String filepath) throws IOException;
 }

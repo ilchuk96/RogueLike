@@ -31,6 +31,8 @@ public class Hero implements IRenderable, IPositionable {
             return false;
         }
         List<List<ISquare>> field = map.getField();
+        if (x + moveDirection.getX() < 0 || x + moveDirection.getX() >= field.size()) return false;
+        if (y + moveDirection.getY() < 0 || y + moveDirection.getY() >= field.get(x + moveDirection.getX()).size()) return false;
         if (field.get(x + moveDirection.getX()).get(y + moveDirection.getY()) instanceof Wall) {
             return false;
         }
