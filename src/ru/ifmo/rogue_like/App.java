@@ -40,29 +40,14 @@ public class App {
         */
         CameraRenderer renderer = new CameraRenderer(camera, listener);
         try {
-            player.move(map);
+            //player.move(map);
             camera.update(System.currentTimeMillis());
             renderer.render();
-            while (renderer.isVisible()) {
+            while (renderer.isVisible() && ! player.isDead()) {
                 if (listener.hasTyped()) {
-                    Hero newHero = map.updateMap(player.getX(), player.getY(), listener.peekLastDirection());
-                    if (newHero != null) {
-                        heroes.add(newHero);
-                        //camera.addRenderableObject(newHero);
-                    }
-                    List<Hero> toRemove = new ArrayList<>();
+                    heroes = map.getHeroes();
                     for (Hero hero : heroes) {
                         hero.move(map);
-                        if (hero == player) {
-                            System.out.println("p");
-                        }
-                        if (hero.isDead()) {
-                            toRemove.add(hero);
-                        }
-                    }
-                    heroes.removeAll(toRemove);
-                    for (Hero hero : toRemove) {
-                        map.deleteMob(hero.getX(), hero.getY());
                     }
                     camera.update(System.currentTimeMillis());
                     renderer.render();

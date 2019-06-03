@@ -5,9 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import ru.ifmo.rogue_like.heroes.MoveDirection;
 import ru.ifmo.rogue_like.heroes.mobs.Hero;
 import ru.ifmo.rogue_like.heroes.mobs.move_strategies.Agressive;
+import ru.ifmo.rogue_like.heroes.mobs.move_strategies.Dilative;
+import ru.ifmo.rogue_like.heroes.mobs.move_strategies.IHeroStrategy;
 import ru.ifmo.rogue_like.heroes.mobs.move_strategies.Passive;
 import ru.ifmo.rogue_like.map.squares.Floor;
 import ru.ifmo.rogue_like.map.squares.Wall;
@@ -18,7 +19,8 @@ public class Map implements IMap {
     private Random random;
     private int maxX;
     private int maxY;
-    public List<Hero> heros;
+    private List<Hero> heroes;
+    private List<Hero> newHeroes;
     private int heroX;
     private int heroY;
 
@@ -29,7 +31,8 @@ public class Map implements IMap {
         random = new Random();
         maxX = x;
         maxY = y;
-
+        heroes = new ArrayList<>();
+        newHeroes = new ArrayList<>();
         field = new ArrayList<>();
         for (int i = 0; i < maxX; i++) {
             List<ISquare> lst = new ArrayList<>();
@@ -59,7 +62,8 @@ public class Map implements IMap {
         random = new Random();
         maxX = x;
         maxY = y;
-
+        heroes = new ArrayList<>();
+        newHeroes = new ArrayList<>();
         field = new ArrayList<>();
         BufferedReader br = new BufferedReader(new FileReader(filepath));
         String line;
@@ -96,11 +100,27 @@ public class Map implements IMap {
     @Override
     public void addPlayer(Hero player) {
         field.get(player.getX()).set(player.getY(), player);
+        heroes.add(player);
     }
 
     @Override
     public void deleteMob(int x, int y) {
         field.get(x).set(y, new Floor());
+    }
+
+    @Override
+    public List<Hero> getHeroes() {
+        heroes.addAll(newHeroes);
+        newHeroes = new ArrayList<>();
+        List<Hero> toRemove = new ArrayList<>();
+        for (Hero hero : heroes) {
+            if (hero.isDead()) {
+                toRemove.add(hero);
+                deleteMob(hero.getX(), hero.getY());
+            }
+        }
+        heroes.removeAll(toRemove);
+        return heroes;
     }
 
     @Override
@@ -266,8 +286,18 @@ public class Map implements IMap {
         }
 
         if (mobX != null) {
-            Hero mob = new Hero(new Passive(), mobX, mobY);
+            IHeroStrategy strategy;
+            int type = random.nextInt(3);
+            if (type == 0) {
+                strategy = new Dilative();
+            } else if (type == 1) {
+                strategy = new Passive();
+            } else {
+                strategy = new Agressive();
+            }
+            Hero mob = new Hero(strategy, mobX, mobY);
             field.get(mobX).set(mobY, mob);
+            newHeroes.add(mob);
             return mob;
         }
         return null;

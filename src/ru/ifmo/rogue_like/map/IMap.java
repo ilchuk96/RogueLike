@@ -36,6 +36,8 @@ public interface IMap extends IRenderable {
 
     public void deleteMob(int x, int y);
 
+    public List<Hero> getHeroes();
+
     public void move(int x, int y, int dx, int dy);
 
     void saveMap(String filepath) throws IOException;
