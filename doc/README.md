@@ -83,6 +83,10 @@ Singleton объект, со следующими методами:
 
 ![](classes.png)
 
+# State Diagram
+
+![](StateDiagram.png)
+
 # State Machine Diagram
 
 ![](StateMachineDiagram1.jpg)
