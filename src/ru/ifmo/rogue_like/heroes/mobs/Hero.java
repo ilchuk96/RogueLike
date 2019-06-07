@@ -15,7 +15,7 @@ import ru.ifmo.rogue_like.map.squares.Wall;
 import ru.ifmo.rogue_like.rendering_system.IRenderable;
 import ru.ifmo.rogue_like.rendering_system.IView;
 
-public class Hero implements IRenderable, IPositionable, ISquare {
+public class Hero implements IHero {
 
     private IHeroStrategy strategy;
     private int x;
@@ -29,27 +29,22 @@ public class Hero implements IRenderable, IPositionable, ISquare {
         hp = 5;
     }
 
-    public void setStrategy(IHeroStrategy strategy) {
-        this.strategy = strategy;
-    }
-
-    public boolean move(IMap map) {
+    @Override
+    public MoveDirection getMove(IMap map) {
         MoveDirection moveDirection = strategy.moveDirection(map, x, y);
         if (strategy instanceof Dilative && moveDirection.getX() == 0 && moveDirection.getY() == 0) {
             setStrategy(new Passive());
         }
+        return moveDirection;
+    }
+
+    public void setStrategy(IHeroStrategy strategy) {
+        this.strategy = strategy;
+    }
+
+    @Override
+    public boolean move(IMap map, MoveDirection moveDirection) {
         if (moveDirection == null) {
-            return false;
-        }
-        List<List<ISquare>> field = map.getField();
-        if (x + moveDirection.getX() < 0 || x + moveDirection.getX() >= field.size()) return false;
-        if (y + moveDirection.getY() < 0 || y + moveDirection.getY() >= field.get(x + moveDirection.getX()).size()) return false;
-        if (field.get(x + moveDirection.getX()).get(y + moveDirection.getY()) instanceof Wall) {
-            return false;
-        }
-        if (field.get(x + moveDirection.getX()).get(y + moveDirection.getY()) instanceof Hero) {
-            ((Hero) field.get(x + moveDirection.getX()).get(y + moveDirection.getY())).getDamage(2);
-            System.out.println("hit");
             return false;
         }
         if (moveDirection.getX() == 1) {
@@ -64,10 +59,19 @@ public class Hero implements IRenderable, IPositionable, ISquare {
         if (moveDirection.getY() == -1) {
             map.updateMap(x, y, 'w');
         }
+        List<List<ISquare>> field = map.getField();
+        if (x + moveDirection.getX() < 0 || x + moveDirection.getX() >= field.size()) return false;
+        if (y + moveDirection.getY() < 0 || y + moveDirection.getY() >= field.get(x + moveDirection.getX()).size()) return false;
+        if (field.get(x + moveDirection.getX()).get(y + moveDirection.getY()) instanceof Wall) {
+            return false;
+        }
+        if (field.get(x + moveDirection.getX()).get(y + moveDirection.getY()) instanceof HeroDecorator) {
+            ((HeroDecorator) field.get(x + moveDirection.getX()).get(y + moveDirection.getY())).getDamage(2);
+            return false;
+        }
         map.move(x, y, moveDirection.getX(), moveDirection.getY());
         x += moveDirection.getX();
         y += moveDirection.getY();
-        System.out.println(x);
         return true;
     }
 

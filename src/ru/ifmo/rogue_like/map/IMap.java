@@ -5,14 +5,15 @@ import java.util.List;
 
 import ru.ifmo.rogue_like.heroes.MoveDirection;
 import ru.ifmo.rogue_like.heroes.mobs.Hero;
+import ru.ifmo.rogue_like.heroes.mobs.HeroDecorator;
 import ru.ifmo.rogue_like.rendering_system.IRenderable;
 
 public interface IMap extends IRenderable {
     List<List<ISquare>> getField();
 
-    Hero updateMap(int x, int y, char direction);
+    HeroDecorator updateMap(int x, int y, char direction);
 
-    default Hero updateMap(int x, int y, MoveDirection direction) {
+    default HeroDecorator updateMap(int x, int y, MoveDirection direction) {
         int xDir = direction.getX();
         int yDir = direction.getY();
         char charDirection = 'w';
@@ -32,11 +33,11 @@ public interface IMap extends IRenderable {
 
     public int getHeroY();
 
-    public void addPlayer(Hero player);
+    public void addPlayer(HeroDecorator player);
 
     public void deleteMob(int x, int y);
 
-    public List<Hero> getHeroes();
+    public List<HeroDecorator> getHeroes();
 
     public void move(int x, int y, int dx, int dy);
 

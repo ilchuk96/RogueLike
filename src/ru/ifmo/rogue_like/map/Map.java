@@ -5,7 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import ru.ifmo.rogue_like.heroes.mobs.ConfusedHeroDecorator;
 import ru.ifmo.rogue_like.heroes.mobs.Hero;
+import ru.ifmo.rogue_like.heroes.mobs.HeroDecorator;
 import ru.ifmo.rogue_like.heroes.mobs.move_strategies.Agressive;
 import ru.ifmo.rogue_like.heroes.mobs.move_strategies.Dilative;
 import ru.ifmo.rogue_like.heroes.mobs.move_strategies.IHeroStrategy;
@@ -19,8 +21,8 @@ public class Map implements IMap {
     private Random random;
     private int maxX;
     private int maxY;
-    private List<Hero> heroes;
-    private List<Hero> newHeroes;
+    private List<HeroDecorator> heroes;
+    private List<HeroDecorator> newHeroes;
     private int heroX;
     private int heroY;
 
@@ -98,7 +100,7 @@ public class Map implements IMap {
     }
 
     @Override
-    public void addPlayer(Hero player) {
+    public void addPlayer(HeroDecorator player) {
         field.get(player.getX()).set(player.getY(), player);
         heroes.add(player);
     }
@@ -109,11 +111,11 @@ public class Map implements IMap {
     }
 
     @Override
-    public List<Hero> getHeroes() {
+    public List<HeroDecorator> getHeroes() {
         heroes.addAll(newHeroes);
         newHeroes = new ArrayList<>();
-        List<Hero> toRemove = new ArrayList<>();
-        for (Hero hero : heroes) {
+        List<HeroDecorator> toRemove = new ArrayList<>();
+        for (HeroDecorator hero : heroes) {
             if (hero.isDead()) {
                 toRemove.add(hero);
                 deleteMob(hero.getX(), hero.getY());
@@ -236,7 +238,7 @@ public class Map implements IMap {
     }
 
     @Override
-    public Hero updateMap(int x, int y, char direction) {
+    public HeroDecorator updateMap(int x, int y, char direction) {
         Integer mobX = null;
         Integer mobY = null;
 
@@ -295,7 +297,7 @@ public class Map implements IMap {
             } else {
                 strategy = new Agressive();
             }
-            Hero mob = new Hero(strategy, mobX, mobY);
+            HeroDecorator mob = new ConfusedHeroDecorator(new Hero(strategy, mobX, mobY));
             field.get(mobX).set(mobY, mob);
             newHeroes.add(mob);
             return mob;
@@ -331,8 +333,8 @@ public class Map implements IMap {
             for (ISquare square : t) {
                 if (square instanceof Floor) {
                     view[i][j] = '+';
-                }  else if (square instanceof Hero) {
-                    view[i][j] = ((Hero) square).getView(0).getView()[0][0];
+                }  else if (square instanceof HeroDecorator) {
+                    view[i][j] = ((HeroDecorator) square).getView(0).getView()[0][0];
                 } else {
                     view[i][j] = '=';
                 }

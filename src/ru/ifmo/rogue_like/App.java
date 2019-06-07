@@ -4,7 +4,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import ru.ifmo.rogue_like.heroes.mobs.ConfusedHeroDecorator;
 import ru.ifmo.rogue_like.heroes.mobs.Hero;
+import ru.ifmo.rogue_like.heroes.mobs.HeroDecorator;
 import ru.ifmo.rogue_like.heroes.mobs.move_strategies.PlayerStrategy;
 import ru.ifmo.rogue_like.heroes.player.PlayerListener;
 import ru.ifmo.rogue_like.map.IMap;
@@ -26,11 +28,10 @@ public class App {
 
         PlayerListener listener = new PlayerListener();
 
-        Hero player = new Hero(new PlayerStrategy(listener), map.getHeroX(), map.getHeroY());
+        HeroDecorator player = new ConfusedHeroDecorator(new Hero(new PlayerStrategy(listener), map.getHeroX(), map.getHeroY()));
         map.addPlayer(player);
         ICamera camera = new Camera(41, 41, player);
-        List<Hero> heroes = new ArrayList<>();
-        heroes.add(player);
+        List<HeroDecorator> heroes;
 
         camera.addRenderableObject(map);
         /*
@@ -46,7 +47,7 @@ public class App {
             while (renderer.isVisible() && ! player.isDead()) {
                 if (listener.hasTyped()) {
                     heroes = map.getHeroes();
-                    for (Hero hero : heroes) {
+                    for (HeroDecorator hero : heroes) {
                         hero.move(map);
                     }
                     camera.update(System.currentTimeMillis());
