@@ -1,7 +1,6 @@
 package ru.ifmo.rogue_like.heroes.mobs.move_strategies;
 
-import ru.ifmo.rogue_like.heroes.MoveDirection;
-import ru.ifmo.rogue_like.heroes.mobs.ConfusedHeroDecorator;
+import ru.ifmo.rogue_like.heroes.MoveAction;
 import ru.ifmo.rogue_like.heroes.mobs.HeroDecorator;
 import ru.ifmo.rogue_like.map.IMap;
 import ru.ifmo.rogue_like.map.ISquare;
@@ -14,7 +13,7 @@ public class Passive implements IHeroStrategy {
     private int timeLeft;
 
     @Override
-    public MoveDirection moveDirection(IMap map, int x, int y) {
+    public MoveAction moveDirection(IMap map, int x, int y) {
         List<List<ISquare>> field = map.getField();
         if (timeLeft == 0) {
             for (int i = -1; i <= 1; i += 2) {
@@ -28,7 +27,7 @@ public class Passive implements IHeroStrategy {
         } else {
             timeLeft--;
         }
-        return new MoveDirection(0,0 );
+        return new MoveAction(0,0, 1);
     }
 
     @Override

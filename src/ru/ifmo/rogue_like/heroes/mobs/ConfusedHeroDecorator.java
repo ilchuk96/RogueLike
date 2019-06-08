@@ -1,6 +1,6 @@
 package ru.ifmo.rogue_like.heroes.mobs;
 
-import ru.ifmo.rogue_like.heroes.MoveDirection;
+import ru.ifmo.rogue_like.heroes.MoveAction;
 import ru.ifmo.rogue_like.map.IMap;
 
 import java.util.Random;
@@ -17,15 +17,15 @@ public class ConfusedHeroDecorator extends HeroDecorator {
     }
 
     @Override
-    public MoveDirection getMove(IMap map) {
-        MoveDirection move = hero.getMove(map);
+    public MoveAction getMove(IMap map) {
+        MoveAction move = hero.getMove(map);
         if (timeLeft > 0) {
             int choice = random.nextInt(3) - 1;
             if (choice != 0) {
                 if (move.getX() != 0) {
-                    move = new MoveDirection(0, choice);
+                    move = new MoveAction(0, choice, 0);
                 } else {
-                    move = new MoveDirection(choice, 0);
+                    move = new MoveAction(choice, 0, 0);
                 }
             }
             timeLeft--;
@@ -34,7 +34,7 @@ public class ConfusedHeroDecorator extends HeroDecorator {
     }
 
     @Override
-    public boolean move(IMap map, MoveDirection moveDirection) {
+    public boolean move(IMap map, MoveAction moveDirection) {
         return hero.move(map, moveDirection);
     }
 

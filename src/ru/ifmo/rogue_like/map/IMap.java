@@ -3,8 +3,7 @@ package ru.ifmo.rogue_like.map;
 import java.io.IOException;
 import java.util.List;
 
-import ru.ifmo.rogue_like.heroes.MoveDirection;
-import ru.ifmo.rogue_like.heroes.mobs.Hero;
+import ru.ifmo.rogue_like.heroes.MoveAction;
 import ru.ifmo.rogue_like.heroes.mobs.HeroDecorator;
 import ru.ifmo.rogue_like.rendering_system.IRenderable;
 
@@ -13,7 +12,7 @@ public interface IMap extends IRenderable {
 
     HeroDecorator updateMap(int x, int y, char direction);
 
-    default HeroDecorator updateMap(int x, int y, MoveDirection direction) {
+    default HeroDecorator updateMap(int x, int y, MoveAction direction) {
         int xDir = direction.getX();
         int yDir = direction.getY();
         char charDirection = 'w';

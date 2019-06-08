@@ -1,18 +1,15 @@
 package ru.ifmo.rogue_like.heroes.mobs;
 
 import java.util.List;
-import java.util.Random;
 
-import ru.ifmo.rogue_like.heroes.MoveDirection;
+import ru.ifmo.rogue_like.heroes.MoveAction;
 import ru.ifmo.rogue_like.heroes.mobs.move_strategies.Dilative;
 import ru.ifmo.rogue_like.heroes.mobs.move_strategies.IHeroStrategy;
 import ru.ifmo.rogue_like.heroes.mobs.move_strategies.Passive;
 import ru.ifmo.rogue_like.heroes.mobs.move_strategies.PlayerStrategy;
 import ru.ifmo.rogue_like.map.IMap;
-import ru.ifmo.rogue_like.map.IPositionable;
 import ru.ifmo.rogue_like.map.ISquare;
 import ru.ifmo.rogue_like.map.squares.Wall;
-import ru.ifmo.rogue_like.rendering_system.IRenderable;
 import ru.ifmo.rogue_like.rendering_system.IView;
 
 public class Hero implements IHero {
@@ -30,8 +27,8 @@ public class Hero implements IHero {
     }
 
     @Override
-    public MoveDirection getMove(IMap map) {
-        MoveDirection moveDirection = strategy.moveDirection(map, x, y);
+    public MoveAction getMove(IMap map) {
+        MoveAction moveDirection = strategy.moveDirection(map, x, y);
         if (strategy instanceof Dilative && moveDirection.getX() == 0 && moveDirection.getY() == 0) {
             setStrategy(new Passive());
         }
@@ -43,8 +40,11 @@ public class Hero implements IHero {
     }
 
     @Override
-    public boolean move(IMap map, MoveDirection moveDirection) {
+    public boolean move(IMap map, MoveAction moveDirection) {
         if (moveDirection == null) {
+            return false;
+        }
+        if (moveDirection.getX() == 0 && moveDirection.getY() == 0) {
             return false;
         }
         if (moveDirection.getX() == 1) {
@@ -77,7 +77,7 @@ public class Hero implements IHero {
 
     public void getDamage(int damage) {
         hp -= damage;
-        if (hp == 1) {
+        if (hp == 1 && !(strategy instanceof PlayerStrategy)) {
             setStrategy(new Dilative());
         }
     }

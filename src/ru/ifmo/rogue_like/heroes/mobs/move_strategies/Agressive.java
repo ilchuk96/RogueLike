@@ -1,11 +1,9 @@
 package ru.ifmo.rogue_like.heroes.mobs.move_strategies;
 
-import ru.ifmo.rogue_like.heroes.MoveDirection;
+import ru.ifmo.rogue_like.heroes.MoveAction;
 import ru.ifmo.rogue_like.map.IMap;
-import ru.ifmo.rogue_like.map.ISquare;
 import ru.ifmo.rogue_like.rendering_system.IView;
 
-import java.util.List;
 import java.util.Random;
 
 public class Agressive implements IHeroStrategy {
@@ -19,7 +17,7 @@ public class Agressive implements IHeroStrategy {
     }
 
     @Override
-    public MoveDirection moveDirection(IMap map, int x, int y) {
+    public MoveAction moveDirection(IMap map, int x, int y) {
         char[][] field = map.getView(0).getView();
         for (int i = -4; i <= 4; i++) {
             for (int j = -4; j <= 4; j++) {
@@ -33,11 +31,11 @@ public class Agressive implements IHeroStrategy {
                             dy = 0;
                         }
                     }
-                    return new MoveDirection(dx, dy);
+                    return new MoveAction(dx, dy, 0);
                 }
             }
         }
-        return new MoveDirection(0, 0);
+        return new MoveAction(0, 0, 0);
     }
 
     @Override

@@ -1,13 +1,9 @@
 package ru.ifmo.rogue_like.heroes.mobs;
 
-import ru.ifmo.rogue_like.heroes.MoveDirection;
+import ru.ifmo.rogue_like.heroes.MoveAction;
 import ru.ifmo.rogue_like.heroes.mobs.move_strategies.IHeroStrategy;
 import ru.ifmo.rogue_like.map.IMap;
-import ru.ifmo.rogue_like.map.ISquare;
-import ru.ifmo.rogue_like.map.squares.Wall;
 import ru.ifmo.rogue_like.rendering_system.IView;
-
-import java.util.List;
 
 public abstract class HeroDecorator implements IHero {
 
@@ -22,7 +18,7 @@ public abstract class HeroDecorator implements IHero {
     }
 
     @Override
-    abstract public MoveDirection getMove(IMap map);
+    abstract public MoveAction getMove(IMap map);
 
     @Override
     public void setStrategy(IHeroStrategy strategy) {

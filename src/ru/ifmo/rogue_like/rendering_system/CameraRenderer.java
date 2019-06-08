@@ -22,7 +22,7 @@ public class CameraRenderer extends JFrame implements IRenderer {
         super("RougeLike");
         canvas = new JLabel();
         this.setBackground(Color.black);
-        //this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setPreferredSize(new Dimension(400, 300)); // What it does?
 
         this.setSize(new Dimension(X_SIZE, Y_SIZE));
@@ -33,13 +33,14 @@ public class CameraRenderer extends JFrame implements IRenderer {
         this.camera = camera;
     }
 
-    private void clear() throws IOException {
+    private void clear() {
         canvas.getGraphics().clearRect(0, 0, X_SIZE, Y_SIZE);
     }
 
 
     @Override
-    public void render() throws IOException {
+    public void render() {
+        camera.update(System.currentTimeMillis());
         clear();
         char[][] view = camera.getView();
         int rowNumber = 0;
