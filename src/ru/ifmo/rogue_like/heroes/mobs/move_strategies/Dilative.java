@@ -23,10 +23,12 @@ public class Dilative implements IHeroStrategy {
     public MoveAction moveDirection(IMap map, IHeroesService heroesService, IHero hero) {
         int x = hero.getX();
         int y = hero.getY();
-        char[][] field = map.getView(0).getView();
+        IHero player = heroesService.getPlayer();
+        int playerX = player.getX();
+        int playerY = player.getY();
         for (int i = -4; i <= 4; i++) {
             for (int j = -4; j <= 4; j++) {
-                if (x + i > 0 && x + i < field.length && y + j > 0 && y + j < field[0].length && field[x+i][y+j] == '$') {
+                if (x + i == playerX && y + j == playerY) {
                     int dx = - sign(i);
                     int dy = - sign(j);
                     if (dx != 0 && dy != 0) {
