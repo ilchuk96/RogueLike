@@ -65,6 +65,7 @@ public class App {
         for (IHero h : heroesService.heroes()) {
             camera.addRenderableObject(h);
         }
+        this.renderer.render();
     }
 
     public IMap getMap() {
