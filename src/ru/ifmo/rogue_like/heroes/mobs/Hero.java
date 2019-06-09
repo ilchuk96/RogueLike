@@ -83,8 +83,8 @@ public class Hero implements IHero {
             }
             return false;
         }
-        x += newX;
-        y += newY;
+        x = newX;
+        y = newY;
         return true;
     }
 

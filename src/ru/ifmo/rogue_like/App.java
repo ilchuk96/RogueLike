@@ -28,7 +28,6 @@ public class App {
     public App() {
         map = new Map(Settings.getProperty("map.width", Integer.class),
                 Settings.getProperty("map.height", Integer.class));
-
         PlayerStrategy playerStrategy = new PlayerStrategy();
         IHero hero = new Hero(playerStrategy, map.getPlayerSpawnX(), map.getPlayerSpawnY());
         heroesService = new HeroesService(hero);
@@ -62,6 +61,9 @@ public class App {
         for (ICommand command : commands) {
             command.apply();
             this.renderer.render();
+        }
+        for (IHero h : heroesService.heroes()) {
+            camera.addRenderableObject(h);
         }
     }
 
