@@ -13,6 +13,8 @@ public interface IHero extends IRenderable, IPositionable, ISquare {
 
     void setStrategy(IHeroStrategy strategy);
 
+    IHeroStrategy getStrategy();
+
     boolean move(IMap map, MoveAction moveDirection);
 
     void getDamage(int damage);

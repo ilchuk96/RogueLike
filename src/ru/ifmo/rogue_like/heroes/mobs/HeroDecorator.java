@@ -26,6 +26,12 @@ public abstract class HeroDecorator implements IHero {
     }
 
     @Override
+    public IHeroStrategy getStrategy() {
+        return hero.getStrategy();
+    }
+
+
+    @Override
     public void getDamage(int damage) {
         hero.getDamage(damage);
     }
