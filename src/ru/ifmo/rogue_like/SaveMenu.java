@@ -1,11 +1,11 @@
 package ru.ifmo.rogue_like;
 
-import ru.ifmo.rogue_like.map.IMap;
-import ru.ifmo.rogue_like.map.Map;
-
-import javax.swing.*;
 import java.awt.*;
-import java.io.IOException;
+import javax.swing.*;
+
+import ru.ifmo.rogue_like.map.IMap;
+import ru.ifmo.rogue_like.save_service.SaveException;
+import ru.ifmo.rogue_like.save_service.SaveService;
 
 public class SaveMenu extends JFrame {
 
@@ -22,9 +22,10 @@ public class SaveMenu extends JFrame {
         cancel.addActionListener(actionEvent -> this.dispose());
         save.addActionListener(actionEvent -> {
             try {
-                map.saveMap(filename.getText());
+                SaveService saveService = new SaveService(filename.getText());
+                saveService.save(map);
                 this.dispose();
-            } catch (IOException e) {
+            } catch (SaveException e) {
                 JOptionPane.showMessageDialog(this,
                         "Can't create file",
                         "Save error",

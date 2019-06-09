@@ -1,18 +1,10 @@
 package ru.ifmo.rogue_like;
 
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
-import ru.ifmo.rogue_like.heroes.mobs.ConfusedHeroDecorator;
-import ru.ifmo.rogue_like.heroes.mobs.Hero;
 import ru.ifmo.rogue_like.heroes.mobs.HeroDecorator;
-import ru.ifmo.rogue_like.heroes.mobs.move_strategies.PlayerStrategy;
-import ru.ifmo.rogue_like.heroes.player.PlayerListener;
 import ru.ifmo.rogue_like.map.IMap;
 import ru.ifmo.rogue_like.rendering_system.CameraRenderer;
-import ru.ifmo.rogue_like.rendering_system.camera.Camera;
-import ru.ifmo.rogue_like.rendering_system.camera.ICamera;
 
 public class App {
 
