@@ -90,7 +90,7 @@ public class Hero implements IHero {
 
     public void getDamage(int damage) {
         hp -= damage;
-        if (hp == 1 && !(strategy instanceof PlayerStrategy)) {
+        if (hp <= 1 && !(strategy instanceof PlayerStrategy)) {
             setStrategy(new Dilative());
         }
         if (hp > MAX_HP) {

@@ -33,10 +33,7 @@ public class HeroMoveCommand implements ICommand {
             commandGenerators.add(new HeroCommandGenerator(newHero, map, heroesService));
         }
         if (map.isEmpty(newXCor, newYCor)) {
-            IHero heroOnTheWay = heroesService.getHero(newXCor, newYCor);
-            if (heroOnTheWay == null) {
-                hero.move(heroesService, moveAction);
-            }
+            hero.move(heroesService, moveAction);
         }
         return commandGenerators;
     }
