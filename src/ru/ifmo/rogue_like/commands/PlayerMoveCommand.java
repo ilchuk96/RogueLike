@@ -1,5 +1,10 @@
-package ru.ifmo.rogue_like.command_generators;
+package ru.ifmo.rogue_like.commands;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import ru.ifmo.rogue_like.command_generators.HeroCommandGenerator;
+import ru.ifmo.rogue_like.command_generators.ICommandGenerator;
 import ru.ifmo.rogue_like.commands.ICommand;
 import ru.ifmo.rogue_like.heroes.IHeroesService;
 import ru.ifmo.rogue_like.heroes.MoveAction;
@@ -21,12 +26,14 @@ public class PlayerMoveCommand implements ICommand {
 
 
     @Override
-    public void apply() {
+    public List<ICommandGenerator> apply() {
         int newXCor = hero.getX() + moveAction.getX();
         int newYCor = hero.getY() + moveAction.getY();
         IHero newHero = map.updateMap(hero.getX(), hero.getY(), moveAction);
+        List<ICommandGenerator> commandGenerators = new ArrayList<>();
         if (newHero != null) {
             heroesService.addHero(newHero);
+            commandGenerators.add(new HeroCommandGenerator(newHero, map, heroesService));
         }
         if (map.isEmpty(newXCor, newYCor)) {
             IHero heroOnTheWay = heroesService.getHero(newXCor, newYCor);
@@ -34,5 +41,6 @@ public class PlayerMoveCommand implements ICommand {
                 hero.move(heroesService, moveAction);
             }
         }
+        return commandGenerators;
     }
 }

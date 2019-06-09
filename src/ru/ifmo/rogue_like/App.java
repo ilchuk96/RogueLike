@@ -55,11 +55,12 @@ public class App {
         List<ICommand> commands = commandsGenerators.stream()
                 .map(ICommandGenerator::getCommand)
                 .collect(Collectors.toList());
-        if (commands.contains(null)) {
-            return;
-        }
         for (ICommand command : commands) {
-            command.apply();
+            if (command == null) {
+                continue;
+            }
+            List<ICommandGenerator> commandGenerators = command.apply();
+            this.commandsGenerators.addAll(commandGenerators);
             this.renderer.render();
         }
         for (IHero h : heroesService.heroes()) {
