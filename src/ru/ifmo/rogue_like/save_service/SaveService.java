@@ -1,20 +1,14 @@
 package ru.ifmo.rogue_like.save_service;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.io.Writer;
+import java.io.*;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import ru.ifmo.rogue_like.Settings;
 import ru.ifmo.rogue_like.map.IMap;
+import ru.ifmo.rogue_like.map.Map;
 
 public class SaveService {
-    private final String filePath;
-
-    public SaveService(String filePath) {
-        this.filePath = filePath;
-    }
+    private final String filePath = Settings.getProperty("save.file", String.class);
 
     public void save(IMap map) throws SaveException {
         try (Writer writer = new OutputStreamWriter(new FileOutputStream(filePath))) {
@@ -23,5 +17,16 @@ public class SaveService {
         } catch (IOException e) {
             throw new SaveException(e);
         }
+    }
+
+    public IMap load() throws LoadException {
+        IMap map;
+        try (Reader reader = new InputStreamReader(new FileInputStream(filePath))) {
+            Gson gson = GsonConstructor.getGson();
+            map = gson.fromJson(reader, Map.class);
+        } catch (IOException e) {
+            throw new LoadException(e);
+        }
+        return map;
     }
 }

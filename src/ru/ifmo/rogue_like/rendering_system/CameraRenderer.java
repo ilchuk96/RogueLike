@@ -2,18 +2,18 @@ package ru.ifmo.rogue_like.rendering_system;
 
 import java.awt.*;
 import java.awt.event.KeyListener;
-import java.io.IOException;
 import javax.swing.*;
 
+import ru.ifmo.rogue_like.Settings;
 import ru.ifmo.rogue_like.rendering_system.camera.ICamera;
 
 public class CameraRenderer extends JFrame implements IRenderer {
     private ICamera camera;
     private JLabel canvas;
 
-    final private static int X_SIZE = 510;
-    final private static int Y_SIZE = 450;
-    final private static int FONT_SIZE = 20;
+    final private static int X_SIZE = Settings.getProperty("window.width", Integer.class);
+    final private static int Y_SIZE = Settings.getProperty("window.height", Integer.class);
+    final private static int FONT_SIZE = Settings.getProperty("window.fontSize", Integer.class);
 
     private int marginLeft = 10;
     private int marginTop = 10;

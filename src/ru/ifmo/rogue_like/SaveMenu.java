@@ -22,7 +22,7 @@ public class SaveMenu extends JFrame {
         cancel.addActionListener(actionEvent -> this.dispose());
         save.addActionListener(actionEvent -> {
             try {
-                SaveService saveService = new SaveService(filename.getText());
+                SaveService saveService = new SaveService();
                 saveService.save(map);
                 this.dispose();
             } catch (SaveException e) {

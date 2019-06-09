@@ -6,7 +6,7 @@ import javax.swing.*;
 import ru.ifmo.rogue_like.map.IMap;
 import ru.ifmo.rogue_like.map.Map;
 import ru.ifmo.rogue_like.save_service.LoadException;
-import ru.ifmo.rogue_like.save_service.LoadService;
+import ru.ifmo.rogue_like.save_service.SaveService;
 
 public class LoadMenu extends JFrame {
 
@@ -22,13 +22,13 @@ public class LoadMenu extends JFrame {
         load = new JButton("Load");
         random = new JButton("Random");
         random.addActionListener(actionEvent -> {
-            map = new Map(1024, 1024);
+            map = new Map(Settings.getProperty("map.width", Integer.class),
+                    Settings.getProperty("map.height", Integer.class));
             this.dispose();
         });
         load.addActionListener(actionEvent -> {
-
             try {
-                LoadService loadService = new LoadService(filename.getText());
+                SaveService loadService = new SaveService();
                 map = loadService.load();
                 this.dispose();
             } catch (LoadException e) {
