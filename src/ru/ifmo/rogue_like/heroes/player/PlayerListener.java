@@ -4,7 +4,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import ru.ifmo.rogue_like.App;
-import ru.ifmo.rogue_like.SaveMenu;
+import ru.ifmo.rogue_like.Notification;
 import ru.ifmo.rogue_like.Settings;
 import ru.ifmo.rogue_like.heroes.MoveAction;
 import ru.ifmo.rogue_like.heroes.mobs.ConfusedHeroDecorator;
@@ -15,6 +15,8 @@ import ru.ifmo.rogue_like.map.IMap;
 import ru.ifmo.rogue_like.rendering_system.CameraRenderer;
 import ru.ifmo.rogue_like.rendering_system.camera.Camera;
 import ru.ifmo.rogue_like.rendering_system.camera.ICamera;
+import ru.ifmo.rogue_like.save_service.SaveException;
+import ru.ifmo.rogue_like.save_service.SaveService;
 
 public class PlayerListener implements KeyListener {
 
@@ -86,7 +88,13 @@ public class PlayerListener implements KeyListener {
             //TODO: inventory
         }
         if (keyEvent.getKeyCode() == KeyEvent.VK_F5) {
-            SaveMenu sm = new SaveMenu(app.getMap());
+            SaveService saveService = new SaveService();
+            try {
+                saveService.save(app.getMap());
+                Notification notification = new Notification("Successfully saved!");
+            } catch (SaveException e) {
+                Notification notification = new Notification("Save error");
+            }
         }
     }
 

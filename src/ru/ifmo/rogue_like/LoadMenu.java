@@ -38,13 +38,11 @@ public class LoadMenu extends JFrame {
                         JOptionPane.ERROR_MESSAGE);
             }
         });
-        filename = new JTextField("Enter file name", 30);
         buttons = new JPanel();
         buttons.setLayout(new FlowLayout());
         setLayout(new FlowLayout());
         buttons.add(load, BorderLayout.EAST);
         buttons.add(random, BorderLayout.WEST);
-        add(filename, BorderLayout.NORTH);
         add(buttons, BorderLayout.SOUTH);
         setSize(new Dimension(400, 100));
         setResizable(false);
