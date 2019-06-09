@@ -20,6 +20,9 @@ public class Settings {
         } else {
             result = initialProperties.getProperty(key);
         }
+        if (result == null) {
+            return null;
+        }
         if (Integer.class == clazz) {
             return (T) Integer.valueOf(result);
         }
