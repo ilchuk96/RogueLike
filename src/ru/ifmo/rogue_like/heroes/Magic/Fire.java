@@ -16,7 +16,7 @@ public class Fire extends Magic {
         mana = 10;
         damage = 1;
         square = 3;
-
+        needExp = 10;
     }
 
     @Override
@@ -39,6 +39,14 @@ public class Fire extends Magic {
     }
 
     @Override
+    public String getLUInfo() {
+        if (canLevelUp()) {
+            return "+1 to damage for " + needExp + " exp";
+        }
+        return "Max Level";
+    }
+
+    @Override
     protected void upgrade() {
         damage++;
         needExp *= 10;
@@ -46,6 +54,6 @@ public class Fire extends Magic {
 
     @Override
     public boolean canLevelUp() {
-        return damage == 5;
+        return damage != 5;
     }
 }

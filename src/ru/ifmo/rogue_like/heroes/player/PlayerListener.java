@@ -4,6 +4,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import ru.ifmo.rogue_like.App;
+import ru.ifmo.rogue_like.InventoryMenu;
 import ru.ifmo.rogue_like.SaveMenu;
 import ru.ifmo.rogue_like.heroes.MoveAction;
 import ru.ifmo.rogue_like.heroes.mobs.ConfusedHeroDecorator;
@@ -22,11 +23,14 @@ public class PlayerListener implements KeyListener {
 
     private PlayerStrategy playerStrategy;
 
+    private Hero player;
+
     public PlayerListener(IMap map) {
         playerStrategy = new PlayerStrategy();
-        HeroDecorator player = new ConfusedHeroDecorator(new Hero(playerStrategy, map.getHeroX(), map.getHeroY()));
-        map.addPlayer(player);
-        ICamera camera = new Camera(41, 41, player);
+        player = new Hero(playerStrategy, map.getHeroX(), map.getHeroY());
+        HeroDecorator heroDecorator = new ConfusedHeroDecorator(player);
+        map.addPlayer(heroDecorator);
+        ICamera camera = new Camera(41, 41, heroDecorator);
         camera.addRenderableObject(map);
         CameraRenderer renderer = new CameraRenderer(camera, this);
         app = new App(map, renderer);
@@ -59,7 +63,7 @@ public class PlayerListener implements KeyListener {
             app.update();
         }
         if (keyEvent.getKeyCode() == KeyEvent.VK_I) {
-            //TODO: inventory
+            InventoryMenu lm = new InventoryMenu(player, playerStrategy.magics);
         }
         if (keyEvent.getKeyCode() == KeyEvent.VK_F5) {
             SaveMenu sm = new SaveMenu(app.getMap());

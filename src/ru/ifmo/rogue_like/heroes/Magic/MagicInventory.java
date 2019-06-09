@@ -23,4 +23,16 @@ public class MagicInventory {
     public void cast(IMap map, Hero hero) {
         magics.get(inUse).cast(map, hero);
     }
+
+    public List<Magic> getMagics() {
+        return magics;
+    }
+
+    public int getInUse() {
+        return inUse;
+    }
+
+    public void setInUse(int inUse) {
+        this.inUse = inUse;
+    }
 }

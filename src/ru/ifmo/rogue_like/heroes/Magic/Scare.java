@@ -16,7 +16,7 @@ public class Scare extends Magic {
     public Scare() {
         mana = 10;
         square = 1;
-
+        needExp = 10;
     }
 
     @Override
@@ -40,6 +40,14 @@ public class Scare extends Magic {
     }
 
     @Override
+    public String getLUInfo() {
+        if (canLevelUp()) {
+            return "+1 to area for " + needExp + " exp";
+        }
+        return "Max Level";
+    }
+
+    @Override
     protected void upgrade() {
         square++;
         needExp *= 10;
@@ -47,6 +55,6 @@ public class Scare extends Magic {
 
     @Override
     public boolean canLevelUp() {
-        return square == 5;
+        return square != 5;
     }
 }

@@ -3,7 +3,6 @@ package ru.ifmo.rogue_like.heroes.mobs.move_strategies;
 import ru.ifmo.rogue_like.heroes.Magic.MagicInventory;
 import ru.ifmo.rogue_like.heroes.MoveAction;
 import ru.ifmo.rogue_like.heroes.mobs.Hero;
-import ru.ifmo.rogue_like.heroes.player.PlayerListener;
 import ru.ifmo.rogue_like.map.IMap;
 import ru.ifmo.rogue_like.rendering_system.IView;
 

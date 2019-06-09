@@ -31,14 +31,16 @@ public abstract class Magic {
         if (hero.getExp() < needExp && !canLevelUp()) {
             return false;
         }
-        upgrade();
         hero.reduceExp(needExp);
+        upgrade();
         return true;
     };
 
+    public abstract String getLUInfo();
+
     abstract protected void upgrade();
 
-    int needExpToLevelUp() {
+    public int needExpToLevelUp() {
         return needExp;
     }
 

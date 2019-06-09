@@ -24,6 +24,14 @@ public class Heal extends Magic {
     }
 
     @Override
+    public String getLUInfo() {
+        if (canLevelUp()) {
+            return "-1 to mana for " + needExp + " exp";
+        }
+        return "Max Level";
+    }
+
+    @Override
     protected void upgrade() {
         mana--;
         needExp *= 10;
@@ -31,6 +39,6 @@ public class Heal extends Magic {
 
     @Override
     public boolean canLevelUp() {
-        return mana == 1;
+        return mana != 1;
     }
 }

@@ -5,7 +5,7 @@ import ru.ifmo.rogue_like.heroes.player.PlayerListener;
 import java.io.IOException;
 
 public class Main {
-    public static void main(String[] args) throws InterruptedException, IOException {
+    public static void main(String[] args) throws InterruptedException {
         LoadMenu lm = new LoadMenu();
         while (lm.isVisible()) {
             Thread.sleep(100);

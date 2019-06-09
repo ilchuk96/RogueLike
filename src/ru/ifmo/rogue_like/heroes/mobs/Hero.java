@@ -61,9 +61,6 @@ public class Hero implements IHero {
 
     @Override
     public boolean move(IMap map, MoveAction moveDirection) {
-        if (strategy instanceof PlayerStrategy) {
-            System.out.println(mana);
-        }
         if (moveDirection == null) {
             return false;
         }
@@ -129,7 +126,11 @@ public class Hero implements IHero {
     }
 
     public int getExp() {
-        return mana;
+        return exp;
+    }
+
+    public void addExp(int add) {
+        exp += add;
     }
 
     public void reduceExp(int e) {
