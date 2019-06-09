@@ -1,6 +1,5 @@
 package ru.ifmo.rogue_like.map;
 
-import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -29,10 +28,10 @@ public class Map implements IMap {
     /***
      * maxX and maxY must be divisible by 8
      */
-    public Map(int x, int y) {
+    public Map(int sizeX, int sizeY) {
         random = new Random();
-        maxX = x;
-        maxY = y;
+        maxX = sizeX;
+        maxY = sizeY;
         heroes = new ArrayList<>();
         newHeroes = new ArrayList<>();
         field = new ArrayList<>();
@@ -60,33 +59,7 @@ public class Map implements IMap {
         heroY = curY;
     }
 
-    public Map(int x, int y, String filepath) throws IOException {
-        random = new Random();
-        maxX = x;
-        maxY = y;
-        heroes = new ArrayList<>();
-        newHeroes = new ArrayList<>();
-        field = new ArrayList<>();
-        BufferedReader br = new BufferedReader(new FileReader(filepath));
-        String line;
-        for (int i = 0; i < maxX; i++) {
-            line = br.readLine();
-            List<ISquare> lst = new ArrayList<>();
-            for (int j = 0; j < maxY; j++) {
-                char ch = line.charAt(j);
-                if (ch == '+') {
-                    lst.add(new Floor());
-                } else if (ch == '=') {
-                    lst.add(new Wall());
-                } else if (ch == '$') {
-                    heroX = i;
-                    heroY = j;
-                } else {
-                    lst.add(null);
-                }
-            }
-            field.add(lst);
-        }
+    private Map() {
     }
 
     @Override
@@ -306,26 +279,6 @@ public class Map implements IMap {
     }
 
     @Override
-    public void saveMap(String filepath) throws IOException {
-        FileWriter fileWriter = new FileWriter(new File(filepath));
-        for (List<ISquare> lst : field) {
-            StringBuilder sb = new StringBuilder();
-            for (ISquare square : lst) {
-                if (square instanceof Floor) {
-                    sb.append("+");
-                } else if (square instanceof Wall) {
-                    sb.append("=");
-                } else {
-                    sb.append(".");
-                }
-            }
-            fileWriter.write(sb.toString());
-            fileWriter.write("\n");
-        }
-        fileWriter.close();
-    }
-
-    @Override
     public IView getView(long time) {
         char[][] view = new char[field.size()][field.get(0).size()];
         int i = 0, j = 0;
@@ -333,7 +286,7 @@ public class Map implements IMap {
             for (ISquare square : t) {
                 if (square instanceof Floor) {
                     view[i][j] = '+';
-                }  else if (square instanceof HeroDecorator) {
+                } else if (square instanceof HeroDecorator) {
                     view[i][j] = ((HeroDecorator) square).getView(0).getView()[0][0];
                 } else {
                     view[i][j] = '=';

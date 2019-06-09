@@ -1,11 +1,12 @@
 package ru.ifmo.rogue_like;
 
+import java.awt.*;
+import javax.swing.*;
+
 import ru.ifmo.rogue_like.map.IMap;
 import ru.ifmo.rogue_like.map.Map;
-
-import javax.swing.*;
-import java.awt.*;
-import java.io.IOException;
+import ru.ifmo.rogue_like.save_service.LoadException;
+import ru.ifmo.rogue_like.save_service.LoadService;
 
 public class LoadMenu extends JFrame {
 
@@ -25,10 +26,12 @@ public class LoadMenu extends JFrame {
             this.dispose();
         });
         load.addActionListener(actionEvent -> {
+
             try {
-                map = new Map(1024, 1024, filename.getText());
+                LoadService loadService = new LoadService(filename.getText());
+                map = loadService.load();
                 this.dispose();
-            } catch (IOException e) {
+            } catch (LoadException e) {
                 JOptionPane.showMessageDialog(this,
                         "File not found",
                         "Read error",
@@ -49,7 +52,7 @@ public class LoadMenu extends JFrame {
 
     }
 
-    public IMap getMap(){
+    public IMap getMap() {
         return map;
     }
 }

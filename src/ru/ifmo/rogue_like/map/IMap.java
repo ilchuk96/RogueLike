@@ -40,5 +40,5 @@ public interface IMap extends IRenderable {
 
     public void move(int x, int y, int dx, int dy);
 
-    void saveMap(String filepath) throws IOException;
+//    String saveMap();
 }
