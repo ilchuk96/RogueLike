@@ -26,6 +26,9 @@ public class PlayerListener implements KeyListener {
     private final int downKeyCode;
     private final int leftKeyCode;
     private final int rightKeyCode;
+    private final int skipKeyCode;
+    private final int castKeyCode;
+    private final int inventoryKeyCode;
 
     public PlayerListener(IMap map) {
         playerStrategy = new PlayerStrategy();
@@ -43,6 +46,12 @@ public class PlayerListener implements KeyListener {
                 Settings.getProperty("player.left", Character.class));
         rightKeyCode = KeyEvent.getExtendedKeyCodeForChar(
                 Settings.getProperty("player.right", Character.class));
+        skipKeyCode = KeyEvent.getExtendedKeyCodeForChar(
+                Settings.getProperty("player.skip", Character.class));
+        castKeyCode = KeyEvent.getExtendedKeyCodeForChar(
+                Settings.getProperty("player.cast", Character.class));
+        inventoryKeyCode = KeyEvent.getExtendedKeyCodeForChar(
+                Settings.getProperty("player.inventory", Character.class));
 
         app = new App(map, renderer);
     }
@@ -63,17 +72,17 @@ public class PlayerListener implements KeyListener {
         if (keyEvent.getKeyCode() == downKeyCode) {
             action = new MoveAction(0, 1, 0);
         }
-        if (keyEvent.getKeyCode() == KeyEvent.VK_Q) {
+        if (keyEvent.getKeyCode() == skipKeyCode) {
             action = new MoveAction(0, 0, 0);
         }
-        if (keyEvent.getKeyCode() == KeyEvent.VK_E) {
+        if (keyEvent.getKeyCode() == castKeyCode) {
             action = new MoveAction(0, 0, 1);
         }
         if (action != null) {
             playerStrategy.setAction(action);
             app.update();
         }
-        if (keyEvent.getKeyCode() == KeyEvent.VK_I) {
+        if (keyEvent.getKeyCode() == inventoryKeyCode) {
             //TODO: inventory
         }
         if (keyEvent.getKeyCode() == KeyEvent.VK_F5) {
