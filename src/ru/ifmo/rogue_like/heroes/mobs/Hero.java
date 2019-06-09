@@ -1,16 +1,12 @@
 package ru.ifmo.rogue_like.heroes.mobs;
 
-import java.util.List;
-
-import ru.ifmo.rogue_like.heroes.Magic.MagicInventory;
+import ru.ifmo.rogue_like.heroes.IHeroesService;
 import ru.ifmo.rogue_like.heroes.MoveAction;
 import ru.ifmo.rogue_like.heroes.mobs.move_strategies.Dilative;
 import ru.ifmo.rogue_like.heroes.mobs.move_strategies.IHeroStrategy;
 import ru.ifmo.rogue_like.heroes.mobs.move_strategies.Passive;
 import ru.ifmo.rogue_like.heroes.mobs.move_strategies.PlayerStrategy;
 import ru.ifmo.rogue_like.map.IMap;
-import ru.ifmo.rogue_like.map.ISquare;
-import ru.ifmo.rogue_like.map.squares.Wall;
 import ru.ifmo.rogue_like.rendering_system.IView;
 
 public class Hero implements IHero {
@@ -34,8 +30,8 @@ public class Hero implements IHero {
     }
 
     @Override
-    public MoveAction getMove(IMap map) {
-        MoveAction moveDirection = strategy.moveDirection(map, x, y);
+    public MoveAction getMove(IHeroesService heroesService, IMap map) {
+        MoveAction moveDirection = strategy.moveDirection(map, heroesService, this);
         if (strategy instanceof Dilative && moveDirection.getX() == 0 && moveDirection.getY() == 0) {
             setStrategy(new Passive());
         }
@@ -52,6 +48,7 @@ public class Hero implements IHero {
         return strategy;
     }
 
+
     private void restoreMana() {
         if (mana < MAX_MANA) {
             mana++;
@@ -60,7 +57,7 @@ public class Hero implements IHero {
 
 
     @Override
-    public boolean move(IMap map, MoveAction moveDirection) {
+    public boolean move(IHeroesService heroesService, MoveAction moveDirection) {
         if (strategy instanceof PlayerStrategy) {
             System.out.println(mana);
         }
@@ -69,41 +66,25 @@ public class Hero implements IHero {
         }
         if (moveDirection.getX() == 0 && moveDirection.getY() == 0) {
             if (moveDirection.getType() != 0) {
-                strategy.castAction(map, this);
+                strategy.castAction(heroesService, this);
             } else {
                 restoreMana();
             }
             return false;
         }
         restoreMana();
-        if (moveDirection.getX() == 1) {
-            map.updateMap(x, y, 'd');
-        }
-        if (moveDirection.getX() == -1) {
-            map.updateMap(x, y, 'a');
-        }
-        if (moveDirection.getY() == 1) {
-            map.updateMap(x, y, 's');
-        }
-        if (moveDirection.getY() == -1) {
-            map.updateMap(x, y, 'w');
-        }
-        List<List<ISquare>> field = map.getField();
-        if (x + moveDirection.getX() < 0 || x + moveDirection.getX() >= field.size()) return false;
-        if (y + moveDirection.getY() < 0 || y + moveDirection.getY() >= field.get(x + moveDirection.getX()).size()) return false;
-        if (field.get(x + moveDirection.getX()).get(y + moveDirection.getY()) instanceof Wall) {
-            return false;
-        }
-        if (field.get(x + moveDirection.getX()).get(y + moveDirection.getY()) instanceof HeroDecorator) {
-            ((HeroDecorator) field.get(x + moveDirection.getX()).get(y + moveDirection.getY())).getDamage(2);
-            if (((HeroDecorator) field.get(x + moveDirection.getX()).get(y + moveDirection.getY())).isDead()) {
+        int newX = x + moveDirection.getX();
+        int newY = y + moveDirection.getY();
+        IHero heroOnTheWay = heroesService.getHero(newX, newY);
+        if (heroOnTheWay != null) {
+            heroOnTheWay.getDamage(2);
+            if (heroOnTheWay.isDead()) {
                 exp++;
             }
             return false;
         }
-        map.move(x, y, moveDirection.getX(), moveDirection.getY());
-        x += moveDirection.getX();
-        y += moveDirection.getY();
+        x += newX;
+        y += newY;
         return true;
     }
 

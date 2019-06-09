@@ -1,13 +1,9 @@
-package ru.ifmo.rogue_like.heroes.Magic;
+package ru.ifmo.rogue_like.heroes.magic;
 
+import ru.ifmo.rogue_like.heroes.IHeroesService;
 import ru.ifmo.rogue_like.heroes.mobs.Hero;
-import ru.ifmo.rogue_like.heroes.mobs.HeroDecorator;
+import ru.ifmo.rogue_like.heroes.mobs.IHero;
 import ru.ifmo.rogue_like.heroes.mobs.move_strategies.Dilative;
-import ru.ifmo.rogue_like.heroes.mobs.move_strategies.PlayerStrategy;
-import ru.ifmo.rogue_like.map.IMap;
-import ru.ifmo.rogue_like.map.ISquare;
-
-import java.util.List;
 
 public class Scare extends Magic {
 
@@ -20,15 +16,17 @@ public class Scare extends Magic {
     }
 
     @Override
-    protected void apply(IMap map, Hero hero) {
+    protected void apply(IHeroesService heroService, Hero hero) {
         int x = hero.getX();
         int y = hero.getY();
-        List<List<ISquare>> field = map.getField();
         for (int i = -square; i <= square; i++) {
             for (int j = -square; j <= square; j++) {
-                if (field.get(x + i).get(y + j) instanceof HeroDecorator &&
-                        !(((HeroDecorator) field.get(x + i).get(y + j)).getStrategy() instanceof PlayerStrategy)) {
-                    ((HeroDecorator) field.get(x + i).get(y + j)).setStrategy(new Dilative());
+                if (i == 0 && j == 0) {
+                    continue;
+                }
+                IHero target = heroService.getHero(x + i, y + j);
+                if (target != null) {
+                    target.setStrategy(new Dilative());
                 }
             }
         }

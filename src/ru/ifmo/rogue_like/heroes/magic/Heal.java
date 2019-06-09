@@ -1,7 +1,7 @@
-package ru.ifmo.rogue_like.heroes.Magic;
+package ru.ifmo.rogue_like.heroes.magic;
 
+import ru.ifmo.rogue_like.heroes.IHeroesService;
 import ru.ifmo.rogue_like.heroes.mobs.Hero;
-import ru.ifmo.rogue_like.map.IMap;
 
 public class Heal extends Magic {
 
@@ -14,7 +14,7 @@ public class Heal extends Magic {
     }
 
     @Override
-    public void apply(IMap map, Hero hero) {
+    public void apply(IHeroesService heroesService, Hero hero) {
         hero.getDamage(-heal);
     }
 

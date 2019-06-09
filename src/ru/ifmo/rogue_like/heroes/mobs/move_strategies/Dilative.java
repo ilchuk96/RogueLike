@@ -1,6 +1,10 @@
 package ru.ifmo.rogue_like.heroes.mobs.move_strategies;
 
+import ru.ifmo.rogue_like.heroes.HeroesService;
+import ru.ifmo.rogue_like.heroes.IHeroesService;
 import ru.ifmo.rogue_like.heroes.MoveAction;
+import ru.ifmo.rogue_like.heroes.mobs.Hero;
+import ru.ifmo.rogue_like.heroes.mobs.IHero;
 import ru.ifmo.rogue_like.map.IMap;
 import ru.ifmo.rogue_like.rendering_system.IView;
 
@@ -16,7 +20,9 @@ public class Dilative implements IHeroStrategy {
     }
 
     @Override
-    public MoveAction moveDirection(IMap map, int x, int y) {
+    public MoveAction moveDirection(IMap map, IHeroesService heroesService, IHero hero) {
+        int x = hero.getX();
+        int y = hero.getY();
         char[][] field = map.getView(0).getView();
         for (int i = -4; i <= 4; i++) {
             for (int j = -4; j <= 4; j++) {
@@ -35,6 +41,7 @@ public class Dilative implements IHeroStrategy {
             }
         }
         return new MoveAction(0, 0, 0);
+
     }
 
     @Override
@@ -57,5 +64,10 @@ public class Dilative implements IHeroStrategy {
                 return result;
             }
         };
+    }
+
+    @Override
+    public void castAction(IHeroesService heroesService, Hero hero) {
+
     }
 }

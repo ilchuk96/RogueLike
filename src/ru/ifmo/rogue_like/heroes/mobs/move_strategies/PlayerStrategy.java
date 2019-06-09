@@ -1,9 +1,10 @@
 package ru.ifmo.rogue_like.heroes.mobs.move_strategies;
 
-import ru.ifmo.rogue_like.heroes.Magic.MagicInventory;
+import ru.ifmo.rogue_like.heroes.IHeroesService;
 import ru.ifmo.rogue_like.heroes.MoveAction;
+import ru.ifmo.rogue_like.heroes.magic.MagicInventory;
 import ru.ifmo.rogue_like.heroes.mobs.Hero;
-import ru.ifmo.rogue_like.heroes.player.PlayerListener;
+import ru.ifmo.rogue_like.heroes.mobs.IHero;
 import ru.ifmo.rogue_like.map.IMap;
 import ru.ifmo.rogue_like.rendering_system.IView;
 
@@ -15,7 +16,7 @@ public class PlayerStrategy implements IHeroStrategy {
 
     public PlayerStrategy() {
         magics = new MagicInventory();
-        action = new MoveAction(0, 0,0);
+        action = new MoveAction(0, 0, 0);
     }
 
     public void setAction(MoveAction action) {
@@ -23,7 +24,10 @@ public class PlayerStrategy implements IHeroStrategy {
     }
 
     @Override
-    public MoveAction moveDirection(IMap map, int x, int y) {
+    public MoveAction moveDirection(IMap map, IHeroesService heroesService, IHero hero) {
+        while (this.action == null) {}
+        MoveAction action = this.action;
+        this.action = null;
         return action;
     }
 
@@ -50,7 +54,7 @@ public class PlayerStrategy implements IHeroStrategy {
     }
 
     @Override
-    public void castAction(IMap map, Hero hero) {
-        magics.cast(map, hero);
+    public void castAction(IHeroesService heroesService, Hero hero) {
+        magics.cast(heroesService, hero);
     }
 }

@@ -1,11 +1,9 @@
-package ru.ifmo.rogue_like.heroes.Magic;
+package ru.ifmo.rogue_like.heroes.magic;
 
+import ru.ifmo.rogue_like.heroes.IHeroesService;
 import ru.ifmo.rogue_like.heroes.mobs.Hero;
 import ru.ifmo.rogue_like.heroes.mobs.HeroDecorator;
-import ru.ifmo.rogue_like.map.IMap;
-import ru.ifmo.rogue_like.map.ISquare;
-
-import java.util.List;
+import ru.ifmo.rogue_like.heroes.mobs.IHero;
 
 public class Confuse extends Magic {
 
@@ -16,18 +14,22 @@ public class Confuse extends Magic {
         mana = 10;
         time = 5;
         square = 1;
-
     }
 
     @Override
-    protected void apply(IMap map, Hero hero) {
+    protected void apply(IHeroesService heroService, Hero hero) {
         int x = hero.getX();
         int y = hero.getY();
-        List<List<ISquare>> field = map.getField();
         for (int i = -square; i <= square; i++) {
             for (int j = -square; j <= square; j++) {
-                if (field.get(x + i).get(y + j) instanceof HeroDecorator && (i != 0 || j != 0)) {
-                    ((HeroDecorator) field.get(x + i).get(y + j)).confuse(time);
+                if (i == 0 && j == 0) {
+                    continue;
+                }
+                IHero target = heroService.getHero(x + i, y + j);
+                if (target != null) {
+                    if (target instanceof HeroDecorator) {
+                        ((HeroDecorator) target).confuse(time);
+                    }
                 }
             }
         }

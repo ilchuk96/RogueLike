@@ -7,6 +7,7 @@ import java.util.Random;
 import ru.ifmo.rogue_like.heroes.mobs.ConfusedHeroDecorator;
 import ru.ifmo.rogue_like.heroes.mobs.Hero;
 import ru.ifmo.rogue_like.heroes.mobs.HeroDecorator;
+import ru.ifmo.rogue_like.heroes.mobs.IHero;
 import ru.ifmo.rogue_like.heroes.mobs.move_strategies.Agressive;
 import ru.ifmo.rogue_like.heroes.mobs.move_strategies.Dilative;
 import ru.ifmo.rogue_like.heroes.mobs.move_strategies.IHeroStrategy;
@@ -20,10 +21,7 @@ public class Map implements IMap {
     private Random random;
     private int maxX;
     private int maxY;
-    private List<HeroDecorator> heroes;
-    private List<HeroDecorator> newHeroes;
-    private int heroX;
-    private int heroY;
+    private int playerSpawnX, playerSpawnY;
 
     /***
      * maxX and maxY must be divisible by 8
@@ -32,8 +30,9 @@ public class Map implements IMap {
         random = new Random();
         maxX = sizeX;
         maxY = sizeY;
-        heroes = new ArrayList<>();
-        newHeroes = new ArrayList<>();
+        this.playerSpawnX = maxX / 2 + 1;
+        this.playerSpawnY = maxY / 2 + 1;
+
         field = new ArrayList<>();
         for (int i = 0; i < maxX; i++) {
             List<ISquare> lst = new ArrayList<>();
@@ -55,47 +54,9 @@ public class Map implements IMap {
         for (int j = -4; j <= 3; j++) {
             (field.get(curX)).set(curY + j, new Wall());
         }
-        heroX = curX + 1;
-        heroY = curY;
     }
 
     private Map() {
-    }
-
-    @Override
-    public int getHeroX() {
-        return heroX;
-    }
-
-    @Override
-    public int getHeroY() {
-        return heroY;
-    }
-
-    @Override
-    public void addPlayer(HeroDecorator player) {
-        field.get(player.getX()).set(player.getY(), player);
-        heroes.add(player);
-    }
-
-    @Override
-    public void deleteMob(int x, int y) {
-        field.get(x).set(y, new Floor());
-    }
-
-    @Override
-    public List<HeroDecorator> getHeroes() {
-        heroes.addAll(newHeroes);
-        newHeroes = new ArrayList<>();
-        List<HeroDecorator> toRemove = new ArrayList<>();
-        for (HeroDecorator hero : heroes) {
-            if (hero.isDead()) {
-                toRemove.add(hero);
-                deleteMob(hero.getX(), hero.getY());
-            }
-        }
-        heroes.removeAll(toRemove);
-        return heroes;
     }
 
     @Override
@@ -103,6 +64,24 @@ public class Map implements IMap {
         ISquare t = field.get(x).get(y);
         field.get(x).set(y, field.get(x + dx).get(y + dy));
         field.get(x + dx).set(y + dy, t);
+    }
+
+    @Override
+    public boolean isEmpty(int x, int y) {
+        if (maxX <= x || maxY <= y) {
+            return false;
+        }
+        return field.get(x).get(y) instanceof Floor;
+    }
+
+    @Override
+    public int getPlayerSpawnX() {
+        return playerSpawnX;
+    }
+
+    @Override
+    public int getPlayerSpawnY() {
+        return playerSpawnY;
     }
 
     /*
@@ -211,7 +190,7 @@ public class Map implements IMap {
     }
 
     @Override
-    public HeroDecorator updateMap(int x, int y, char direction) {
+    public IHero updateMap(int x, int y, char direction) {
         Integer mobX = null;
         Integer mobY = null;
 
@@ -270,10 +249,7 @@ public class Map implements IMap {
             } else {
                 strategy = new Agressive();
             }
-            HeroDecorator mob = new ConfusedHeroDecorator(new Hero(strategy, mobX, mobY));
-            field.get(mobX).set(mobY, mob);
-            newHeroes.add(mob);
-            return mob;
+            return new ConfusedHeroDecorator(new Hero(strategy, mobX, mobY));
         }
         return null;
     }

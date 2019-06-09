@@ -3,7 +3,6 @@ package ru.ifmo.rogue_like.rendering_system.camera;
 import java.util.ArrayList;
 import java.util.List;
 
-import ru.ifmo.rogue_like.heroes.mobs.Hero;
 import ru.ifmo.rogue_like.map.IPositionable;
 import ru.ifmo.rogue_like.rendering_system.IRenderable;
 import ru.ifmo.rogue_like.rendering_system.IView;
@@ -25,11 +24,17 @@ public class Camera implements ICamera {
 
     @Override
     public void addRenderableObject(IRenderable renderable) {
+        if (renderableObjects.contains(renderable)) {
+            return;
+        }
         renderableObjects.add(renderable);
     }
 
     @Override
     public void removeRenderableObject(IRenderable renderable) {
+        if (!renderableObjects.contains(renderable)) {
+            return;
+        }
         renderableObjects.remove(renderable);
     }
 

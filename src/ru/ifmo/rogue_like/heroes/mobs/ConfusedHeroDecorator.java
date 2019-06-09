@@ -1,5 +1,6 @@
 package ru.ifmo.rogue_like.heroes.mobs;
 
+import ru.ifmo.rogue_like.heroes.IHeroesService;
 import ru.ifmo.rogue_like.heroes.MoveAction;
 import ru.ifmo.rogue_like.map.IMap;
 
@@ -17,8 +18,13 @@ public class ConfusedHeroDecorator extends HeroDecorator {
     }
 
     @Override
-    public MoveAction getMove(IMap map) {
-        MoveAction move = hero.getMove(map);
+    public void confuse(int time) {
+        timeLeft += time;
+    }
+
+    @Override
+    public MoveAction getMove(IHeroesService heroesService, IMap map) {
+        MoveAction move = hero.getMove(heroesService, map);
         if (timeLeft > 0) {
             int choice = random.nextInt(3) - 1;
             if (choice != 0) {
@@ -31,15 +37,11 @@ public class ConfusedHeroDecorator extends HeroDecorator {
             timeLeft--;
         }
         return move;
+
     }
 
     @Override
-    public boolean move(IMap map, MoveAction moveDirection) {
-        return hero.move(map, moveDirection);
-    }
-
-    @Override
-    public void confuse(int time) {
-        timeLeft += time;
+    public boolean move(IHeroesService heroesService, MoveAction moveDirection) {
+        return hero.move(heroesService, moveDirection);
     }
 }

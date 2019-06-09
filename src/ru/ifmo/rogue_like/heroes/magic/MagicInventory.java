@@ -1,10 +1,10 @@
-package ru.ifmo.rogue_like.heroes.Magic;
-
-import ru.ifmo.rogue_like.heroes.mobs.Hero;
-import ru.ifmo.rogue_like.map.IMap;
+package ru.ifmo.rogue_like.heroes.magic;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import ru.ifmo.rogue_like.heroes.IHeroesService;
+import ru.ifmo.rogue_like.heroes.mobs.Hero;
 
 public class MagicInventory {
     private List<Magic> magics;
@@ -20,7 +20,7 @@ public class MagicInventory {
         inUse = 0;
     }
 
-    public void cast(IMap map, Hero hero) {
-        magics.get(inUse).cast(map, hero);
+    public void cast(IHeroesService heroesService, Hero hero) {
+        magics.get(inUse).cast(heroesService, hero);
     }
 }

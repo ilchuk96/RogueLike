@@ -5,8 +5,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Properties;
 
-import ru.ifmo.rogue_like.heroes.player.PlayerListener;
-
 public class Main {
     public static void main(String[] args) throws InterruptedException, IOException {
         Properties properties = new Properties();
@@ -17,6 +15,5 @@ public class Main {
             Thread.sleep(100);
         }
         System.out.println(lm.getMap());
-        PlayerListener playerListener = new PlayerListener(lm.getMap());
     }
 }
