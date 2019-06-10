@@ -14,10 +14,11 @@ public class Confuse extends Magic {
         mana = 10;
         time = 5;
         square = 1;
+        needExp = 10;
     }
 
     @Override
-    protected void apply(IHeroesService heroService, Hero hero) {
+    protected void apply(IHeroesService heroService, IHero hero) {
         int x = hero.getX();
         int y = hero.getY();
         for (int i = -square; i <= square; i++) {
@@ -41,6 +42,14 @@ public class Confuse extends Magic {
     }
 
     @Override
+    public String getLUInfo() {
+        if (canLevelUp()) {
+            return "+1 to area for " + needExp + " exp";
+        }
+        return "Max Level";
+    }
+
+    @Override
     protected void upgrade() {
         square++;
         needExp *= 10;
@@ -48,6 +57,6 @@ public class Confuse extends Magic {
 
     @Override
     public boolean canLevelUp() {
-        return square == 5;
+        return square != 5;
     }
 }

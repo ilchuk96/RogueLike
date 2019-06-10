@@ -98,10 +98,12 @@ public class Hero implements IHero {
         }
     }
 
+    @Override
     public int getMana() {
         return mana;
     }
 
+    @Override
     public void reduceMana(int m) {
         mana -= m;
         if (mana < 0) {
@@ -109,12 +111,15 @@ public class Hero implements IHero {
         }
     }
 
+    @Override
     public int getExp() {
-        return mana;
+        return exp;
     }
 
+    @Override
     public void reduceExp(int e) {
         exp -= e;
+        System.out.println(exp);
     }
 
     @Override

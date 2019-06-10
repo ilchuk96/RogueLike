@@ -23,4 +23,16 @@ public class MagicInventory {
     public void cast(IHeroesService heroesService, Hero hero) {
         magics.get(inUse).cast(heroesService, hero);
     }
+
+    public List<Magic> getMagics() {
+        return magics;
+    }
+
+    public int getInUse() {
+        return inUse;
+    }
+
+    public void setInUse(int toUse) {
+        inUse = toUse;
+    }
 }

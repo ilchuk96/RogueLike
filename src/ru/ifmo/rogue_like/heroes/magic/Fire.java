@@ -20,11 +20,11 @@ public class Fire extends Magic {
         mana = 10;
         damage = 1;
         square = 3;
-
+        needExp = 10;
     }
 
     @Override
-    protected void apply(IHeroesService heroService, Hero hero) {
+    protected void apply(IHeroesService heroService, IHero hero) {
         int x = hero.getX();
         int y = hero.getY();
         for (int i = -square; i <= square; i++) {
@@ -35,6 +35,9 @@ public class Fire extends Magic {
                 IHero target = heroService.getHero(x + i, y + j);
                 if (target != null) {
                     target.getDamage(damage);
+                    if (target.isDead()) {
+                        hero.reduceExp(-1);
+                    }
                 }
             }
         }
@@ -46,6 +49,14 @@ public class Fire extends Magic {
     }
 
     @Override
+    public String getLUInfo() {
+        if (canLevelUp()) {
+            return "+1 to damage for " + needExp + " exp";
+        }
+        return "Max Level";
+    }
+
+    @Override
     protected void upgrade() {
         damage++;
         needExp *= 10;
@@ -53,6 +64,6 @@ public class Fire extends Magic {
 
     @Override
     public boolean canLevelUp() {
-        return damage == 5;
+        return damage != 5;
     }
 }

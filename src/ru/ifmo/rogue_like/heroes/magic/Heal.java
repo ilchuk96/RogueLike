@@ -2,6 +2,7 @@ package ru.ifmo.rogue_like.heroes.magic;
 
 import ru.ifmo.rogue_like.heroes.IHeroesService;
 import ru.ifmo.rogue_like.heroes.mobs.Hero;
+import ru.ifmo.rogue_like.heroes.mobs.IHero;
 
 public class Heal extends Magic {
 
@@ -14,13 +15,21 @@ public class Heal extends Magic {
     }
 
     @Override
-    public void apply(IHeroesService heroesService, Hero hero) {
+    public void apply(IHeroesService heroesService, IHero hero) {
         hero.getDamage(-heal);
     }
 
     @Override
     public String info() {
         return "Heal yourself with " + heal + ", requires " + mana;
+    }
+
+    @Override
+    public String getLUInfo() {
+        if (canLevelUp()) {
+            return "-1 to mana for " + needExp + " exp";
+        }
+        return "Max Level";
     }
 
     @Override
@@ -31,6 +40,6 @@ public class Heal extends Magic {
 
     @Override
     public boolean canLevelUp() {
-        return mana == 1;
+        return mana != 1;
     }
 }

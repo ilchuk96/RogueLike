@@ -18,5 +18,13 @@ public interface IHero extends IRenderable, IPositionable {
 
     void getDamage(int damage);
 
+    int getMana();
+
+    void reduceMana(int m);
+
+    int getExp();
+
+    void reduceExp(int e);
+
     boolean isDead();
 }

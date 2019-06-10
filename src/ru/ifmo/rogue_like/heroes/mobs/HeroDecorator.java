@@ -27,6 +27,26 @@ public abstract class HeroDecorator implements IHero {
     }
 
     @Override
+    public int getMana() {
+        return  hero.getMana();
+    }
+
+    @Override
+    public void reduceMana(int m) {
+        hero.reduceMana(m);
+    }
+
+    @Override
+    public int getExp() {
+        return hero.getExp();
+    }
+
+    @Override
+    public void reduceExp(int e) {
+        hero.reduceExp(e);
+    }
+
+    @Override
     public boolean isDead() {
         return hero.isDead();
     }
