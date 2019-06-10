@@ -58,9 +58,6 @@ public class Hero implements IHero {
 
     @Override
     public boolean move(IHeroesService heroesService, MoveAction moveDirection) {
-        if (strategy instanceof PlayerStrategy) {
-            System.out.println(mana);
-        }
         if (moveDirection == null) {
             return false;
         }
@@ -141,7 +138,6 @@ public class Hero implements IHero {
     EXAMPLE
      */
     public boolean isDead() {
-        System.out.println(hp);
         return hp <= 0;
     }
 }

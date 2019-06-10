@@ -20,7 +20,12 @@ public class HeroCommandGenerator implements ICommandGenerator {
 
     @Override
     public ICommand getCommand() {
-        MoveAction moveAction = hero.getMove(heroesService, map);
+        MoveAction moveAction;
+        if (hero.isDead()) {
+            moveAction = new MoveAction(0, 0, 0);
+        } else {
+            moveAction = hero.getMove(heroesService, map);
+        }
         return new HeroMoveCommand(hero, map, heroesService, moveAction);
     }
 }
