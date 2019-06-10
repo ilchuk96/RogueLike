@@ -136,6 +136,7 @@ public class Hero implements IHero {
     EXAMPLE
      */
     public boolean isDead() {
+        System.out.println(hp);
         return hp <= 0;
     }
 }

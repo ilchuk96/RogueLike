@@ -67,6 +67,10 @@ public class App {
             camera.addRenderableObject(h);
         }
         this.renderer.render();
+        if (heroesService.getPlayer().isDead()) {
+            //Exit on lose
+            System.exit(0);
+        }
     }
 
     public IMap getMap() {

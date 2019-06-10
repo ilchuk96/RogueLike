@@ -3,6 +3,7 @@ package ru.ifmo.rogue_like.rendering_system.camera;
 import java.util.ArrayList;
 import java.util.List;
 
+import ru.ifmo.rogue_like.heroes.mobs.IHero;
 import ru.ifmo.rogue_like.map.IPositionable;
 import ru.ifmo.rogue_like.rendering_system.IRenderable;
 import ru.ifmo.rogue_like.rendering_system.IView;
@@ -45,7 +46,12 @@ public class Camera implements ICamera {
                 frame[i][g] = '.';
             }
         }
+        List<IRenderable> toDelete = new ArrayList<>();
         for (IRenderable renderable : renderableObjects) {
+            if (renderable instanceof IHero && ((IHero) renderable).isDead()) {
+                toDelete.add(renderable);
+                continue;
+            }
             IView view = renderable.getView(time);
             for (int y = 0; y < view.getView().length; y++) {
                 int positionY = y - cameraPositionY + view.getY();
@@ -61,6 +67,7 @@ public class Camera implements ICamera {
                 }
             }
         }
+        renderableObjects.removeAll(toDelete);
         setCameraPosition(position.getX(), position.getY());
     }
 

@@ -19,12 +19,19 @@ public class HeroesService implements IHeroesService {
     }
 
     public IHero getHero(int x, int y) {
+        List<IHero> dead = new ArrayList<>();
+        for (IHero hero : heroes) {
+            if (hero.isDead()) {
+                dead.add(hero);
+            }
+        }
+        heroes.removeAll(dead);
         if (player.getX() == x && player.getY() == y) {
             return player;
         }
         for (IHero hero : heroes) {
             if (hero.getX() == x && hero.getY() == y) {
-                return player;
+                return hero;
             }
         }
         return null;
