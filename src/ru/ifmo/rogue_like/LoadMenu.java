@@ -27,7 +27,7 @@ public class LoadMenu extends JFrame {
         load.addActionListener(actionEvent -> {
             try {
                 SaveService loadService = new SaveService();
-                map = loadService.load();
+                App app = loadService.load();
                 this.dispose();
             } catch (LoadException e) {
                 JOptionPane.showMessageDialog(this,

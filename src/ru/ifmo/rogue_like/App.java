@@ -44,11 +44,17 @@ public class App {
         this.commandsGenerators = commandsGenerators;
     }
 
-    public App(IMap map, IHeroesService heroesService, CameraRenderer renderer) {
+    public App(IMap map, IHeroesService heroesService, List<ICommandGenerator> commandsGenerators) {
         this.map = map;
         this.heroesService = heroesService;
-        this.renderer = renderer;
-        this.renderer.render();
+        IHero hero = heroesService.getPlayer();
+        camera = new Camera(Settings.getProperty("camera.width", Integer.class),
+                Settings.getProperty("camera.height", Integer.class), hero);
+        camera.addRenderableObject(map);
+        PlayerListener playerListener = new PlayerListener(this, hero, map, heroesService);
+        this.renderer = new CameraRenderer(camera, playerListener);
+        this.commandsGenerators = commandsGenerators;
+        commandsGenerators.add(playerListener);
     }
 
     public void update() {
@@ -75,5 +81,13 @@ public class App {
 
     public IMap getMap() {
         return map;
+    }
+
+    public IHeroesService getHeroesService() {
+        return heroesService;
+    }
+
+    public List<ICommandGenerator> getCommandsGenerators() {
+        return commandsGenerators;
     }
 }

@@ -5,6 +5,7 @@ import java.awt.event.KeyListener;
 
 import ru.ifmo.rogue_like.App;
 import ru.ifmo.rogue_like.InventoryMenu;
+import ru.ifmo.rogue_like.Notification;
 import ru.ifmo.rogue_like.Settings;
 import ru.ifmo.rogue_like.command_generators.ICommandGenerator;
 import ru.ifmo.rogue_like.commands.HeroMoveCommand;
@@ -14,6 +15,7 @@ import ru.ifmo.rogue_like.heroes.MoveAction;
 import ru.ifmo.rogue_like.heroes.mobs.IHero;
 import ru.ifmo.rogue_like.heroes.mobs.move_strategies.PlayerStrategy;
 import ru.ifmo.rogue_like.map.IMap;
+import ru.ifmo.rogue_like.save_service.SaveException;
 import ru.ifmo.rogue_like.save_service.SaveService;
 
 public class PlayerListener implements KeyListener, ICommandGenerator {
@@ -80,16 +82,16 @@ public class PlayerListener implements KeyListener, ICommandGenerator {
         }
         if (keyEvent.getKeyCode() == inventoryKeyCode) {
             //TODO: inventory
-            InventoryMenu im = new InventoryMenu(hero, ((PlayerStrategy)hero.getStrategy()).magics);
+            InventoryMenu im = new InventoryMenu(hero, ((PlayerStrategy) hero.getStrategy()).magics);
         }
         if (keyEvent.getKeyCode() == KeyEvent.VK_F5) {
             SaveService saveService = new SaveService();
-//            try {
-//                saveService.save(app.getMap());
-//                Notification notification = new Notification("Successfully saved!");
-//            } catch (SaveException e) {
-//                Notification notification = new Notification("Save error");
-//            }
+            try {
+                saveService.save(app);
+                Notification notification = new Notification("Successfully saved!");
+            } catch (SaveException e) {
+                Notification notification = new Notification("Save error");
+            }
         }
     }
 
