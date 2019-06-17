@@ -16,7 +16,7 @@ public interface IHero extends IRenderable, IPositionable {
 
     MoveAction getMove(IHeroesService heroesService, IMap map);
 
-    void getDamage(int damage);
+    void changeHPBy(int damage);
 
     int getMana();
 
@@ -24,7 +24,7 @@ public interface IHero extends IRenderable, IPositionable {
 
     int getExp();
 
-    void reduceExp(int e);
+    void changeExpBy(int e);
 
     boolean isDead();
 }

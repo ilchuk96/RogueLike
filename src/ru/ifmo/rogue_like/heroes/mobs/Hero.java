@@ -74,7 +74,7 @@ public class Hero implements IHero {
         int newY = y + moveDirection.getY();
         IHero heroOnTheWay = heroesService.getHero(newX, newY);
         if (heroOnTheWay != null) {
-            heroOnTheWay.getDamage(2);
+            heroOnTheWay.changeHPBy(-2);
             if (heroOnTheWay.isDead()) {
                 exp++;
             }
@@ -85,8 +85,8 @@ public class Hero implements IHero {
         return true;
     }
 
-    public void getDamage(int damage) {
-        hp -= damage;
+    public void changeHPBy(int damage) {
+        hp += damage;
         if (hp <= 1 && !(strategy instanceof PlayerStrategy)) {
             setStrategy(new Dilative());
         }
@@ -114,8 +114,8 @@ public class Hero implements IHero {
     }
 
     @Override
-    public void reduceExp(int e) {
-        exp -= e;
+    public void changeExpBy(int e) {
+        exp += e;
         System.out.println(exp);
     }
 

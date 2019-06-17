@@ -27,7 +27,7 @@ public class Menu implements KeyListener {
     public void render() throws IOException {
         clear();
         for (int index = 0; index < entries.size(); index++) {
-            if(index == currentIndex) {
+            if (index == currentIndex) {
                 System.out.print("> ");
             } else {
                 System.out.print("  ");

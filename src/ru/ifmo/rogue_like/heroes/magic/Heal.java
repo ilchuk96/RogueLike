@@ -1,7 +1,6 @@
 package ru.ifmo.rogue_like.heroes.magic;
 
 import ru.ifmo.rogue_like.heroes.IHeroesService;
-import ru.ifmo.rogue_like.heroes.mobs.Hero;
 import ru.ifmo.rogue_like.heroes.mobs.IHero;
 
 public class Heal extends Magic {
@@ -16,7 +15,7 @@ public class Heal extends Magic {
 
     @Override
     public void apply(IHeroesService heroesService, IHero hero) {
-        hero.getDamage(-heal);
+        hero.changeHPBy(heal);
     }
 
     @Override

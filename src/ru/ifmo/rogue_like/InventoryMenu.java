@@ -22,11 +22,11 @@ public class InventoryMenu extends JFrame {
 
     private class MagicPanel extends JPanel {
 
-        JLabel info;
-        JButton levelUp;
-        JButton equip;
-        Magic magic;
-        int number;
+        private JLabel info;
+        private JButton levelUp;
+        private JButton equip;
+        private Magic magic;
+        private int number;
 
         public MagicPanel(Magic magic, int i) {
             info = new JLabel();
@@ -83,7 +83,6 @@ public class InventoryMenu extends JFrame {
             box.add(Box.createVerticalStrut(10));
             box.add(magicPanel.get(i), BorderLayout.SOUTH);
         }
-        //setSize(new Dimension(400, 100));
         setContentPane(box);
         pack();
         setSize(new Dimension(800, 200));

@@ -21,13 +21,13 @@ public class Tile {
 
     public boolean setSquare(int x, int y, ISquare square) {
         if (0 <= x && x < 4 && 0 <= y && y < 4){
-            (tile.get(x)).set(y, square);
+            tile.get(x).set(y, square);
             return true;
         }
         return false;
     }
 
     public ISquare getSquare(int x, int y) {
-        return (tile.get(x)).get(y);
+        return tile.get(x).get(y);
     }
 }

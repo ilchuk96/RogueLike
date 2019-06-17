@@ -12,9 +12,9 @@ public class Player implements IRenderable {
     private int x;
     private int y;
 
-    private Player(int xx, int yy) {
-        x = xx;
-        y = yy;
+    private Player(int x, int y) {
+        this.x = x;
+        this.y = y;
     }
 
     public boolean move(int vx, int vy, IMap map) {

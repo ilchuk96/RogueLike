@@ -1,15 +1,7 @@
 package ru.ifmo.rogue_like.heroes.magic;
 
-import ru.ifmo.rogue_like.heroes.HeroesService;
 import ru.ifmo.rogue_like.heroes.IHeroesService;
-import ru.ifmo.rogue_like.heroes.mobs.Hero;
-import ru.ifmo.rogue_like.heroes.mobs.HeroDecorator;
 import ru.ifmo.rogue_like.heroes.mobs.IHero;
-import ru.ifmo.rogue_like.heroes.mobs.move_strategies.Dilative;
-import ru.ifmo.rogue_like.map.IMap;
-import ru.ifmo.rogue_like.map.ISquare;
-
-import java.util.List;
 
 public class Fire extends Magic {
 
@@ -34,9 +26,9 @@ public class Fire extends Magic {
                 }
                 IHero target = heroService.getHero(x + i, y + j);
                 if (target != null) {
-                    target.getDamage(damage);
+                    target.changeHPBy(-damage);
                     if (target.isDead()) {
-                        hero.reduceExp(-1);
+                        hero.changeExpBy(1);
                     }
                 }
             }

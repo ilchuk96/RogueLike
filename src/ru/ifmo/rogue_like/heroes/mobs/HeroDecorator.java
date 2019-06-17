@@ -22,8 +22,8 @@ public abstract class HeroDecorator implements IHero {
     }
 
     @Override
-    public void getDamage(int damage) {
-        hero.getDamage(damage);
+    public void changeHPBy(int damage) {
+        hero.changeHPBy(damage);
     }
 
     @Override
@@ -42,8 +42,8 @@ public abstract class HeroDecorator implements IHero {
     }
 
     @Override
-    public void reduceExp(int e) {
-        hero.reduceExp(e);
+    public void changeExpBy(int e) {
+        hero.changeExpBy(e);
     }
 
     @Override

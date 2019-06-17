@@ -1,9 +1,9 @@
 package ru.ifmo.rogue_like.heroes;
 
 public class MoveAction {
-    int x;
-    int y;
-    int type;
+    private int x;
+    private int y;
+    private int type;
 
     public MoveAction(int x, int y, int type) {
         this.x = x;

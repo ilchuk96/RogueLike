@@ -1,14 +1,13 @@
 package ru.ifmo.rogue_like.heroes.magic;
 
 import ru.ifmo.rogue_like.heroes.IHeroesService;
-import ru.ifmo.rogue_like.heroes.mobs.Hero;
 import ru.ifmo.rogue_like.heroes.mobs.IHero;
 
 public abstract class Magic {
 
-    protected int mana;
+    int mana;
 
-    protected int needExp;
+    int needExp;
 
     public boolean cast(IHeroesService heroService, IHero hero) {
         if (hero.getMana() < mana) {
@@ -33,12 +32,10 @@ public abstract class Magic {
         if (hero.getExp() < needExp && !canLevelUp()) {
             return false;
         }
-        hero.reduceExp(needExp);
+        hero.changeExpBy(-needExp);
         upgrade();
         return true;
     }
-
-    ;
 
     abstract protected void upgrade();
 
