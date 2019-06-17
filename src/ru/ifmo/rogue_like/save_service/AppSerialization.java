@@ -6,7 +6,7 @@ import java.util.List;
 import ru.ifmo.rogue_like.App;
 import ru.ifmo.rogue_like.command_generators.ICommandGenerator;
 import ru.ifmo.rogue_like.heroes.IHeroesService;
-import ru.ifmo.rogue_like.heroes.player.PlayerListener;
+import ru.ifmo.rogue_like.heroes.PlayerListener;
 import ru.ifmo.rogue_like.map.IMap;
 
 public class AppSerialization {

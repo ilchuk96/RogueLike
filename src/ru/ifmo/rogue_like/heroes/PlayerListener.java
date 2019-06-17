@@ -1,4 +1,4 @@
-package ru.ifmo.rogue_like.heroes.player;
+package ru.ifmo.rogue_like.heroes;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;

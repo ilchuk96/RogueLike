@@ -11,7 +11,7 @@ import ru.ifmo.rogue_like.heroes.IHeroesService;
 import ru.ifmo.rogue_like.heroes.mobs.Hero;
 import ru.ifmo.rogue_like.heroes.mobs.IHero;
 import ru.ifmo.rogue_like.heroes.mobs.move_strategies.PlayerStrategy;
-import ru.ifmo.rogue_like.heroes.player.PlayerListener;
+import ru.ifmo.rogue_like.heroes.PlayerListener;
 import ru.ifmo.rogue_like.map.IMap;
 import ru.ifmo.rogue_like.map.Map;
 import ru.ifmo.rogue_like.rendering_system.CameraRenderer;
