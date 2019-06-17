@@ -74,8 +74,7 @@ public class App {
         }
         this.renderer.render();
         if (heroesService.getPlayer().isDead()) {
-            //Exit on lose
-            System.exit(0);
+            Notification died = new Notification("You died", actionEvent -> System.exit(0));
         }
     }
 

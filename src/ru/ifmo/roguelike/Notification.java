@@ -1,6 +1,7 @@
 package ru.ifmo.roguelike;
 
 import java.awt.*;
+import java.awt.event.ActionListener;
 import javax.swing.*;
 
 public class Notification extends JFrame {
@@ -26,5 +27,10 @@ public class Notification extends JFrame {
         setResizable(false);
         setVisible(true);
 
+    }
+
+    public Notification(String notification, ActionListener onOk) {
+        this(notification);
+        ok.addActionListener(onOk);
     }
 }
