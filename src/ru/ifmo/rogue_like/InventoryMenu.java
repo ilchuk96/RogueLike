@@ -19,6 +19,7 @@ public class InventoryMenu extends JFrame {
     private List<Magic> magics;
     private IHero hero;
     private MagicInventory magicInventory;
+    private PlayerStrategy playerStrategy;
 
     private class MagicPanel extends JPanel {
 
@@ -65,13 +66,14 @@ public class InventoryMenu extends JFrame {
 
     }
 
-    public InventoryMenu(IHero hero, MagicInventory inventory) {
+    public InventoryMenu(IHero hero, PlayerStrategy playerStrategy) {
         super("Inventory");
         this.hero = hero;
-        magicInventory = inventory;
+        this.playerStrategy = playerStrategy;
+        magicInventory = playerStrategy.getMagics();
         magicPanel = new ArrayList<>();
-        magics = inventory.getMagics();
-        inUse = inventory.getInUse();
+        magics = magicInventory.getMagics();
+        inUse = magicInventory.getInUse();
         exp = new JLabel();
         exp.setFont(new Font(Font.DIALOG, Font.BOLD, 20));
         exp.setText("Hero experience " + hero.getExp());
@@ -94,5 +96,6 @@ public class InventoryMenu extends JFrame {
         for (MagicPanel panel : magicPanel) {
             panel.update();
         }
+        playerStrategy.updateMagics(magicInventory);
     }
 }

@@ -81,8 +81,7 @@ public class PlayerListener implements KeyListener, ICommandGenerator {
             app.update();
         }
         if (keyEvent.getKeyCode() == inventoryKeyCode) {
-            //TODO: inventory
-            InventoryMenu im = new InventoryMenu(hero, ((PlayerStrategy) hero.getStrategy()).magics);
+            InventoryMenu im = new InventoryMenu(hero, (PlayerStrategy) hero.getStrategy());
         }
         if (keyEvent.getKeyCode() == KeyEvent.VK_F5) {
             SaveService saveService = new SaveService();

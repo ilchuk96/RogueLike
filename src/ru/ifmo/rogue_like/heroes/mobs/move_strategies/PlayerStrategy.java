@@ -10,7 +10,7 @@ import ru.ifmo.rogue_like.rendering_system.IView;
 
 public class PlayerStrategy implements IHeroStrategy {
 
-    public MagicInventory magics;
+    private MagicInventory magics;
 
     private MoveAction action;
 
@@ -21,6 +21,14 @@ public class PlayerStrategy implements IHeroStrategy {
 
     public void setAction(MoveAction action) {
         this.action = action;
+    }
+
+    public MagicInventory getMagics() {
+        return magics;
+    }
+
+    public void updateMagics(MagicInventory magics) {
+        this.magics = magics;
     }
 
     @Override
