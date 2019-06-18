@@ -29,7 +29,7 @@ public class PlayerListener implements KeyListener, ICommandGenerator {
     private IMap map;
     private IHeroesService heroesService;
     private MoveAction lastAction = null;
-    private App app;
+    private final App app;
 
     public PlayerListener(IHero hero, IMap map,
                           IHeroesService heroesService,
@@ -84,12 +84,12 @@ public class PlayerListener implements KeyListener, ICommandGenerator {
         }
         if (keyEvent.getKeyCode() == KeyEvent.VK_F5) {
             SaveService saveService = new SaveService();
-            try {
-                saveService.save(app);
-                Notification notification = new Notification("Successfully saved!");
-            } catch (SaveException e) {
-                Notification notification = new Notification("Save error");
-            }
+//            try {
+////                saveService.save(app);
+//                Notification notification = new Notification("Successfully saved!");
+//            } catch (SaveException e) {
+//                Notification notification = new Notification("Save error");
+//            }
         }
     }
 
