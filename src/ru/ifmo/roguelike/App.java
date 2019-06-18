@@ -34,17 +34,13 @@ public class App {
         camera = new Camera(Settings.getProperty("camera.width", Integer.class),
                 Settings.getProperty("camera.height", Integer.class), hero);
         camera.addRenderableObject(map);
-        PlayerListener playerListener = new PlayerListener(hero, map, heroesService);
+        PlayerListener playerListener = new PlayerListener(hero, map, heroesService, this);
         this.renderer = new CameraRenderer(camera, playerListener);
         commandsGenerators = new ArrayList<>();
         commandsGenerators.add(playerListener);
         CommandsExecutor ce = new CommandsExecutor(commandsGenerators, renderer, heroesService, camera);
         commandsExecutor = new Thread(ce);
         commandsExecutor.start();
-    }
-
-    public App(List<ICommandGenerator> commandsGenerators) {
-        this.commandsGenerators = commandsGenerators;
     }
 
     public App(IMap map, IHeroesService heroesService, List<ICommandGenerator> commandsGenerators) {
@@ -54,7 +50,7 @@ public class App {
         camera = new Camera(Settings.getProperty("camera.width", Integer.class),
                 Settings.getProperty("camera.height", Integer.class), hero);
         camera.addRenderableObject(map);
-        PlayerListener playerListener = new PlayerListener(hero, map, heroesService);
+        PlayerListener playerListener = new PlayerListener(hero, map, heroesService, this);
         this.renderer = new CameraRenderer(camera, playerListener);
         this.commandsGenerators = commandsGenerators;
         commandsGenerators.add(playerListener);

@@ -42,12 +42,16 @@ public class CommandsExecutor implements Runnable {
         }
     }
 
-    public List<ICommandGenerator> applyCommand(ICommandGenerator commandGenerator) {
+    public synchronized List<ICommandGenerator> applyCommand(ICommandGenerator commandGenerator) {
         while (!commandGenerator.isReady()) {
+            try {
+                wait(100);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
         }
         ICommand command = commandGenerator.getCommand();
-        List<ICommandGenerator> commandGenerators = command.apply();
-        return commandGenerators;
+        return command.apply();
     }
 
     @Override
