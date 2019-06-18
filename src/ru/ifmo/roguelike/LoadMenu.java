@@ -1,6 +1,7 @@
 package ru.ifmo.roguelike;
 
 import java.awt.*;
+import java.io.File;
 import javax.swing.*;
 
 import ru.ifmo.roguelike.save.LoadException;
@@ -24,6 +25,7 @@ public class LoadMenu extends JFrame {
             App app = new App();
             this.dispose();
         });
+        load.setEnabled((new File(Settings.getProperty("save.file", String.class))).exists());
         load.addActionListener(actionEvent -> {
             try {
                 SaveService loadService = new SaveService();
