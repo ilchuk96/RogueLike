@@ -2,6 +2,8 @@ package ru.ifmo.roguelike.render;
 
 import java.awt.*;
 import java.awt.event.KeyListener;
+import java.util.Arrays;
+import java.util.stream.Collectors;
 import javax.swing.*;
 
 import ru.ifmo.roguelike.render.camera.ICamera;
@@ -22,6 +24,10 @@ public class CameraRenderer extends JFrame implements IRenderer {
         super("RougeLike");
         canvas = new JLabel();
         this.setBackground(Color.black);
+        canvas.setFont(new Font(Font.MONOSPACED, Font.BOLD, FONT_SIZE));
+        canvas.setBackground(Color.black);
+        canvas.setForeground(Color.white);
+        canvas.setOpaque(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         this.setSize(new Dimension(X_SIZE, Y_SIZE));
@@ -30,6 +36,7 @@ public class CameraRenderer extends JFrame implements IRenderer {
         this.add(canvas);
         this.setVisible(true);
         this.camera = camera;
+        render();
     }
 
     private void clear() {
@@ -42,17 +49,9 @@ public class CameraRenderer extends JFrame implements IRenderer {
         camera.update(System.currentTimeMillis());
         clear();
         char[][] view = camera.getView();
-        int rowNumber = 0;
-        Graphics graphics = canvas.getGraphics();
-        graphics.setFont(new Font(Font.MONOSPACED, Font.BOLD, FONT_SIZE));
-        graphics.setColor(Color.white);
-        for (char[] row : view) {
-            StringBuilder text = new StringBuilder();
-            for (char elem : row) {
-                text.append(elem);
-            }
-            graphics.drawString(text.toString(), marginLeft, rowNumber * 10 + marginTop);
-            rowNumber++;
-        }
+        String caption = Arrays.stream(view)
+                .map(String::new)
+                .collect(Collectors.joining("<br>", "<html>", "</html>"));
+        canvas.setText(caption);
     }
 }

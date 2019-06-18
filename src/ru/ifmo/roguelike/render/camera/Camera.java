@@ -41,6 +41,7 @@ public class Camera implements ICamera {
 
     @Override
     public void update(long time) {
+        setCameraPosition(position.getX(), position.getY());
         for (int i = 0; i < frame.length; i++) {
             for (int g = 0; g < frame[i].length; g++) {
                 frame[i][g] = '.';
@@ -68,7 +69,6 @@ public class Camera implements ICamera {
             }
         }
         renderableObjects.removeAll(toDelete);
-        setCameraPosition(position.getX(), position.getY());
     }
 
     @Override

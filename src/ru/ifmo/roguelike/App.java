@@ -38,6 +38,7 @@ public class App {
         this.renderer = new CameraRenderer(camera, playerListener);
         commandsGenerators = new ArrayList<>();
         commandsGenerators.add(playerListener);
+        update();
     }
 
     public App(List<ICommandGenerator> commandsGenerators) {
@@ -55,6 +56,7 @@ public class App {
         this.renderer = new CameraRenderer(camera, playerListener);
         this.commandsGenerators = commandsGenerators;
         commandsGenerators.add(playerListener);
+        update();
     }
 
     public void update() {
@@ -67,7 +69,6 @@ public class App {
             }
             List<ICommandGenerator> commandGenerators = command.apply();
             this.commandsGenerators.addAll(commandGenerators);
-            this.renderer.render();
         }
         for (IHero h : heroesService.heroes()) {
             camera.addRenderableObject(h);
