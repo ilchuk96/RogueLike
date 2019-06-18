@@ -34,15 +34,10 @@ public class CameraRenderer extends JFrame implements IRenderer {
         render();
     }
 
-    private void clear() {
-        canvas.getGraphics().clearRect(0, 0, X_SIZE, Y_SIZE);
-    }
-
 
     @Override
     public void render() {
         camera.update(System.currentTimeMillis());
-        clear();
         char[][] view = camera.getView();
         String caption = Arrays.stream(view)
                 .map(String::new)

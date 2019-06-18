@@ -2,10 +2,10 @@ package ru.ifmo.roguelike;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
-import ru.ifmo.roguelike.commands.generators.ICommandGenerator;
 import ru.ifmo.roguelike.commands.ICommand;
+import ru.ifmo.roguelike.commands.generators.ICommandGenerator;
+import ru.ifmo.roguelike.heroes.HeroesService;
 import ru.ifmo.roguelike.heroes.IHeroesService;
 import ru.ifmo.roguelike.heroes.PlayerListener;
 import ru.ifmo.roguelike.heroes.mobs.Hero;
@@ -16,7 +16,6 @@ import ru.ifmo.roguelike.map.Map;
 import ru.ifmo.roguelike.render.CameraRenderer;
 import ru.ifmo.roguelike.render.camera.Camera;
 import ru.ifmo.roguelike.render.camera.ICamera;
-import ru.ifmo.roguelike.heroes.HeroesService;
 
 public class App {
     private IMap map;
@@ -24,6 +23,7 @@ public class App {
     private CameraRenderer renderer;
     private ICamera camera;
     private List<ICommandGenerator> commandsGenerators;
+    private Thread commandsExecutor;
 
     public App() {
         map = new Map(Settings.getProperty("map.width", Integer.class),
@@ -34,15 +34,13 @@ public class App {
         camera = new Camera(Settings.getProperty("camera.width", Integer.class),
                 Settings.getProperty("camera.height", Integer.class), hero);
         camera.addRenderableObject(map);
-        PlayerListener playerListener = new PlayerListener(this, hero, map, heroesService);
+        PlayerListener playerListener = new PlayerListener(hero, map, heroesService, this);
         this.renderer = new CameraRenderer(camera, playerListener);
         commandsGenerators = new ArrayList<>();
         commandsGenerators.add(playerListener);
-        update();
-    }
-
-    public App(List<ICommandGenerator> commandsGenerators) {
-        this.commandsGenerators = commandsGenerators;
+        CommandsExecutor ce = new CommandsExecutor(commandsGenerators, renderer, heroesService, camera);
+        commandsExecutor = new Thread(ce);
+        commandsExecutor.start();
     }
 
     public App(IMap map, IHeroesService heroesService, List<ICommandGenerator> commandsGenerators) {
@@ -52,31 +50,13 @@ public class App {
         camera = new Camera(Settings.getProperty("camera.width", Integer.class),
                 Settings.getProperty("camera.height", Integer.class), hero);
         camera.addRenderableObject(map);
-        PlayerListener playerListener = new PlayerListener(this, hero, map, heroesService);
+        PlayerListener playerListener = new PlayerListener(hero, map, heroesService, this);
         this.renderer = new CameraRenderer(camera, playerListener);
         this.commandsGenerators = commandsGenerators;
         commandsGenerators.add(playerListener);
-        update();
-    }
-
-    public void update() {
-        List<ICommand> commands = commandsGenerators.stream()
-                .map(ICommandGenerator::getCommand)
-                .collect(Collectors.toList());
-        for (ICommand command : commands) {
-            if (command == null) {
-                continue;
-            }
-            List<ICommandGenerator> commandGenerators = command.apply();
-            this.commandsGenerators.addAll(commandGenerators);
-        }
-        for (IHero h : heroesService.heroes()) {
-            camera.addRenderableObject(h);
-        }
-        this.renderer.render();
-        if (heroesService.getPlayer().isDead()) {
-            Notification died = new Notification("You died", actionEvent -> System.exit(0));
-        }
+        CommandsExecutor ce = new CommandsExecutor(commandsGenerators, renderer, heroesService, camera);
+        commandsExecutor = new Thread(ce);
+        commandsExecutor.run();
     }
 
     public IMap getMap() {

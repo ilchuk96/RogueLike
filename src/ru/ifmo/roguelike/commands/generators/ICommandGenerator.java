@@ -4,4 +4,6 @@ import ru.ifmo.roguelike.commands.ICommand;
 
 public interface ICommandGenerator {
     ICommand getCommand();
+
+    boolean isReady();
 }
