@@ -36,4 +36,8 @@ public class Canvas extends JPanel {
         front.setVisible(true);
         back.setVisible(false);
     }
+
+    public String getText() {
+        return front.getText();
+    }
 }

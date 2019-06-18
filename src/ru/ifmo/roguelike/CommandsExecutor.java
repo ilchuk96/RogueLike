@@ -30,7 +30,6 @@ public class CommandsExecutor implements Runnable {
         List<ICommandGenerator> newCommandGenerators = new ArrayList<>();
         for (ICommandGenerator commandGenerator : commandsGenerators) {
             newCommandGenerators.addAll(applyCommand(commandGenerator));
-            this.renderer.render();
         }
         this.commandsGenerators.addAll(newCommandGenerators);
         for (IHero h : heroesService.heroes()) {
