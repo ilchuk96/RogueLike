@@ -38,7 +38,7 @@ public class CommandsExecutor implements Runnable {
         }
         this.renderer.render();
         if (heroesService.getPlayer().isDead()) {
-            System.exit(0);
+            Notification notification = new Notification("you died", actionEvent -> System.exit(0));
         }
     }
 
