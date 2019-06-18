@@ -28,4 +28,9 @@ public class HeroCommandGenerator implements ICommandGenerator {
         }
         return new HeroMoveCommand(hero, map, heroesService, moveAction);
     }
+
+    @Override
+    public boolean isReady() {
+        return true;
+    }
 }
