@@ -26,7 +26,7 @@ public class CommandsExecutor implements Runnable {
         this.camera = camera;
     }
 
-    public void update() {
+    private void update() {
         List<ICommandGenerator> newCommandGenerators = new ArrayList<>();
         for (ICommandGenerator commandGenerator : commandsGenerators) {
             newCommandGenerators.addAll(applyCommand(commandGenerator));
@@ -42,7 +42,7 @@ public class CommandsExecutor implements Runnable {
         }
     }
 
-    public synchronized List<ICommandGenerator> applyCommand(ICommandGenerator commandGenerator) {
+    private synchronized List<ICommandGenerator> applyCommand(ICommandGenerator commandGenerator) {
         while (!commandGenerator.isReady()) {
             try {
                 wait(100);
