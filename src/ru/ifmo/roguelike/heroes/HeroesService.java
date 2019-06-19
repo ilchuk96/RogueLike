@@ -18,7 +18,7 @@ public class HeroesService implements IHeroesService {
         return this.player;
     }
 
-    public IHero getHero(int x, int y) {
+    private void removeDeadHeroes() {
         List<IHero> dead = new ArrayList<>();
         for (IHero hero : heroes) {
             if (hero.isDead()) {
@@ -26,6 +26,10 @@ public class HeroesService implements IHeroesService {
             }
         }
         heroes.removeAll(dead);
+    }
+
+    public IHero getHero(int x, int y) {
+        removeDeadHeroes();
         if (player.getX() == x && player.getY() == y) {
             return player;
         }
@@ -43,6 +47,7 @@ public class HeroesService implements IHeroesService {
     }
 
     public List<IHero> heroes() {
+        removeDeadHeroes();
         List<IHero> outputList = new ArrayList<>();
         outputList.add(player);
         outputList.addAll(heroes);
