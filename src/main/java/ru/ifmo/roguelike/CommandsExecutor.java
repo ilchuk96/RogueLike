@@ -24,6 +24,10 @@ public class CommandsExecutor implements Runnable {
         this.renderer = renderer;
         this.heroesService = heroesService;
         this.camera = camera;
+        for (IHero h : heroesService.heroes()) {
+            camera.addRenderableObject(h);
+        }
+        this.renderer.render();
     }
 
     private void update() {

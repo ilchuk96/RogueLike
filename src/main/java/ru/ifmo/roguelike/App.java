@@ -56,7 +56,7 @@ public class App {
         commandsGenerators.add(playerListener);
         CommandsExecutor ce = new CommandsExecutor(commandsGenerators, renderer, heroesService, camera);
         commandsExecutor = new Thread(ce);
-        commandsExecutor.run();
+        commandsExecutor.start();
     }
 
     public IMap getMap() {
