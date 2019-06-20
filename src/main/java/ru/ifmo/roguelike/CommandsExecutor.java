@@ -1,5 +1,6 @@
 package ru.ifmo.roguelike;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,6 +43,10 @@ public class CommandsExecutor implements Runnable {
         }
         this.renderer.render();
         if (heroesService.getPlayer().isDead()) {
+            File save = new File(Settings.getProperty("save.file", String.class));
+            if (save.isFile()) {
+                save.delete();
+            }
             Notification notification = new Notification("you died", actionEvent -> System.exit(0));
         }
     }
