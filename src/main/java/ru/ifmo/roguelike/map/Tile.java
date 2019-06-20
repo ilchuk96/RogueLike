@@ -5,6 +5,9 @@ import ru.ifmo.roguelike.map.squares.Floor;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Part of map 4x4
+ */
 public class Tile {
     List<List<ISquare>> tile;
 

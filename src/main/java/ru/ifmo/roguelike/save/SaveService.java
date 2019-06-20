@@ -6,6 +6,9 @@ import com.google.gson.Gson;
 import ru.ifmo.roguelike.App;
 import ru.ifmo.roguelike.Settings;
 
+/**
+ * Save and load game
+ */
 public class SaveService {
     private final String filePath = Settings.getProperty("save.file", String.class);
 

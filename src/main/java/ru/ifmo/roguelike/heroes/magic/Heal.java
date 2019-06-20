@@ -3,6 +3,9 @@ package ru.ifmo.roguelike.heroes.magic;
 import ru.ifmo.roguelike.heroes.IHeroesService;
 import ru.ifmo.roguelike.heroes.mobs.IHero;
 
+/**
+ * Heal yourself
+ */
 public class Heal extends Magic {
 
     private int heal;

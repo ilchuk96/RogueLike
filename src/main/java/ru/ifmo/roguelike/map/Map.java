@@ -16,6 +16,9 @@ import ru.ifmo.roguelike.render.IView;
 import ru.ifmo.roguelike.heroes.mobs.Hero;
 import ru.ifmo.roguelike.heroes.mobs.HeroDecorator;
 
+/**
+ * Game map
+ */
 public class Map implements IMap {
     private List<List<ISquare>> field;
     private Random random;

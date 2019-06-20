@@ -8,6 +8,9 @@ import ru.ifmo.roguelike.heroes.mobs.IHero;
 import ru.ifmo.roguelike.map.IPositionable;
 import ru.ifmo.roguelike.render.IView;
 
+/**
+ * stores renderable objects and prepares player view based on them
+ */
 public class Camera implements ICamera {
     private int cameraPositionX, cameraPositionY;
 

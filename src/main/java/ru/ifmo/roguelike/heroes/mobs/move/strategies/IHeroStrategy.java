@@ -7,6 +7,9 @@ import ru.ifmo.roguelike.heroes.mobs.Hero;
 import ru.ifmo.roguelike.heroes.mobs.IHero;
 import ru.ifmo.roguelike.map.IMap;
 
+/**
+ * Strategy of hero he uses to move
+ */
 public interface IHeroStrategy {
     MoveAction moveDirection(IMap map, IHeroesService heroesService, IHero hero);
 

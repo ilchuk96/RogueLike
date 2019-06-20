@@ -6,6 +6,9 @@ import ru.ifmo.roguelike.heroes.MoveAction;
 
 import java.util.Random;
 
+/**
+ * Hero with confusion spell decorator
+ */
 public class ConfusedHeroDecorator extends HeroDecorator {
 
     private int timeLeft;

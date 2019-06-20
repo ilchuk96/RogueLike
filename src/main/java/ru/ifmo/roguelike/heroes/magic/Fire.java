@@ -3,6 +3,9 @@ package ru.ifmo.roguelike.heroes.magic;
 import ru.ifmo.roguelike.heroes.IHeroesService;
 import ru.ifmo.roguelike.heroes.mobs.IHero;
 
+/**
+ * Damage everyone in range
+ */
 public class Fire extends Magic {
 
     private int damage;

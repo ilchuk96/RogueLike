@@ -4,6 +4,9 @@ import ru.ifmo.roguelike.heroes.IHeroesService;
 import ru.ifmo.roguelike.heroes.mobs.IHero;
 import ru.ifmo.roguelike.heroes.mobs.move.strategies.Dilative;
 
+/**
+ * Scares mobs in range
+ */
 public class Scare extends Magic {
 
     private int square;

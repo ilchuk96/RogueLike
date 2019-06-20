@@ -16,6 +16,9 @@ import ru.ifmo.roguelike.map.IMap;
 import ru.ifmo.roguelike.save.SaveException;
 import ru.ifmo.roguelike.save.SaveService;
 
+/**
+ * Listens to player commands, and sends a command
+ */
 public class PlayerListener implements KeyListener, ICommandGenerator {
     private final int upKeyCode;
     private final int downKeyCode;

@@ -4,6 +4,9 @@ import java.util.List;
 
 import ru.ifmo.roguelike.heroes.mobs.IHero;
 
+/**
+ * stores and returnees heroes by coordinates
+ */
 public interface IHeroesService {
     IHero getPlayer();
 

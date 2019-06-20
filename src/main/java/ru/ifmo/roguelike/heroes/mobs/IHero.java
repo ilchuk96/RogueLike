@@ -7,6 +7,9 @@ import ru.ifmo.roguelike.heroes.MoveAction;
 import ru.ifmo.roguelike.map.IMap;
 import ru.ifmo.roguelike.map.IPositionable;
 
+/**
+ * Hero, mob or player, could be with spell decorator
+ */
 public interface IHero extends IRenderable, IPositionable {
     void setStrategy(IHeroStrategy strategy);
 

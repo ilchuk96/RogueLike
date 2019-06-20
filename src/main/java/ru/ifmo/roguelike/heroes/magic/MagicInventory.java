@@ -6,6 +6,9 @@ import java.util.List;
 import ru.ifmo.roguelike.heroes.IHeroesService;
 import ru.ifmo.roguelike.heroes.mobs.Hero;
 
+/**
+ * List of magic, uses only one
+ */
 public class MagicInventory {
     private List<Magic> magics;
     private int inUse;

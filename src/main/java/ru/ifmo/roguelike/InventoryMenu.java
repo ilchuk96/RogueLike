@@ -10,6 +10,9 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Frame with magic inventory to set up and update it
+ */
 public class InventoryMenu extends JFrame {
 
     private JLabel exp;

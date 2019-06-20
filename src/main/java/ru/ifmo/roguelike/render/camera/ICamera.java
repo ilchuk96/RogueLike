@@ -2,6 +2,9 @@ package ru.ifmo.roguelike.render.camera;
 
 import ru.ifmo.roguelike.render.IRenderable;
 
+/**
+ * Makes player view to draw
+ */
 public interface ICamera {
     void addRenderableObject(IRenderable renderable);
 

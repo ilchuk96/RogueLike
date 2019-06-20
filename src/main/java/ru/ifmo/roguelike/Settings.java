@@ -5,6 +5,9 @@ import java.util.Map;
 import java.util.Properties;
 
 
+/**
+ * Class to get player settings from config.properties
+ */
 public class Settings {
     private static Properties initialProperties;
     private static Map<String, String> settedProperties = new HashMap<>();

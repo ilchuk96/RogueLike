@@ -4,6 +4,9 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
+/**
+ * Notification to player i.e. on death or save
+ */
 public class Notification extends JFrame {
 
     private JButton ok;

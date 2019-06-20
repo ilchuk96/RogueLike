@@ -1,5 +1,11 @@
 package ru.ifmo.roguelike.heroes;
 
+/**
+ * Move of a hero
+ * x - difference on x direction
+ * y - difference on y direction
+ * type - 0 if move or do nothing, 1 if cast magic
+ */
 public class MoveAction {
     private int x;
     private int y;

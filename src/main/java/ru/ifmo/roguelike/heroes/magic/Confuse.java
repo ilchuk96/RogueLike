@@ -4,6 +4,9 @@ import ru.ifmo.roguelike.heroes.IHeroesService;
 import ru.ifmo.roguelike.heroes.mobs.IHero;
 import ru.ifmo.roguelike.heroes.mobs.HeroDecorator;
 
+/**
+ * Confuse anyone in range
+ */
 public class Confuse extends Magic {
 
     private int time;

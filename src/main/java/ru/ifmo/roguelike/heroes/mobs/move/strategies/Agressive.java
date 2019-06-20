@@ -9,6 +9,9 @@ import ru.ifmo.roguelike.heroes.MoveAction;
 import ru.ifmo.roguelike.heroes.mobs.Hero;
 import ru.ifmo.roguelike.map.IMap;
 
+/**
+ * Agressive mob strategy, attacks player if see one
+ */
 public class Agressive implements IHeroStrategy {
 
     private Random random = new Random();

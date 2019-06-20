@@ -9,6 +9,9 @@ import javax.swing.*;
 import ru.ifmo.roguelike.render.camera.ICamera;
 import ru.ifmo.roguelike.Settings;
 
+/**
+ * Game frame with canvas on it
+ */
 public class CameraRenderer extends JFrame implements IRenderer {
     private ICamera camera;
     private Canvas canvas;

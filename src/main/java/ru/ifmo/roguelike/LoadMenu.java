@@ -8,6 +8,9 @@ import ru.ifmo.roguelike.save.LoadException;
 import ru.ifmo.roguelike.save.SaveService;
 import ru.ifmo.roguelike.map.IMap;
 
+/**
+ * initial load or new game menu
+ */
 public class LoadMenu extends JFrame {
 
     private JButton load;

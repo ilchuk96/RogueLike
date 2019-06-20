@@ -8,6 +8,9 @@ import ru.ifmo.roguelike.heroes.magic.MagicInventory;
 import ru.ifmo.roguelike.heroes.mobs.Hero;
 import ru.ifmo.roguelike.map.IMap;
 
+/**
+ * Strategy from player
+ */
 public class PlayerStrategy implements IHeroStrategy {
 
     private MagicInventory magics;

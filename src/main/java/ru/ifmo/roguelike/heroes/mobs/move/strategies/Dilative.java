@@ -9,6 +9,9 @@ import ru.ifmo.roguelike.map.IMap;
 
 import java.util.Random;
 
+/**
+ * Dilative mob strategy, run from player if see one, if not became passive
+ */
 public class Dilative implements IHeroStrategy {
     private Random random = new Random();
 

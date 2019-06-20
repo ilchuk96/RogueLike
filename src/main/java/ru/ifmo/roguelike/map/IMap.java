@@ -6,6 +6,9 @@ import ru.ifmo.roguelike.heroes.mobs.IHero;
 import ru.ifmo.roguelike.render.IRenderable;
 import ru.ifmo.roguelike.heroes.MoveAction;
 
+/**
+ * Game map
+ */
 public interface IMap extends IRenderable {
     List<List<ISquare>> getField();
 

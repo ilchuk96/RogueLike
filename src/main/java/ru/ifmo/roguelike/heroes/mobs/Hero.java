@@ -9,6 +9,9 @@ import ru.ifmo.roguelike.map.IMap;
 import ru.ifmo.roguelike.render.IView;
 import ru.ifmo.roguelike.heroes.MoveAction;
 
+/**
+ * Concrete hero implementation
+ */
 public class Hero implements IHero {
     final int MAX_HP = 5;
     final int MAX_MANA = 10;

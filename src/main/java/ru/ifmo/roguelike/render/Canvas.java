@@ -3,6 +3,9 @@ package ru.ifmo.roguelike.render;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Two layers canvas for smooth graphics
+ */
 public class Canvas extends JPanel {
 
     private JLabel front;

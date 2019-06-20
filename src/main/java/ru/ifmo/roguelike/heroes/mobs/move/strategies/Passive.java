@@ -12,6 +12,9 @@ import ru.ifmo.roguelike.heroes.mobs.HeroDecorator;
 import ru.ifmo.roguelike.map.IMap;
 import ru.ifmo.roguelike.map.ISquare;
 
+/**
+ * Passive mob strategy, do nothing if see anyone cast confusion
+ */
 public class Passive implements IHeroStrategy {
 
     private Confuse confuse = new Confuse();

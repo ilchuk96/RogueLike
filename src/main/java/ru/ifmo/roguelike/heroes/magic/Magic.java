@@ -3,6 +3,9 @@ package ru.ifmo.roguelike.heroes.magic;
 import ru.ifmo.roguelike.heroes.IHeroesService;
 import ru.ifmo.roguelike.heroes.mobs.IHero;
 
+/**
+ * Extend this to add spell
+ */
 public abstract class Magic {
 
     int mana;

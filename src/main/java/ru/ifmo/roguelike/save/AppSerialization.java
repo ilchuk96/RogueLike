@@ -9,6 +9,9 @@ import ru.ifmo.roguelike.App;
 import ru.ifmo.roguelike.heroes.PlayerListener;
 import ru.ifmo.roguelike.map.IMap;
 
+/**
+ * Serialize app to save it
+ */
 public class AppSerialization {
     private final IHeroesService heroesService;
     private final IMap map;

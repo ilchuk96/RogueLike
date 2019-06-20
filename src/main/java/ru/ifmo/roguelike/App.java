@@ -17,6 +17,9 @@ import ru.ifmo.roguelike.render.CameraRenderer;
 import ru.ifmo.roguelike.render.camera.Camera;
 import ru.ifmo.roguelike.render.camera.ICamera;
 
+/**
+ * Stores and controls all game i.e map, heroes and command executor
+ */
 public class App {
     private IMap map;
     private IHeroesService heroesService;

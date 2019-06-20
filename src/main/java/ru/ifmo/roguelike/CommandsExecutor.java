@@ -11,6 +11,9 @@ import ru.ifmo.roguelike.heroes.mobs.IHero;
 import ru.ifmo.roguelike.render.CameraRenderer;
 import ru.ifmo.roguelike.render.camera.ICamera;
 
+/**
+ * Update game on player move, executes all heroes commands
+ */
 public class CommandsExecutor implements Runnable {
     private List<ICommandGenerator> commandsGenerators;
     private CameraRenderer renderer;

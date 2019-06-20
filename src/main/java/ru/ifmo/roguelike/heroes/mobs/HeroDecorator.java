@@ -3,6 +3,9 @@ package ru.ifmo.roguelike.heroes.mobs;
 import ru.ifmo.roguelike.heroes.mobs.move.strategies.IHeroStrategy;
 import ru.ifmo.roguelike.render.IView;
 
+/**
+ * Extend it to add any effect on hero
+ */
 public abstract class HeroDecorator implements IHero {
 
     protected IHero hero;
