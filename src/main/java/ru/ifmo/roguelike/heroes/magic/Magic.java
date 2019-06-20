@@ -8,9 +8,25 @@ import ru.ifmo.roguelike.heroes.mobs.IHero;
  */
 public abstract class Magic {
 
-    int mana;
+    private int mana;
 
-    int needExp;
+    private int needExp;
+
+    protected int getMana() {
+        return mana;
+    }
+
+    protected int getNeedExp() {
+        return needExp;
+    }
+
+    protected void setMana(int mana) {
+        this.mana = mana;
+    }
+
+    protected void setNeedExp(int needExp) {
+        this.needExp = needExp;
+    }
 
     public boolean cast(IHeroesService heroService, IHero hero) {
         if (hero.getMana() < mana) {

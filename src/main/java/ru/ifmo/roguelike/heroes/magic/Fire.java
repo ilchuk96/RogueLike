@@ -12,10 +12,10 @@ public class Fire extends Magic {
     private int square;
 
     public Fire() {
-        mana = 10;
+        setMana(10);
         damage = 1;
         square = 3;
-        needExp = 10;
+        setNeedExp(10);
     }
 
     @Override
@@ -40,13 +40,13 @@ public class Fire extends Magic {
 
     @Override
     public String info() {
-        return "Damages all characters in square " + square + "X" + square + " with " + damage + ", requires " + mana;
+        return "Damages all characters in square " + square + "X" + square + " with " + damage + ", requires " + getMana();
     }
 
     @Override
     public String getLUInfo() {
         if (canLevelUp()) {
-            return "+1 to damage for " + needExp + " exp";
+            return "+1 to damage for " + getNeedExp() + " exp";
         }
         return "Max Level";
     }
@@ -54,7 +54,7 @@ public class Fire extends Magic {
     @Override
     protected void upgrade() {
         damage++;
-        needExp *= 10;
+        setNeedExp(getNeedExp() * 10);
     }
 
     @Override

@@ -12,9 +12,9 @@ public class Scare extends Magic {
     private int square;
 
     public Scare() {
-        mana = 10;
+        setMana(10);
         square = 1;
-        needExp = 10;
+        setNeedExp(10);
     }
 
     @Override
@@ -36,13 +36,13 @@ public class Scare extends Magic {
 
     @Override
     public String info() {
-        return "Scares all characters in square " + square + "X" + square + ", requires " + mana;
+        return "Scares all characters in square " + square + "X" + square + ", requires " + getMana();
     }
 
     @Override
     public String getLUInfo() {
         if (canLevelUp()) {
-            return "+1 to area for " + needExp + " exp";
+            return "+1 to area for " + getNeedExp() + " exp";
         }
         return "Max Level";
     }
@@ -50,7 +50,7 @@ public class Scare extends Magic {
     @Override
     protected void upgrade() {
         square++;
-        needExp *= 10;
+        setNeedExp(getNeedExp() * 10);
     }
 
     @Override
